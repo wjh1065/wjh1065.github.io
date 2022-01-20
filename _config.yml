@@ -104,7 +104,7 @@ analytics:
 author:
   name             : "Lee ChangSeok"
   avatar           : "image/profile/2021-12-20.png"
-  bio              : "무한 학습<br>이미지/자연어 처리<br>Ai engineer<br>" # :<br>learn()<br>
+  bio              : "이미지/자연어 처리<br>AI engineer<br>" # :<br>learn()<br>
   location         : "Republic of Korea"
   email            :
   links:
