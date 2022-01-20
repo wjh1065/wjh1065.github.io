@@ -1,0 +1,728 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>goormNLP [HW 2 - Python crawling &amp; class] - while True()</title>
+<meta name="description" content="AI 기술 자연어 처리 전문가 양성 3기 [HW 2 - Python crawling &amp; class] 과제 2. 나만의 데이터 셋 만들기.">
+
+
+  <meta name="author" content="Lee ChangSeok">
+  
+  <meta property="article:author" content="Lee ChangSeok">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="while True()">
+<meta property="og:title" content="goormNLP [HW 2 - Python crawling &amp; class]">
+<meta property="og:url" content="http://localhost:4000/goormnlp/HW2/">
+
+
+  <meta property="og:description" content="AI 기술 자연어 처리 전문가 양성 3기 [HW 2 - Python crawling &amp; class] 과제 2. 나만의 데이터 셋 만들기.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-07T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/goormnlp/HW2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "이창석(Lee ChangSeok)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="while True() Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          while True:
+          <span class="site-subtitle">learn()</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://wjh1065.github.io/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/image/profile/2021-12-20.png" alt="Lee ChangSeok" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Lee ChangSeok</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>무한 학습<br />이미지/자연어 처리<br />Ai engineer<br /></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="goormNLP [HW 2 - Python crawling &amp; class]">
+    <meta itemprop="description" content="AI 기술 자연어 처리 전문가 양성 3기 [HW 2 - Python crawling &amp; class]과제 2. 나만의 데이터 셋 만들기.">
+    <meta itemprop="datePublished" content="2022-01-07T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/goormnlp/HW2/" class="u-url" itemprop="url">goormNLP [HW 2 - Python crawling &amp; class]
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-07T00:00:00+09:00">2022.01.07</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="ai-기술-자연어-처리-전문가-양성-3기-hw-2---python-crawling--class">AI 기술 자연어 처리 전문가 양성 3기 [HW 2 - Python crawling &amp; class]</h1>
+<h1 id="과제-2-나만의-데이터-셋-만들기">과제 2. 나만의 데이터 셋 만들기.</h1>
+
+<p>기계 학습 분야에서 중요한 것 중 하나가 학습에 사용할 자료를 수집하고 관리하는 것입니다.
+예를 들어 주어진 문장이 부정인지 긍정인지 판별하는 모델을 학습 시키기 위해서는 긍정 부정이 라벨링된 문장 자료가 필요합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>문장</th>
+      <th>긍부정</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>진짜 좋은 영화. 가히 올해의 영화라고 불릴만하다.</td>
+      <td>긍정</td>
+    </tr>
+    <tr>
+      <td>이런 영화에 100억원 이상 때려 넣은 감독은 충무로에서 쫓겨나야한다.</td>
+      <td>부정</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>그러나 우리가 이러한 자료를 직접 수집 및 라벨링하기는 쉽지 않다.</p>
+
+<p>한편, 내부 연구나 교육적 목적으로 이미 가공된 인터넷의 글들을 수집하는 것은 공정이용으로 저작권법에 어긋나지 않습니다.
+따라서 네이버 영화 리뷰를 크롤링하여 나만의 긍부정 문장 데이터 셋을 만들어 봅시다.</p>
+
+<h2 id="2-1-네이버-영화-리뷰-크롤링">2-1. 네이버 영화 리뷰 크롤링</h2>
+
+<script src="https://gist.github.com/wjh1065/42bc1e3f1ef68958d7a3b618bf8f0dad.js"></script>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100%|█████████████████████████████████████████| 110/110 [01:38&lt;00:00,  1.12it/s]
+</code></pre></div></div>
+
+<script src="https://gist.github.com/wjh1065/92831f6d1f58cc877992fa8896cb0c08.js"></script>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['movie', 'sentence', 'score']
+['해피 뉴 이어', '영화 개봉전부터 굉장히 기대하고 있었는데 생각보다 재미도 없고 연출이 좀 부족'10']
+['기적', '2000~2010년 영화들 이래 정말 처음으로 영화다운 영화를 봤습니다. 감동,스토리,연기 뭐하나 빠지지않는 정말 명품영화였습니다. 덕분에 살면서 처음으로 감상평이란걸 남기고 갑니
+['씽2게더', '역시  실망시키지않은 애니메이션 너무재밌고 힐링됐어요~~~^^', '10']
+['스파이더맨: 노 웨이 홈', '스파이더맨들이 모여서 좋았음 ㅋㅋ', '9']
+['워터호스', '본지 몇 년 전이지만 그 때 감동이 잊혀지지 않아 다시 봤는데 재밌네요', '10']
+
+...
+...
+
+['소리도 없이', '아니 미친건가 영화  결말은 안만들었네?', '4']
+['닥터 슬립', '그냥  생각없이  따라가면 시간 가는줄 모름 근데 맨 마지막 씬 ?그건 왜? 뭐지?', '6']
+['경관의 피', '사람들 왜이래 넷플만 보다와서 자막에 익숙해졌나?박희순 배우님 대사 충분히 알아들을 수 있겠더만 신경쓰이는 부분 조금 있더라도 평점 낮게 줄 정도로 치명적이지 않는데이게 평점이 7점대란게 안믿기네', '10']
+['스파이더맨: 노 웨이 홈', '사건 발단부터가 어이가 없긴 했지만..솔직냉정하게. 닥터 스트레인지가 더 정신연령이 어려보이는건 나만 그러는 것인가?다만.. 토비맥과이어와 앤드류가필드가 등장해줘서 너무 고마웠다.오랜만에 등장한 빌런들은 반가웠지만 똥고집부리는 주인공이 이해가 안되는건 덤.', '4']
+['피어썸', '일단 전 재밌게 봤습니다. 중간중간 아쉬운 부분이 많았지만, 그래도 킬링타임용으론 손색이 없네요 ㅋㅋㅋ 일단 귀신분이 너무 예쁘셔서 저였어도 유혹을 뿌리치기 힘들었을 것 같습니다. 근데 개연성 부분이 밥말아드셨네요;;; 일단 처음에 귀신때문에 전 밴드사람들이 그만뒀다는 내용을 인지하고 있는 상황에서, 이미 여자는 화장실에서 귀신을 봤고, 바로도 아침마다 맨발로 흙투성이가 되서 등장하는데, 그때 이미 귀신이 있다는 사실을 깨달아야 정상 아닌가요?? 그런 기이한 일들이 반복되는데도, 계속 여자 델고왔냐고 물어보는게 어이없었어요 ㅋㅋㅋ 누가봐도 기이한 상황인데 ㅋㅋㅋ 개연성 부분만 좀 다듬었다면 더 좋은 영화가 되었을 것 같네요.', '6']
+['K-19 위도우메이커', '공산주의 몰락은 자본주의 승리가 아닌 부정부패의 자멸인 듯. 최고의 핵잠수함도 적군의 어뢰가 아닌 냉각수 부품의 하자로 몰락하다..', '8']
+['경관의 피', '함축된 얘기가 많은 듯한 느낌. 속편이 궁금해짐', '10']
+['테레사 팔머의 감금', '괜찮게 끌고 갔는데 결말 부분이 시원치 않다.', '5']
+['경관의 피', '영화는 좋으나 사운드가 별로입니다', '10']
+['정무문 : 100대 1의 전설', '재미 없다 전형적인 액션 중뽕 영화', '1']
+</code></pre></div></div>
+
+<h2 id="2-2-네이버-영화-데이터-셋-제작">2-2. 네이버 영화 데이터 셋 제작</h2>
+<p><code class="language-plaintext highlighter-rouge">CSV</code> 파일로 저장된 데이터를 쉽게 접근하기 위해서는 파이썬 내에서 구조화할 필요가 있습니다.
+이를 위하여 데이터에 접근 가능한 <code class="language-plaintext highlighter-rouge">RawMovieReview</code> 클래스를 만들어 봅시다.</p>
+
+<script src="https://gist.github.com/wjh1065/3aaf5fd926ff4ea46fa76a3ddcc43f82.js"></script>
+
+<script src="https://gist.github.com/wjh1065/39b88278749855143a2ca7a2acf512bc.js"></script>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>데이터 타입 : &lt;class 'tuple'&gt;
+한줄 평 : ('위시 드래곤', '재미는 있으나, 구성은 알라딘', 6)
+데이터 한줄 평 개수 : 1014
+&lt;class 'str'&gt;
+&lt;class 'str'&gt;
+&lt;class 'int'&gt;
+</code></pre></div></div>
+
+<h2 id="2-3-네이버-영화-학습-데이터-셋-제작">2-3. 네이버 영화 학습 데이터 셋 제작</h2>
+
+<p>위에서 제작한 데이터 셋은 <code class="language-plaintext highlighter-rouge">CSV</code> 파일을 모두 조회하지만, 학습에 바로 사용되기에는 다소 불편합니다.
+따라서 이를 상속한 <code class="language-plaintext highlighter-rouge">MovieReview</code>를 만들어 봅시다.</p>
+
+<script src="https://gist.github.com/wjh1065/d3d6e41162e09ccac76d6609d4b1add9.js"></script>
+
+<script src="https://gist.github.com/wjh1065/a16ea11794c682038ea09ffa3fca250e.js"></script>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('두 엠마의 명연을 볼수있었던 101마리 달마시안의 재해석,,조커,할리퀸과 결이 다른 디즈니판 사이키 연기등장,IP의 중요성을 인식함', True)
+('액션은 좋았지만 엔딩이 아쉬웠어요', True)
+('추억의 스파이더맨등장으로 넘 잼잇어요~', True)
+
+...
+...
+
+('조진중 최우식 박희순....배우들 연기 볼만 했음!! 근디 사운드 믹싱이 잘못 되었는디 대사가 잘 안들리네요....별 하나 마이너스', True)
+('일단 캐스팅으로 죽여주고 그 다음은 메시지의 당위성', True)
+('올해 최고영화.예상을 뒤엎는 전개유아인과 유재명의 연기도 최고', True)
+('이런 한심한 코미디영화를 돈주고 봤다는 사실에서 난 살해당해야한다', False)
+('약간 진부하지만 재미있게봤습니다.라~이~타파이팅!!!', True)
+('초반부 창고에서 빈 종이 상자 맞고 기절하는 양아치들 보고 바로 손절…격투장면도 존나 엉성 이딴 쓰레기영화에 투자한 내 10여분이 존나 아깝고 억울함', False)
+('영화가 끝난 후에도 마음은 계속 캠퍼스에 머물렀던...', True)
+('싸움씬은 다 조앗어여', False)
+('반전이나 액션이 재밌는 추천작', True)
+('정말 최악의 영화중 하나였습니다', False)
+('너무나 인간적이고 아름다운 영화였다', True)
+('배우의 팬이다, 배우의 얼굴을 큰 화면으로 감상하고 싶다, 애기부터 할머니할아버지까지 단체로 영화를 보러간다 하시는 분들만 보세요~~~~옛날 로맨스 영화로만 연애를 배운 사람이 나름대로 전연령을 대상으로 하겠다며 되지도 않는 서사 이리저리 구겨넣은 것 마냥 감동도 재미도 없이 배우 얼굴만 기억에 남는 영화가 됐음ㅠㅠㅠㅠ', False)
+('마블빠들 수듄임니다^^ 정상적인, 객관적인 시야에서 영화를 내다보세요. 일반인들은 세뇌안되어서 이런 전개 역겨워서 척추가 요동칩니다', False)
+('기대 이상의 속편', True)
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#goormnlp" class="page__taxonomy-item p-category" rel="tag">goormNLP</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-07T00:00:00+09:00">2022.01.07</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=goormNLP+%5BHW+2+-+Python+crawling+%26+class%5D%20http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FHW2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FHW2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FHW2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/goormnlp/Python-(4)/" class="pagination--pager" title="goormNLP [1주차 - Python (4)]
+">이전</a>
+    
+    
+      <a href="/goormnlp/Python-(5)/" class="pagination--pager" title="goormNLP [1주차 - Python (5)]
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(7)/" rel="permalink">goormNLP [3주차 - Linear Algebra (7)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-20T00:00:00+09:00">2022.01.20</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (7)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(6)/" rel="permalink">goormNLP [3주차 - Linear Algebra (6)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-19T00:00:00+09:00">2022.01.19</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (6)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(5)/" rel="permalink">goormNLP [3주차 - Linear Algebra (5)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-18T00:00:00+09:00">2022.01.18</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (5)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(4)/" rel="permalink">goormNLP [3주차 - Linear Algebra (4)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-17T00:00:00+09:00">2022.01.17</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 이창석(Lee ChangSeok). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/goormnlp/HW2/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/goormnlp/HW2"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-wjh1065-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

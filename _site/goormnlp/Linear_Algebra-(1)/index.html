@@ -1,0 +1,827 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>goormNLP [2주차 - Linear Algebra (1)] - while True()</title>
+<meta name="description" content="AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (1)] Linear Algebra">
+
+
+  <meta name="author" content="Lee ChangSeok">
+  
+  <meta property="article:author" content="Lee ChangSeok">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="while True()">
+<meta property="og:title" content="goormNLP [2주차 - Linear Algebra (1)]">
+<meta property="og:url" content="http://localhost:4000/goormnlp/Linear_Algebra-(1)/">
+
+
+  <meta property="og:description" content="AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (1)] Linear Algebra">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-10T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/goormnlp/Linear_Algebra-(1)/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "이창석(Lee ChangSeok)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="while True() Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          while True:
+          <span class="site-subtitle">learn()</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://wjh1065.github.io/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/image/profile/2021-12-20.png" alt="Lee ChangSeok" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Lee ChangSeok</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>무한 학습<br />이미지/자연어 처리<br />Ai engineer<br /></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="goormNLP [2주차 - Linear Algebra (1)]">
+    <meta itemprop="description" content="AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (1)]Linear Algebra">
+    <meta itemprop="datePublished" content="2022-01-10T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/goormnlp/Linear_Algebra-(1)/" class="u-url" itemprop="url">goormNLP [2주차 - Linear Algebra (1)]
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-10T00:00:00+09:00">2022.01.10</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="ai-기술-자연어-처리-전문가-양성-3기-2주차---linear-algebra-1">AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (1)]</h1>
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<p>2022-01-10 (월)</p>
+<blockquote>
+  <p>머신러닝과 선형대수의 관계</p>
+</blockquote>
+
+<p>2주차에는 머신/딥러닝에 들어가기에 앞서 Linear Algebra: 선형대수학에 대해서 수업을 진행하였다.</p>
+
+<p>선형대수학은 연립방정식을 손쉽게 풀고자하는 고민으로부터 시작되었다.
+머신러닝은 본질적으로는 컴퓨터가 이해할 수 있는 대량의 데이터. 즉 숫자를 이용해 복잡한 계산을 수행하는 것이므로 선형대수학의 수식과 계산 기법을 사용하면 최소한의 타이핑 만으로도 대량의 계산을 손쉽게 컴퓨터에게 지시하는 것이 가능해진다.</p>
+
+<h2 id="lecture-1-elements-in-linear-algebra">Lecture 1: Elements In Linear Algebra</h2>
+
+<h3 id="scalar-vector-matrix">Scalar, Vector, Matrix</h3>
+
+<ol>
+  <li><strong>Scalar</strong>: a single number.</li>
+  <li><strong>Vector</strong>: an ordered list of numbers.</li>
+  <li><strong>Matrix</strong>: a two-dimensional array of numbers.
+    <ul>
+      <li>Matrix size: 3 x 2 means [3 rows(행) and 2 columns(열)]</li>
+      <li>Row vector: a horizontal vector - 수평</li>
+      <li>Column vector: a vertical vector - 수직</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>a vector of n-dimension is usually a <strong>column vector</strong>. <code class="language-plaintext highlighter-rouge">a matrix of the size n x 1</code></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148713988-140f3c79-2a14-482b-ad67-7a3cbbc64b97.png" alt="스크린샷 2022-01-10 오후 12 07 40" /></p>
+
+<ul>
+  <li>a row vector is usually written as its <strong>transpose</strong>.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148714037-1b14b09b-c74a-4509-8267-fb3bada46157.png" alt="스크린샷 2022-01-10 오후 12 08 30" /></p>
+
+<ul>
+  <li>
+    <p>Square matrix ( # rows = # columns ).</p>
+  </li>
+  <li>
+    <p>Rectangular matrix ( # rows != columns ).</p>
+  </li>
+  <li>
+    <p>A<sup>T</sup>: <strong>Transpose</strong> of matrix ( mirroring across the main diagonal ).</p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148714568-d180fc44-9982-45fd-bde6-f8995d573d51.png" alt="스크린샷 2022-01-10 오후 12 16 41" /></p>
+
+<ul>
+  <li>A<sub>2,1</sub> = 3 =&gt; ( i , j )-th component of A.</li>
+  <li>A<sub>2,:</sub> = [3 4] =&gt; i-th <strong>row vector</strong> of A.</li>
+</ul>
+
+<hr />
+
+<h3 id="vectormatrix-add--mul">Vector/Matrix Add &amp; Mul</h3>
+
+<ul>
+  <li>
+    <p>C = A + B : Element-wise <strong>addition.</strong></p>
+  </li>
+  <li>
+    <p>cA : <strong>Scalar multiple</strong> of vector/matrix.</p>
+  </li>
+  <li>
+    <p>C = AB  : <strong>matrix-matrix multiplication</strong></p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715076-af6f5378-5531-4137-998b-a3d450131c48.png" alt="스크린샷 2022-01-10 오후 12 25 33" /></p>
+
+<ul>
+  <li>AB != BA : Matrix multiplication is <strong>NOT</strong> commutative.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715153-9f881dec-af25-4706-bb4b-38ac3edfbe28.png" alt="스크린샷 2022-01-10 오후 12 26 54" /></p>
+
+<hr />
+
+<h3 id="other-properties">Other Properties.</h3>
+
+<ol>
+  <li>A(B+C) = AB + AC : <strong>Distributive</strong></li>
+  <li>A(BC) = (AB)C : <strong>Associative</strong></li>
+  <li>(AB)<sup>T</sup> = B<sup>T</sup>A<sup>T</sup> : <strong>Property of transpose</strong></li>
+</ol>
+
+<hr />
+
+<h2 id="lecture-2-linear-system">Lecture 2: Linear System</h2>
+
+<ul>
+  <li>A <strong>linear equation</strong> in the variables x1, …, x<sub>n</sub> is an equation that can be written in the form.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">a1x1 + a2x2+ ... + anxn = b</code></p>
+
+<ul>
+  <li>The above equation can be written as <strong>a<sup>T</sup>x = b</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715436-67923e9d-a3fd-4b6d-ae17-d28247cda969.png" alt="스크린샷 2022-01-10 오후 12 32 02" /></p>
+
+<ul>
+  <li>A system of linear equations (or a <strong>linear system</strong>) is a collection of <em>one or more linear equations</em> involving the <strong>same variables</strong>.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">X1, ..., Xn.</code></p>
+
+<h3 id="linear-system-example">Linear system example</h3>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715664-6927fa5a-eb65-4128-85c2-d37a68727068.png" alt="스크린샷 2022-01-10 오후 12 35 47" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715697-09eec0d4-006e-434a-a02d-621fa3e845ef.png" alt="스크린샷 2022-01-10 오후 12 36 38" /></p>
+
+<ul>
+  <li>we solve for x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub> given a new person with his/her <em>Weight, Height, Is_smoking</em>.
+  we can predict his/her <strong>life-span</strong>.</li>
+</ul>
+
+<p>Step 1. Let’s collect all the coefficients on the left and form a matrix.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715840-614f2962-7f84-45c4-be16-53325f651364.png" alt="스크린샷 2022-01-10 오후 12 38 54" /></p>
+
+<p>Step 2. Let’s form two vectors:</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715874-9fd186e1-0997-4892-b27e-acb90c0d4867.png" alt="스크린샷 2022-01-10 오후 12 39 26" /></p>
+
+<p>=&gt; Multiple equations can be converted into a <strong>single</strong> matrix equations.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715925-5c18f20e-6e4a-47ae-93fb-65d58f51f2a7.png" alt="스크린샷 2022-01-10 오후 12 40 10" /></p>
+
+<hr />
+
+<p><strong>Identity Matrix</strong></p>
+
+<ul>
+  <li><strong>Definition</strong> : An identity matrix is a <strong>square</strong> matrix whose diagonal entries are all <strong>1’s</strong>, and all the other entries are <strong>zeros</strong>.</li>
+  <li>Often, we denote it as</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716067-9d7af812-827c-4e1e-b65c-4402c03e6c02.png" alt="스크린샷 2022-01-10 오후 12 42 44" /></p>
+
+<p><strong>Inverse Matrix</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Definition</strong> : For a <strong>square</strong> matrix, its inverse matrix A<sup>-1</sup> is defined such that A<sup>-1</sup>A = AA<sup>-1</sup> = I<sub>n</sub></p>
+  </li>
+  <li>
+    <p>For a 2 x 2 matrix, its inverse matrix A<sup>-1</sup> is defined as</p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716184-9511e070-bf45-44f2-8b18-bfcf70e1c5d4.png" alt="스크린샷 2022-01-10 오후 12 45 02" /></p>
+
+<ul>
+  <li>We can now solve A<strong>x</strong> = <strong>b</strong> as follows:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716230-5913710d-bccd-49d9-a378-15554a26a396.png" alt="스크린샷 2022-01-10 오후 12 45 51" /></p>
+
+<hr />
+
+<p>Step 4. Solving linear system via inverse matrix.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716293-6e49c095-1e08-45de-ba29-ded577dc08e0.png" alt="스크린샷 2022-01-10 오후 12 47 05" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716306-9b0acca2-f266-464b-92c9-d6a53bdbdaef.png" alt="스크린샷 2022-01-10 오후 12 47 20" /></p>
+
+<ul>
+  <li>
+    <p>Now, the life-span can be written as</p>
+
+    <p>(life - span) = <strong>-0.4</strong> * (Weight) + <strong>20</strong> * (Height) <strong>-20</strong> * (Is_smoking).</p>
+  </li>
+</ul>
+
+<hr />
+
+<p><strong>Non-Invertible Matrix</strong></p>
+
+<p>if A is invertible, the solution is <strong>uniquely obtained</strong> as x = A<sup>-1</sup>b.</p>
+
+<p>if A is <strong>NOT</strong> invertible, the inverse does not <em>exist?</em></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716618-9ab48170-8d5d-408a-8e9e-09477386a81e.png" alt="스크린샷 2022-01-10 오후 12 52 45" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716650-32e5f132-e522-43d7-bfbd-df7a1f027e3f.png" alt="스크린샷 2022-01-10 오후 12 53 13" /></p>
+
+<p><em>*det A ** determines whether A is invertible *(when det A != 0)</em> or not <em>(when det A = 0)</em>.</p>
+
+<p>=&gt; if A is non-invertible, A<strong>x</strong> = <strong>b</strong> will have either <strong>no solutuon</strong> or <strong>infinitely many solutions</strong>.</p>
+
+<hr />
+
+<h3 id="rectangular-matrix-a-in-ax--b">Rectangular Matrix A in Ax = b</h3>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716803-4a3bbea8-4fbf-41c1-ac4e-0a5a71a14948.png" alt="스크린샷 2022-01-10 오후 12 56 09" /></p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#math" class="page__taxonomy-item p-category" rel="tag">math</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#goormnlp" class="page__taxonomy-item p-category" rel="tag">goormNLP</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-10T00:00:00+09:00">2022.01.10</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=goormNLP+%5B2%EC%A3%BC%EC%B0%A8+-+Linear+Algebra+%281%29%5D%20http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FLinear_Algebra-%281%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FLinear_Algebra-%281%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FLinear_Algebra-%281%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/goormnlp/Python-(5)/" class="pagination--pager" title="goormNLP [1주차 - Python (5)]
+">이전</a>
+    
+    
+      <a href="/goormnlp/Linear_Algebra-(2)/" class="pagination--pager" title="goormNLP [2주차 - Linear Algebra (2)]
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(7)/" rel="permalink">goormNLP [3주차 - Linear Algebra (7)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-20T00:00:00+09:00">2022.01.20</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (7)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(6)/" rel="permalink">goormNLP [3주차 - Linear Algebra (6)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-19T00:00:00+09:00">2022.01.19</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (6)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(5)/" rel="permalink">goormNLP [3주차 - Linear Algebra (5)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-18T00:00:00+09:00">2022.01.18</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (5)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(4)/" rel="permalink">goormNLP [3주차 - Linear Algebra (4)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-17T00:00:00+09:00">2022.01.17</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 이창석(Lee ChangSeok). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/goormnlp/Linear_Algebra-(1)/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/goormnlp/Linear_Algebra (1)"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-wjh1065-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,685 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>goormNLP [3주차 - Linear Algebra (4)] - while True()</title>
+<meta name="description" content="AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)] Linear Algebra">
+
+
+  <meta name="author" content="Lee ChangSeok">
+  
+  <meta property="article:author" content="Lee ChangSeok">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="while True()">
+<meta property="og:title" content="goormNLP [3주차 - Linear Algebra (4)]">
+<meta property="og:url" content="http://localhost:4000/goormnlp/Linear_Algebra-(4)/">
+
+
+  <meta property="og:description" content="AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)] Linear Algebra">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-17T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/goormnlp/Linear_Algebra-(4)/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "이창석(Lee ChangSeok)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="while True() Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          while True:
+          <span class="site-subtitle">learn()</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://wjh1065.github.io/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/image/profile/2021-12-20.png" alt="Lee ChangSeok" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Lee ChangSeok</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>무한 학습<br />이미지/자연어 처리<br />Ai engineer<br /></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="goormNLP [3주차 - Linear Algebra (4)]">
+    <meta itemprop="description" content="AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)]Linear Algebra">
+    <meta itemprop="datePublished" content="2022-01-17T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/goormnlp/Linear_Algebra-(4)/" class="u-url" itemprop="url">goormNLP [3주차 - Linear Algebra (4)]
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-17T00:00:00+09:00">2022.01.17</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="ai-기술-자연어-처리-전문가-양성-3기-3주차---linear-algebra-4">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)]</h1>
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<h2 id="lecture-7-eigendecomposition">Lecture 7: Eigendecomposition</h2>
+
+<p>2022-01-17</p>
+
+<p>고유값(eigenvalue), 고유벡터(eigenvector)에 대한 <u>정의</u>를 이해하고 <u>값</u>들을 구하였다.</p>
+
+<p>그 후 대각행렬(diagonal matrix) ,대각화(diagonalization)를 활용하여 n차 정방행렬의 <u>p제곱</u>을 구하였다.</p>
+
+<blockquote>
+  <p>정방행렬 A에 대하여 Ax = λx (상수 λ) 가 성립하는 0이 아닌 벡터 x가 존재할 때 
+상수 λ 를 행렬 A의 고유값 (eigenvalue), x 를 이에 대응하는 고유벡터 (eigenvector) 라고 함.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149726517-25f8e133-f092-4c4a-88b4-566223f62550.png" alt="스크린샷 2022-01-17 오후 4 32 48" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149726646-9536a72f-7083-48a1-a14e-b672435f6aa2.png" alt="스크린샷 2022-01-17 오후 4 33 56" style="zoom:85%;" /></p>
+
+<blockquote>
+  <p>행렬의 곱의 결과가 원래 벡터와 <strong>“방향”</strong>은 <u>같고</u>, <strong>“배율”</strong>만 상수 λ 만큼만 비례해서 <u>변한다</u>.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727000-43b20905-7c1e-457e-aba0-1ad5aece8ac6.png" alt="스크린샷 2022-01-17 오후 4 36 45" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727034-26906718-5976-475a-88c4-45c51ffb15a6.png" alt="스크린샷 2022-01-17 오후 4 37 01" style="zoom:80%;" /></p>
+
+<blockquote>
+  <p>eigenvector의 방향은 똑같고(same direction), 크기만 eigenvalue만큼씩 배수가 됨.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727266-f8a7b2a8-2258-4f5b-af09-cb22033c7c1b.png" alt="스크린샷 2022-01-17 오후 4 38 58" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727382-7c88c62e-3b87-4ad8-ab12-a85539bfc89a.png" alt="스크린샷 2022-01-17 오후 4 39 55" style="zoom:80%;" /></p>
+
+<blockquote>
+  <p>고유값과 고유벡터를 구하는 순서는, <strong>먼저 고유값을 구하고나서</strong>, 나중에 Gauss 소거법 사용하여 고유값에 대응하는 고유벡터를 구함.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727691-e03462e3-3025-4faf-b416-c16ac7e30e91.png" alt="스크린샷 2022-01-17 오후 4 42 15" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727710-fa7fbac0-94dc-43f3-b90b-50467afe0359.png" alt="스크린샷 2022-01-17 오후 4 42 22" style="zoom:80%;" /></p>
+
+<hr />
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149728001-04c1ded9-7189-4e12-9dfc-3fbf15177fd6.png" alt="스크린샷 2022-01-17 오후 4 44 31" style="zoom:80%;" /></p>
+
+<blockquote>
+  <p>대각성분을 제외한 모든 성분이 0인 행렬을 대각행렬(diagonal matrix), 적절한 기저변환을 통하여 주어진 행렬을 대각행렬로 변환하는 것을 대각화(diagonolization)이라 함.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149728224-6ea7600c-b6f5-4378-b748-63fe41491d6d.png" alt="스크린샷 2022-01-17 오후 4 46 17" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149728290-9c6d48f0-cb73-4fea-af30-80ce9e8d5b95.png" alt="스크린샷 2022-01-17 오후 4 46 47" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149728322-120eac70-9b9d-42b4-9322-dbd78b6968b5.png" alt="스크린샷 2022-01-17 오후 4 46 59" style="zoom:80%;" /></p>
+
+<blockquote>
+  <p><strong>고유값과 고유벡터를 이용한 n차 정방행렬의 p제곱의 정리를 이용하면 p가 매우 크더라도 연산량을 줄여서 쉽게 p제곱을 구할 수 있음</strong>.</p>
+</blockquote>
+
+<p><strong>본 그림의 출처는 아래와 같음.</strong></p>
+
+<p><a href="https://rfriend.tistory.com/">출처 주소</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#math" class="page__taxonomy-item p-category" rel="tag">math</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#goormnlp" class="page__taxonomy-item p-category" rel="tag">goormNLP</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-17T00:00:00+09:00">2022.01.17</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=goormNLP+%5B3%EC%A3%BC%EC%B0%A8+-+Linear+Algebra+%284%29%5D%20http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FLinear_Algebra-%284%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FLinear_Algebra-%284%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FLinear_Algebra-%284%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/goormnlp/Linear_Algebra-Review/" class="pagination--pager" title="goormNLP [2주차 - Linear Algebra Review (1)]
+">이전</a>
+    
+    
+      <a href="/goormnlp/Linear_Algebra-(5)/" class="pagination--pager" title="goormNLP [3주차 - Linear Algebra (5)]
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(7)/" rel="permalink">goormNLP [3주차 - Linear Algebra (7)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-20T00:00:00+09:00">2022.01.20</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (7)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(6)/" rel="permalink">goormNLP [3주차 - Linear Algebra (6)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-19T00:00:00+09:00">2022.01.19</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (6)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(5)/" rel="permalink">goormNLP [3주차 - Linear Algebra (5)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-18T00:00:00+09:00">2022.01.18</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (5)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-Review/" rel="permalink">goormNLP [2주차 - Linear Algebra Review (1)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-14T00:00:00+09:00">2022.01.14</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra Review (1)]
+Linear Algebra Review (1)
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 이창석(Lee ChangSeok). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/goormnlp/Linear_Algebra-(4)/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/goormnlp/Linear_Algebra (4)"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-wjh1065-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

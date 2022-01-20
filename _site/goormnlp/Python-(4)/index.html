@@ -1,0 +1,1289 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>goormNLP [1주차 - Python (4)] - while True()</title>
+<meta name="description" content="AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (4)] Python Programming">
+
+
+  <meta name="author" content="Lee ChangSeok">
+  
+  <meta property="article:author" content="Lee ChangSeok">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="while True()">
+<meta property="og:title" content="goormNLP [1주차 - Python (4)]">
+<meta property="og:url" content="http://localhost:4000/goormnlp/Python-(4)/">
+
+
+  <meta property="og:description" content="AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (4)] Python Programming">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-06T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/goormnlp/Python-(4)/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "이창석(Lee ChangSeok)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="while True() Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          while True:
+          <span class="site-subtitle">learn()</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://wjh1065.github.io/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/image/profile/2021-12-20.png" alt="Lee ChangSeok" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Lee ChangSeok</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>무한 학습<br />이미지/자연어 처리<br />Ai engineer<br /></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="goormNLP [1주차 - Python (4)]">
+    <meta itemprop="description" content="AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (4)]Python Programming">
+    <meta itemprop="datePublished" content="2022-01-06T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/goormnlp/Python-(4)/" class="u-url" itemprop="url">goormNLP [1주차 - Python (4)]
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-06T00:00:00+09:00">2022.01.06</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="ai-기술-자연어-처리-전문가-양성-3기-1주차---python-4">AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (4)]</h1>
+<h1 id="python-programming">Python Programming</h1>
+
+<p>2022-01-06 (목)</p>
+
+<p>파이썬의 모듈과 패키지에 대해서 수업을 진행하였다.
+학부연구생과 석사때 하나의 .py 파일에 함수, 데이터 로드, 훈련 코드 등… 구현한 기억이 있다. 이러한 결과는 추 후에 프로젝트 내용을 정리할때 혼란이 온적이 있다.  물론, 그 당시에도 모듈에 대한 지식은 있었다.</p>
+
+<p><del>결과 내는것에  급했기 때문에 하나의 코드 파일에 때려박았다.</del></p>
+
+<p>개발은 혼자 진행할 때도 있지만, 팀들과 같이 개발을 하는 것이 일반적이기 때문에 각 함수들의 기능을 모듈별로 구분하여 남들도 보기 쉬운 가시성을 높여야 한다.</p>
+
+<hr />
+
+<h2 id="lecture-9-module--packages">Lecture 9: Module &amp; Packages</h2>
+
+<blockquote>
+  <p>만약 다른 파일의 함수를 가지고 오고 싶다면?</p>
+</blockquote>
+
+<ul>
+  <li>다른 사람이 완성한 함수와 클래스 사용.</li>
+  <li>내장 &amp; 외부 라이브러리 사용.</li>
+</ul>
+
+<p>=&gt; <strong>모듈화</strong>가 필요</p>
+
+<h3 id="1-import">1. Import</h3>
+
+<ul>
+  <li>파이썬에선 ( 모듈 == .py 파일) 과 같다.</li>
+  <li>Import 구문을 사용하여 모듈을 불러옴.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148332516-0b3bd602-ad49-42e1-96c6-516ce9d6be5a.png" alt="스크린샷 2022-01-06 오후 2 20 03" style="zoom:150%;" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">directory.functions</span> <span class="c1"># 폴더내 .py 파일
+</span><span class="k">print</span><span class="p">(</span><span class="n">directory</span><span class="p">.</span><span class="n">functions</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">directory.functions</span> <span class="k">as</span> <span class="n">func</span> <span class="c1"># as로 별칭 만들기
+</span><span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">directory.functions</span> <span class="kn">import</span> <span class="n">add</span> <span class="c1"># 특정 함수 import
+</span><span class="k">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="kn">from</span> <span class="nn">directory.functions</span> <span class="kn">import</span> <span class="o">*</span> <span class="c1"># '*'로 모든 import는 권장하지 않음. 
+</span><span class="k">print</span><span class="p">(</span><span class="n">add</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>최상위에선 상대 경로가 작동되지 않음.
+    <ol>
+      <li>최상위를 거치는 경우 포함.</li>
+      <li>일반적으로 프로젝트 이름으로 폴더를 만들어 코드를 넣음.</li>
+      <li>부모 폴더 접근을 위해서는 모듈 형태로 실행 필요.
+ <code class="language-plaintext highlighter-rouge">python -m Project_name.dir1.main</code></li>
+    </ol>
+  </li>
+  <li>__init__.py 파일 폴더 import시 초기화 가능.</li>
+</ul>
+
+<h3 id="2-packages">2. Packages</h3>
+
+<blockquote>
+  <p>random (난수 관련 라이브러리), time (시간 관련 라이브러리), threading (쓰레드 관련 라이브러리)</p>
+</blockquote>
+
+<p>파이썬은 강력하고 다양한 표준 라이브러리를 가지고 있음.</p>
+
+<ul>
+  <li>파이썬 표준 라이브러리로 해결할 수 없다면? -&gt; 외부 라이브러리 사용.
+    <ol>
+      <li>수치 그래프 그리기 (matplotlib)</li>
+      <li>웹 서버 만들기 (flask)</li>
+      <li>GPU 연산 사용하기 (cupy)</li>
+      <li>딥러닝 전용 라이브러리 (tensorflow &amp; pytorch)</li>
+    </ol>
+  </li>
+  <li>
+    <p>웹 서버 프로젝트와 딥러닝 프로젝트가 따로 있다면?</p>
+
+    <ol>
+      <li>패키지 관리자가 필요 ( anaconda3, miniconda, miniforge[필자가 사용 중.] )</li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="lecture-10-advanced-data-structure">Lecture 10: Advanced Data Structure</h2>
+
+<ul>
+  <li>
+    <p>파이썬에는 기본적으로 몇 가지 자료구조가 <strong>사전</strong>에 선언됨. <code class="language-plaintext highlighter-rouge">list, set, dict 등등..</code></p>
+  </li>
+  <li>
+    <p>좀 더 강력한 자료구조를 사용하고 싶다면?</p>
+
+    <ol>
+      <li>기존 자료 구조를 활용.</li>
+      <li>Python Standard Library로 대부분 해결가능.
+        <ul>
+          <li>Stack &amp; Queue</li>
+          <li>Linked List</li>
+          <li>Defaultdict</li>
+          <li>Counter</li>
+          <li>Named Tuple</li>
+          <li>Dataclass</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="python-standard-library">Python Standard Library</h3>
+
+<h4 id="stack">Stack</h4>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148333945-3a2834cb-bf9b-4f15-8c94-7dfaa707f5d2.png" alt="스크린샷 2022-01-06 오후 2 37 00" style="zoom:100%;" /></p>
+
+<ul>
+  <li>스택 구조는 기존 List를 활용. <strong>선입후출</strong></li>
+  <li>동적 배열이기 때문에 <code class="language-plaintext highlighter-rouge">push</code>와 <code class="language-plaintext highlighter-rouge">pop</code>이 O(1).</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">a</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">a</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">a</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h4 id="queue">Queue</h4>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148334175-4e0019c0-fd45-4b75-864f-8a1e46a7b7a1.png" alt="스크린샷 2022-01-06 오후 2 39 16" /></p>
+
+<ul>
+  <li>큐 구조 구현을 위해선 Linked List 자료 구조가 필요.</li>
+  <li>양쪽으로 자유로운 입출력.</li>
+  <li>중간 참조는 오래 걸리나, 큐 구조에선 상관 없음.</li>
+</ul>
+
+<blockquote>
+  <p>파이썬 <strong>collection</strong> Library의 <strong>deque</strong>를 사용!</p>
+
+  <p>이중 연결 리스트의 함수를 지원 left나 right에서 pop, append 가능.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">queue</span><span class="p">.</span><span class="n">appendleft</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">queue</span><span class="p">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">12</span>
+
+<span class="n">queue</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">queue</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">16</span>
+
+<span class="n">queue</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">deque</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="n">deque</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">queue</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">deque</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h4 id="defaultdict">Defaultdict</h4>
+
+<ul>
+  <li>파이썬 기본 dictionary는 Key가 없을 경우 <strong>에러</strong>가 발생함.</li>
+  <li>에러 발생을 막기 위해선 get 메소드의 default 값 지정 필요.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">"first"</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">d</span><span class="p">[</span><span class="s">"second"</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span> <span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span> <span class="nb">KeyError</span><span class="p">:</span> <span class="s">'second􏳐
+
+d.get("second", "없어요")
+&gt;&gt;&gt; '</span><span class="n">없어요</span><span class="s">'
+</span></code></pre></div></div>
+
+<ul>
+  <li>Defaultdict를 이용하면 dictionary의 기본 값을 지정 가능.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""
+~~ 문장 ~~
+~~ 문장 ~~
+"""</span>
+
+<span class="n">characters</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1"># 기본값 int()
+</span>
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+  <span class="n">characters</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<h4 id="counter">Counter</h4>
+
+<ul>
+  <li>Dictionary 처럼 생성 및 관리</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">({</span><span class="s">"Korean"</span> <span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"English"</span> <span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+<span class="n">c</span><span class="p">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Dict_keys</span><span class="p">([</span><span class="s">'korean'</span><span class="p">,</span> <span class="s">'English'</span><span class="p">])</span> <span class="c1"># 일반적인 dict과 차이 없음.
+</span><span class="n">c</span><span class="p">.</span><span class="n">values</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Dict_values</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</code></pre></div></div>
+
+<ul>
+  <li>집합 연산 지원</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="n">a</span><span class="o">+</span><span class="n">b</span> <span class="c1"># 횟수 더하기
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">Counter</span><span class="p">({</span><span class="mi">2</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="c1"># 교집합
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">Counter</span><span class="p">({</span><span class="mi">2</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">a</span> <span class="o">|</span> <span class="n">b</span> <span class="c1"># 합집합
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">Counter</span><span class="p">({</span><span class="mi">2</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="n">a</span> <span class="o">-</span> <span class="n">b</span> <span class="c1"># 차집합
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">Counter</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="named-tuple">Named Tuple</h4>
+
+<p>NamedTuple 사용 X</p>
+
+<ul>
+  <li>데이터만을 담기 위한 클래스 사용.
+    <ol>
+      <li>클래스 선언 및 getter 작성 필요.</li>
+      <li>숫자로 Indexing 불가능. (__getitem__ 작성 필요)</li>
+    </ol>
+  </li>
+</ul>
+
+<p>=&gt; 간단한 데이터 구조를 굳이 클래스로 할 필요가 없음.</p>
+
+<p>NamedTuple 사용 O</p>
+
+<ul>
+  <li>각 튜플 원소에 이름 붙이기 가능.</li>
+  <li>클래스가 아닌 튜플이기에 Unpacking 가능.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+
+<span class="n">Coords3D</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s">"Coords3D"</span><span class="p">,</span> <span class="p">[</span><span class="s">'x'</span><span class="p">,</span><span class="s">'y'</span><span class="p">,</span><span class="s">'z'</span><span class="p">])</span>
+
+<span class="n">point</span> <span class="o">=</span> <span class="n">Coords3D</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span>
+<span class="k">print</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">20</span>
+<span class="k">print</span><span class="p">(</span><span class="o">*</span><span class="n">point</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">10</span> <span class="mi">20</span> <span class="mi">30</span>
+</code></pre></div></div>
+
+<h4 id="dataclass">Dataclass</h4>
+
+<ul>
+  <li>Pythonic한 데이터 클래스를 위해선 <em>dataclasses</em>의 <em>dataclass</em> 데코레이터 활용.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+
+<span class="o">@</span><span class="n">dataclass</span>
+<span class="k">class</span> <span class="nc">Coords3D</span><span class="p">:</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">z</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">z</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="p">.</span><span class="mi">5</span>
+
+<span class="n">point</span> <span class="o">=</span> <span class="n">Coords3D</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Coords3D</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">point</span><span class="p">.</span><span class="n">norm</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">37.416573867739416</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="lecture-11-string">Lecture 11: String</h2>
+
+<h3 id="파이썬-string의-특징">파이썬 String의 특징.</h3>
+
+<ul>
+  <li>원시 자료형이자, 불변 타입.</li>
+  <li>Indexing 및 Slicing이 가능함.</li>
+  <li>in &amp; not in 연산이 가능.</li>
+</ul>
+
+<p>Special Characters</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148338472-b601d779-5bb8-48c3-9285-f4a79ad8c6b8.png" alt="스크린샷 2022-01-06 오후 3 25 21" style="zoom:80%;" /></p>
+
+<p>Raw String</p>
+
+<ul>
+  <li>r”&lt;’text’&gt;” 형태로  \ 를 무시하고 문자 그대로 취급 가능.</li>
+  <li>주로 <strong>정규 표현식</strong>에서 사용.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">string</span> <span class="o">=</span> <span class="s">"여기서는 역 슬래시는 </span><span class="se">\n</span><span class="s"> 특별한 의미를 가져요"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">여기서는</span> <span class="n">역</span> <span class="n">슬래시는</span> 
+    <span class="n">특별한</span> <span class="n">의미를</span> <span class="n">가져요</span>
+
+<span class="n">raw_string</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"여기서는 역 슬래시는 \n 특별한 의미를 가져요"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">raw_string</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">여기서는</span> <span class="n">역</span> <span class="n">슬래시는</span> \<span class="n">n</span> <span class="n">특별한</span> <span class="n">의미를</span> <span class="n">가져요</span>
+</code></pre></div></div>
+
+<p>String Functions</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">함수 형태</th>
+      <th style="text-align: center">기능</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">len(string)</td>
+      <td style="text-align: center">문자 개수 반환</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.upper()</td>
+      <td style="text-align: center">대문자로 변환</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.lower()</td>
+      <td style="text-align: center">소문자로 변환</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.capitalize()</td>
+      <td style="text-align: center">문자열 시작 문자를 대문자로 변환</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.title()</td>
+      <td style="text-align: center">단어 시작을 대문자로 변환</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.strip()</td>
+      <td style="text-align: center">좌우 공백 제거</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.lstrip()</td>
+      <td style="text-align: center">왼쪽 공백 제거</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.rstrip()</td>
+      <td style="text-align: center">오른쪽 공백 제거</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.isdigit()</td>
+      <td style="text-align: center">숫자 형태인지 확인 (True of False)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.isupper()</td>
+      <td style="text-align: center">대문자로만 이루어져 있는지 확인 (True of False)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.islower()</td>
+      <td style="text-align: center">소문자로만 이루어져 있는지 확인 (True of False)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.count(pattern)</td>
+      <td style="text-align: center">문자열 string 내에 pattern 등장 횟수 반환</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.find(pattern)</td>
+      <td style="text-align: center">문자열 string 내에 pattern 첫 등장 위치 반환 (앞에서 부터)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.rfind(pattern)</td>
+      <td style="text-align: center">문자열 string 내에 pattern 첫 등장 위치 반환 (뒤에서 부터)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.startswith(pattern)</td>
+      <td style="text-align: center">문자열 string이 pattern으로 시작하는지 확인 (True of Flase)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.endswith(pattern)</td>
+      <td style="text-align: center">문자열 string이 pattern으로 끝나는지 확인 (True of Flase)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.split()</td>
+      <td style="text-align: center">공백을 기준으로 문자열 나누기</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.split(pattern)</td>
+      <td style="text-align: center">pattern을 기준으로 문자열 나누기</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">string.join(iterable)</td>
+      <td style="text-align: center">string을 중간에 두고 iterable 원소들 합치기</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>String Formatting</p>
+
+<ul>
+  <li>print등을 할 때 보기 좋게 값들을 확인하고 싶음.</li>
+</ul>
+
+<ol>
+  <li>
+    <p>%-formating</p>
+
+    <ul>
+      <li>%datatype %variables 형태로 표현.</li>
+      <li>C나 java에서 주로 쓰이는 방식.</li>
+      <li>”%[padding]datatype” 형태로 패딩 가능.</li>
+      <li>”%[padding].[precision]datatype” 형태로 정확도 지정 가능.</li>
+      <li>“{0}”.format(variables) 형태로 표현. (순서 설정)</li>
+      <li>”%([name])format” 형태</li>
+    </ul>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: center">%datatype</th>
+          <th style="text-align: center">설명</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: center">%s</td>
+          <td style="text-align: center">문자열 (str)</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">%d</td>
+          <td style="text-align: center">정수 (int)</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">%f</td>
+          <td style="text-align: center">부동소수점 (float)</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">%o</td>
+          <td style="text-align: center">8진수</td>
+        </tr>
+        <tr>
+          <td style="text-align: center">%x</td>
+          <td style="text-align: center">16진수</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">"Art: %5d, Price per Unit: %8.2f"</span> <span class="o">%</span> <span class="p">(</span><span class="mi">453</span><span class="p">,</span> <span class="mf">59.058</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Art</span><span class="p">:</span>   <span class="mi">453</span><span class="p">,</span> <span class="n">Price</span> <span class="n">per</span> <span class="n">Unit</span><span class="p">:</span>    <span class="mf">59.06</span>
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>F-string (필자가 자주 쓰는 포맷팅 방법)</p>
+
+    <ul>
+      <li>f”{variable}” 형태로 표현.</li>
+      <li>Python 3.6이상 부터 지원</li>
+      <li>변수 위치에 원하는 변수를 위치하면 됨</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">1.725</span><span class="p">,</span> <span class="s">'sample'</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s"> - </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">'10: 1.725 - sample'</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>문자열에서 #%Something# 을 찾거나 치환하는 방법에 사용.</p>
+
+<ul>
+  <li>Find 메소드는 정확히 일치하는 문자열에 대해서만 찾을 수 있음.</li>
+  <li>문자열에서 <strong>특정한 패턴</strong>을 정의하고 찾는 방법이 필요. -&gt; 정규 표현식</li>
+</ul>
+
+<h3 id="regular-expression-정규-표현식">Regular Expression: 정규 표현식</h3>
+
+<ul>
+  <li>특정한 규칙을 가진 문자열의 집합을 표현하는데 사용하는 <strong>형식 언어.</strong></li>
+  <li>많은 텍스트 편집기와 프로그래밍 언어에서 <strong>문자열 검색과 치환</strong>에 활용.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148341242-63788498-bcc3-4a91-b197-a38a4611854d.png" alt="스크린샷 2022-01-06 오후 3 50 20" style="zoom:75%;" /></p>
+
+<blockquote>
+  <p>정규 표현식 공부하는 것은 언어 하나를 더 배우는 것 만큼 문법이 매우 방대함. 
+자주 쓰이고 경험으로 터득하는 것이 좋을 것 같음.</p>
+</blockquote>
+
+<ul>
+  <li>일반 텍스트 패턴
+    <ul>
+      <li>정확히 일치되는 문자열 찾음.</li>
+      <li>.find 함수와 동일.</li>
+    </ul>
+  </li>
+  <li>특수 문자
+    <ul>
+      <li>정규식만에서 쓰이는 문자</li>
+      <li>공백, 영단어 등 일반 문자와 섞어 씀.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148341743-3f3d1b3c-685a-4884-b634-bde3e42fb9f1.png" alt="스크린샷 2022-01-06 오후 3 55 05" style="zoom:80%;" /></p>
+
+<ul>
+  <li>메타 문자
+    <ul>
+      <li>정규식의 문법적인 요소를 담당하는 문자 <code class="language-plaintext highlighter-rouge">. ^ $ * + ? { }[ ] \ | ( )</code></li>
+      <li>위의 문자들은 특수한 의미의 문자이므로, 문자 그대로 매칭하고 싶다면 Escape 문자 <code class="language-plaintext highlighter-rouge">\</code> 붙여 사용.</li>
+    </ul>
+  </li>
+  <li>문자 클래스 <code class="language-plaintext highlighter-rouge">[ ]</code>
+    <ul>
+      <li>[ 와 ] 사이의 문자들 중 하나와 매칭</li>
+      <li>” - “ 를 사용하여 범위를 지정 가능.</li>
+      <li><code class="language-plaintext highlighter-rouge">[^a-z]</code>,<code class="language-plaintext highlighter-rouge">[^A-Z0-9]</code>,<code class="language-plaintext highlighter-rouge">[^\s]</code></li>
+    </ul>
+  </li>
+  <li>부정 <code class="language-plaintext highlighter-rouge">^</code>
+    <ul>
+      <li>[^ 와 ] 사이에 없는 문자를 매칭.</li>
+    </ul>
+  </li>
+  <li>문자 <code class="language-plaintext highlighter-rouge">.</code>
+    <ul>
+      <li>아무 문자나 하나를 매칭.</li>
+      <li>줄바꿈 문자 \n는 제외.</li>
+    </ul>
+  </li>
+  <li>0회 이상 <code class="language-plaintext highlighter-rouge">*</code>
+    <ul>
+      <li>앞의 문자를 0개 <strong>이상</strong> 포함.</li>
+      <li><code class="language-plaintext highlighter-rouge">ab*c</code> abbc, abbbbc -&gt; b 0개 이상 포함.</li>
+    </ul>
+  </li>
+  <li>1회 이상 <code class="language-plaintext highlighter-rouge">+</code>
+    <ul>
+      <li>앞의 문자를 1개 이상 포함.</li>
+    </ul>
+  </li>
+  <li>0 또는 1회 <code class="language-plaintext highlighter-rouge">?</code>
+    <ul>
+      <li>앞의 문자가 없을 수도 있음.</li>
+    </ul>
+  </li>
+  <li>반복 횟수 지정 <code class="language-plaintext highlighter-rouge">{m,n}</code>
+    <ul>
+      <li><strong>m</strong>번 이상 <strong>n</strong>이하 반복.</li>
+      <li>숫자가 하나만 주어졌을 경우.
+   -&gt; {m} : m번 반복
+-&gt; {m,} : m번 이상 반복
+-&gt; {,n} : n번 이하 반복.</li>
+    </ul>
+  </li>
+  <li>Lazy Matching <code class="language-plaintext highlighter-rouge">?</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">* + {}</code> 와 같은 반복 연산은 욕심이 있음 -&gt; 최대한 길게 반복함.</li>
+      <li>최대한 짧게 매칭하기 위해선 뒤에 <code class="language-plaintext highlighter-rouge">?</code> 삽입.
+   -&gt; <code class="language-plaintext highlighter-rouge">*?, +?, {m,n}?</code></li>
+    </ul>
+  </li>
+  <li>선택 <code class="language-plaintext highlighter-rouge">|</code>
+    <ul>
+      <li>여러 식 중 하나를 선택.</li>
+    </ul>
+  </li>
+  <li>단어 경계 <code class="language-plaintext highlighter-rouge">\b</code>
+    <ul>
+      <li>단어의 경계 지점인지 확인.</li>
+    </ul>
+  </li>
+  <li>줄의 시작 <code class="language-plaintext highlighter-rouge">^</code>
+    <ul>
+      <li>줄이나 문자열의 <strong>시작점</strong>.</li>
+      <li>Multiline flag 필요.</li>
+    </ul>
+  </li>
+  <li>줄의 끝 <code class="language-plaintext highlighter-rouge">$</code>
+    <ul>
+      <li>줄이나 문자열의 <strong>끝</strong>.</li>
+      <li>Multiline flag 필요.</li>
+    </ul>
+  </li>
+  <li>그룹 캡쳐 <code class="language-plaintext highlighter-rouge">( )</code>
+    <ul>
+      <li>괄호이므로 우선 순위가 있음.</li>
+      <li>해당 문자열을 캡쳐.</li>
+      <li>캡쳐된 텍스트를 불러올 수 있음. <code class="language-plaintext highlighter-rouge">\1, \2, \3, ..., \[number]</code></li>
+    </ul>
+  </li>
+  <li>비 그룹  캡쳐 <code class="language-plaintext highlighter-rouge">(?: )</code>
+    <ul>
+      <li>괄호이므로 우선 순위가 있음.</li>
+      <li>캡쳐를 하지 않음.</li>
+      <li>그저 괄호..</li>
+    </ul>
+  </li>
+  <li>뒷 패턴 확인 <code class="language-plaintext highlighter-rouge">D(?=R)</code>
+    <ul>
+      <li>R이 바로 뒤에 있는 <strong>D</strong>를 매칭.</li>
+      <li>R 부분은 포함되지 않음.
+  <img src="https://user-images.githubusercontent.com/67947808/148344494-8b872077-8a1d-45ed-b496-e34936055da3.png" alt="스크린샷 2022-01-06 오후 4 20 54" style="zoom:80%;" /></li>
+    </ul>
+  </li>
+  <li>앞 패턴 확인 <code class="language-plaintext highlighter-rouge">(?&lt;=R)D</code>
+    <ul>
+      <li>R이 바로 앞에 있는  <strong>D</strong>를 매칭.</li>
+      <li>R 부분은 포함되지 않음.
+  <img src="https://user-images.githubusercontent.com/67947808/148344803-07ec5c9c-94c6-4cd0-8e08-ffeaa403404c.png" alt="스크린샷 2022-01-06 오후 4 23 39" style="zoom:80%;" /></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<p>파이썬 표준 <strong>re</strong> 패키지를 사용</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">string</span> <span class="o">=</span> \
+<span class="s">"""
+~~ 문장 ~~
+~~ 문장 ~~
+"""</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'~~ 패턴 ~~'</span> <span class="c1"># 패턴이 raw string이어야 함.
+# 처음 매칭되는 문자열 탐색
+</span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">re</span><span class="p">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+<span class="c1"># 모든 매칭되는 문자열 탐색
+</span><span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">re</span><span class="p">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">re</span><span class="p">.</span><span class="n">MULTILINE</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">match</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># 매칭되는 패턴 치환
+</span><span class="n">repl</span> <span class="o">=</span> <span class="sa">r</span><span class="s">"치환됨-\1"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">re</span><span class="p">.</span><span class="n">sub</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">repl</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="p">.</span><span class="n">MULTILINE</span><span class="p">))</span> 
+
+<span class="c1"># 매칭되는 패턴을 기준으로 나누기
+</span><span class="n">splited</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="p">.</span><span class="n">MULTILINE</span><span class="p">)</span> 
+<span class="k">print</span><span class="p">(</span><span class="n">splited</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>정규 표현식을 평가하는 것은 오래 걸림 -&gt; 정규 표현식을 <strong>미리 컴파일</strong> 하면 훨씬 빠름.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">compiled</span> <span class="o">=</span> <span class="n">re</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="p">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">string</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+	<span class="n">match</span> <span class="o">=</span> <span class="n">compiled</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> 
+  <span class="k">print</span><span class="p">(</span><span class="n">match</span><span class="p">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#goormnlp" class="page__taxonomy-item p-category" rel="tag">goormNLP</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-06T00:00:00+09:00">2022.01.06</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=goormNLP+%5B1%EC%A3%BC%EC%B0%A8+-+Python+%284%29%5D%20http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FPython-%284%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FPython-%284%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FPython-%284%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/goormnlp/Python-(3)/" class="pagination--pager" title="goormNLP [1주차 - Python (3)]
+">이전</a>
+    
+    
+      <a href="/goormnlp/HW2/" class="pagination--pager" title="goormNLP [HW 2 - Python crawling &amp; class]
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(7)/" rel="permalink">goormNLP [3주차 - Linear Algebra (7)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-20T00:00:00+09:00">2022.01.20</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (7)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(6)/" rel="permalink">goormNLP [3주차 - Linear Algebra (6)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-19T00:00:00+09:00">2022.01.19</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (6)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(5)/" rel="permalink">goormNLP [3주차 - Linear Algebra (5)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-18T00:00:00+09:00">2022.01.18</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (5)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(4)/" rel="permalink">goormNLP [3주차 - Linear Algebra (4)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-17T00:00:00+09:00">2022.01.17</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 이창석(Lee ChangSeok). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/goormnlp/Python-(4)/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/goormnlp/Python (4)"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-wjh1065-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

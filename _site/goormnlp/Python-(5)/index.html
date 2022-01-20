@@ -1,0 +1,948 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>goormNLP [1주차 - Python (5)] - while True()</title>
+<meta name="description" content="AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (5)]] Python Programming Lecture 12: IO">
+
+
+  <meta name="author" content="Lee ChangSeok">
+  
+  <meta property="article:author" content="Lee ChangSeok">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="while True()">
+<meta property="og:title" content="goormNLP [1주차 - Python (5)]">
+<meta property="og:url" content="http://localhost:4000/goormnlp/Python-(5)/">
+
+
+  <meta property="og:description" content="AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (5)]] Python Programming Lecture 12: IO">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-07T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/goormnlp/Python-(5)/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "이창석(Lee ChangSeok)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="while True() Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          while True:
+          <span class="site-subtitle">learn()</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://wjh1065.github.io/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/image/profile/2021-12-20.png" alt="Lee ChangSeok" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Lee ChangSeok</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>무한 학습<br />이미지/자연어 처리<br />Ai engineer<br /></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="goormNLP [1주차 - Python (5)]">
+    <meta itemprop="description" content="AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (5)]]Python ProgrammingLecture 12: IO">
+    <meta itemprop="datePublished" content="2022-01-07T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/goormnlp/Python-(5)/" class="u-url" itemprop="url">goormNLP [1주차 - Python (5)]
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-07T00:00:00+09:00">2022.01.07</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="ai-기술-자연어-처리-전문가-양성-3기-1주차---python-5">AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (5)]]</h1>
+<h1 id="python-programming">Python Programming</h1>
+<h2 id="lecture-12-io">Lecture 12: IO</h2>
+
+<ul>
+  <li>표준 출력 (stdout) : 따로 Redirection 없으면 콘솔 <strong>출력</strong>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">print('sentence')</code></li>
+    </ul>
+  </li>
+  <li>표준 입력 (stdin) : 따로 Redirection 없으면 콘솔 <strong>입력</strong>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">var = input()</code></li>
+    </ul>
+  </li>
+  <li>파이썬은 File Descriptor를 열기 위하여 Open 내장 함수를 사용함.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">접근 모드</th>
+      <th style="text-align: center">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">r</td>
+      <td style="text-align: center">읽기 모드</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">rb</td>
+      <td style="text-align: center">이진 읽기 모드</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">w</td>
+      <td style="text-align: center">쓰기 모드</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">wb</td>
+      <td style="text-align: center">이진 쓰기 모드</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">a</td>
+      <td style="text-align: center">추가 모드</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="read">Read</h3>
+
+<ul>
+  <li>read 메소드로 파일 읽기 가능. <code class="language-plaintext highlighter-rouge">contents = file.read()</code></li>
+  <li>File descriptor 닫는 것을 깜빡할 때가 많음. -&gt; Context manager 형태로 사용 <code class="language-plaintext highlighter-rouge">with 문</code></li>
+  <li>줄 단위로 잘라서 읽기. for문을 이용함.</li>
+  <li>전체 읽은 후 줄단위로 잘라서 변환 -&gt; <code class="language-plaintext highlighter-rouge">file.readlines()</code></li>
+</ul>
+
+<h3 id="write">Write</h3>
+
+<ul>
+  <li>write 메소드로 파일 쓰기 가능. <code class="language-plaintext highlighter-rouge">file.write()</code></li>
+  <li>writelines 메소드로 여러 줄 작성. <code class="language-plaintext highlighter-rouge">file.writelines()</code></li>
+  <li>추가하기 모드 <code class="language-plaintext highlighter-rouge">a</code> 로 파일 뒤에 덧 붙이기 가능. <code class="language-plaintext highlighter-rouge">with open('text.txt, 'a') as file:</code></li>
+</ul>
+
+<h3 id="directory">Directory</h3>
+
+<ul>
+  <li>os 라이브러리로 플랫폼 독립적인 폴더 생성 가능.
+    <ul>
+      <li>파이썬에선 Windows, Unix 모두 ` / `로 폴더를 나타냄.</li>
+    </ul>
+  </li>
+  <li>
+    <p>path 라이브러리로 경로 관련 연산 가능. <code class="language-plaintext highlighter-rouge">os.path.isdir</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">os.listdir</code> 함수로 폴더 내 파일/하위 폴더 검색 가능.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">glob</code> 라이브러리로 유닉스 스타일 경로명 패턴 확장 적용 가능.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">print(*[entry for entry in glob.glob('test/*.txt')])</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="pickle">Pickle</h3>
+
+<ul>
+  <li>파이썬 객체를 <strong>그대로 저장</strong>하고 싶다면 -&gt; Pickle 이용.
+    <ul>
+      <li>장점: 쓰기 쉬움, 파이썬 객체를 그대로 저장.</li>
+      <li>단점: 파이썬에서만 읽을 수 있음. 보안 문제가 있음.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="csv">CSV</h3>
+
+<ul>
+  <li>CSV: Comma Separate Values</li>
+  <li>표 데이터를 프로그램에 상관없이 쓰기 위한 데이터 형식
+    <ul>
+      <li>필드를 쉼표(,)로 구분한 텍스트 파일.</li>
+    </ul>
+  </li>
+  <li>import csv로 쉽게 읽기 쓰기 가능.</li>
+</ul>
+
+<p>Reading CSV</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'test.csv'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span>
+        <span class="n">delimiter</span><span class="o">=</span><span class="err">‘</span><span class="p">,</span><span class="err">’</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="err">‘“’</span><span class="p">,</span>
+        <span class="n">quoting</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">QUOTE_MINIMAL</span>
+		<span class="p">)</span>
+    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span> 
+        <span class="k">print</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Writing CSV</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'test.csv'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">writer</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span>
+        <span class="n">delimiter</span><span class="o">=</span><span class="err">‘</span><span class="p">,</span><span class="err">’</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="err">‘“’</span><span class="p">,</span>
+        <span class="n">quoting</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">QUOTE_MINIMAL</span><span class="p">)</span>
+    <span class="n">writer</span><span class="p">.</span><span class="n">writerow</span><span class="p">([</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'label’])
+    writer.writerows([I, f'</span><span class="n">label_</span><span class="p">{</span><span class="n">i</span><span class="p">}</span><span class="s">'] 
+</span></code></pre></div></div>
+
+<h3 id="json">JSON</h3>
+
+<ul>
+  <li>JSON: JavaScript Object Notation</li>
+  <li>웹 언어인 Javascript의 데이터 객체 표현 방식
+    <ul>
+      <li>자료 구조 양식을 문자열로 표현.</li>
+      <li>간결하게 표현되어 사람과 컴퓨터 모두 읽기 편함.</li>
+      <li>최근 각광 받는 자료구조 형식</li>
+    </ul>
+  </li>
+  <li>
+    <p>그럼에도 <strong>parser</strong> 직접 작성은 매우 귀찮음.</p>
+  </li>
+  <li>JSON 라이브러리를 이용하여 읽기 쓰기 가능.</li>
+</ul>
+
+<h3 id="xml">XML</h3>
+
+<ul>
+  <li>XML: eXtensible Markup Language</li>
+  <li>데이터 구조와 의미를 설명하는 <strong>태그</strong>를 활용한 언어.</li>
+  <li>HTML 파일을 읽어 웹 크롤러 제작 가능.</li>
+</ul>
+
+<h2 id="lecture-13-setting--exception--logging">Lecture 13: Setting &amp; Exception &amp; Logging</h2>
+
+<h3 id="programming-seting">Programming Seting</h3>
+
+<p>프로그램의 설정 값을 만들어 주고 싶다면?</p>
+
+<ul>
+  <li>실행할 때마다 필요한 설정 값.
+    <ul>
+      <li>딥러닝 사용 횟수 (Epoch), 학습 계수 (Learning rate)</li>
+      <li>사용하는 GPU 개수
+==&gt; <strong>Command Line Argument로 입력.</strong></li>
+    </ul>
+  </li>
+  <li>한번 설정하면 수정을 잘 안하는 설정 값.
+    <ul>
+      <li>학습 자료 폴더 위치</li>
+      <li>웹 서버의 Listening Port
+==&gt; <strong>설정 파일에서 불러들이기.</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>argparser 라이브러리 활용.
+    <ul>
+      <li>인자 flag를 설정 가능하여 flag 별 입력 가능 ( -l , –left )</li>
+      <li>기본 값 설정가능.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">argparse</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="p">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'-l'</span><span class="p">,</span> <span class="s">'--left'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">Parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'-r'</span><span class="p">,</span> <span class="s">'—right'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> 
+<span class="n">Parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'—operation’, dest='</span><span class="n">op</span><span class="err">’</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="s">"Set Operation"</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s">'sum’) 
+args = parser.parse_args()
+print(args)
+if args.op == '</span><span class="nb">sum</span><span class="err">’</span><span class="p">:</span> <span class="c1"># 인자 접근 
+</span>    <span class="n">out</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="n">left</span> <span class="o">+</span> <span class="n">args</span><span class="p">.</span><span class="n">right</span>
+<span class="k">elif</span> <span class="n">args</span><span class="p">.</span><span class="n">op</span> <span class="o">==</span> <span class="s">'sub’:
+    out = args.left - args.right
+print(out)
+# 기본 값
+</span></code></pre></div></div>
+
+<ol>
+  <li>Config File 사용.
+    <ul>
+      <li>프로그램 실행 설정을 file에 저장함.</li>
+      <li>Section, Key, Value 값의 형태</li>
+      <li>이중 dict 형태 -&gt; 모든 key, value가 str</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148522484-e02839e7-a5f3-4355-be51-f5a8b901a04a.png" alt="스크린샷 2022-01-07 오후 6 24 59" style="zoom:67%;" /></p>
+
+<ol>
+  <li>configparser 사용.
+    <ul>
+      <li>configparser 라이브러리를 활용.</li>
+      <li>파이썬 기본  dict 처럼 사용.</li>
+      <li>기본적으로 모든건 str 타입으로 처리.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="exception-handling">Exception Handling</h3>
+
+<ul>
+  <li>프로그램 실행 중에는 다양한 예외/에러가 발생.</li>
+  <li>예외가 발생할 경우 대응 조치가 필요
+    <ul>
+      <li>불러올 파일이 없는 경우 -&gt; 파일이 없음을 사용자에게 알림.</li>
+      <li>서버와 연결이 끊김 -&gt; 다른 서버로 Rediredction</li>
+    </ul>
+  </li>
+  <li>예외가 발생할 수 있는 코드 -&gt; (특정 예외 발생시) 대응 코드 -&gt; 계속 진행.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">예외</span> <span class="n">발생</span> <span class="n">가능</span> <span class="n">코드</span><span class="o">&gt;</span>
+<span class="k">except</span> <span class="o">&lt;</span><span class="n">예외</span> <span class="n">클래스</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">대응</span> <span class="n">코드</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Built-in Exceptions</p>
+
+<ul>
+  <li>내장 예외: 기본 정의된 예외 클래스</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148522947-9555966d-64e0-413f-81b8-e9a6a809b77f.png" alt="스크린샷 2022-01-07 오후 6 28 59" style="zoom:80%;" /></p>
+
+<ul>
+  <li>이 외에도 매우 많은 내장 예외 존재.</li>
+</ul>
+
+<p>Exception Class</p>
+
+<ul>
+  <li>파이썬 예외는 모두 BaseException 상속.
+    <ul>
+      <li>대부분 try로 최대 Exception단 까지만 잡음.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148523192-d7f286fe-de94-4a84-9b05-cb8e571333aa.png" alt="스크린샷 2022-01-07 오후 6 30 42" style="zoom:90%;" align="left" /></p>
+
+<p>Raising &amp; Referencing Exceptions</p>
+<ul>
+  <li>Raise 구문으로 예외 발생.
+    <ul>
+      <li>raise <예외 객체=""></예외></li>
+    </ul>
+  </li>
+  <li>as 구문으로 잡힌 에러를 참조 가능.
+    <ul>
+      <li>except <예외 클래스=""> as <예외 객체=""></예외></예외></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"A B C 중 하나를 입력하세요: "</span><span class="p">)</span> 
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s">"ABC"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"잘못된 입력입니다. 종료합니다."</span><span class="p">)</span> <span class="c1"># 예외 발생
+</span>        <span class="k">print</span><span class="p">(</span><span class="s">"선택된 옵션:"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span> <span class="c1"># as 이하 구문으로 예외 객체 들고오기 가능 
+</span>        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Assertion</p>
+<ul>
+  <li>조건을 확인하여 <strong>참</strong>이 아닐 시 AssertError 발생.
+    <ul>
+      <li>assert <조건></조건></li>
+      <li>assert <조건>, <에러 메세지=""></에러></조건></li>
+    </ul>
+  </li>
+  <li>에러 메시지가 없을 경우 빈칸 처리</li>
+</ul>
+
+<p>Logging</p>
+<ul>
+  <li>프로그램이 일어나는 동안 발생했던 정보를 기록.
+  =&gt; 결과 처리, 유저 접근, 예외 발생..
+  =&gt; 기록된 로그 분석을 통한 디버깅 &amp; 유저 패턴 파악.</li>
+  <li>기록 용도에 따른 차이: 
+  =&gt; 용도에 따라 출력 형식 및 필터링 필요.</li>
+</ul>
+
+<h2 id="lecture-14-web">Lecture 14: WEB</h2>
+
+<h4 id="html">HTML</h4>
+
+<ul>
+  <li>XML형태로 웹 페이지의 구조를 표현함.
+    <ul>
+      <li>Beautiful Soup 등 XML parser로 해석 가능.</li>
+    </ul>
+  </li>
+  <li>다운받은 HTML 파일을 웹 브라우저가 해석 &amp; 화면 표시.</li>
+</ul>
+
+<p>=&gt; HW2 과제로 이어짐.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#goormnlp" class="page__taxonomy-item p-category" rel="tag">goormNLP</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-07T00:00:00+09:00">2022.01.07</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=goormNLP+%5B1%EC%A3%BC%EC%B0%A8+-+Python+%285%29%5D%20http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FPython-%285%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FPython-%285%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FPython-%285%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/goormnlp/HW2/" class="pagination--pager" title="goormNLP [HW 2 - Python crawling &amp; class]
+">이전</a>
+    
+    
+      <a href="/goormnlp/Linear_Algebra-(1)/" class="pagination--pager" title="goormNLP [2주차 - Linear Algebra (1)]
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(7)/" rel="permalink">goormNLP [3주차 - Linear Algebra (7)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-20T00:00:00+09:00">2022.01.20</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (7)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(6)/" rel="permalink">goormNLP [3주차 - Linear Algebra (6)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-19T00:00:00+09:00">2022.01.19</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (6)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(5)/" rel="permalink">goormNLP [3주차 - Linear Algebra (5)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-18T00:00:00+09:00">2022.01.18</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (5)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(4)/" rel="permalink">goormNLP [3주차 - Linear Algebra (4)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-17T00:00:00+09:00">2022.01.17</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)]
+Linear Algebra
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 이창석(Lee ChangSeok). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/goormnlp/Python-(5)/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/goormnlp/Python (5)"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-wjh1065-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

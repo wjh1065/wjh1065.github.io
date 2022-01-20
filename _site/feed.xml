@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-20T12:32:14+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">while True()</title><subtitle>메모장!.</subtitle><author><name>Lee ChangSeok</name></author><entry><title type="html">goormNLP [3주차 - Linear Algebra (7)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(7)/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra (7)]" /><published>2022-01-20T00:00:00+09:00</published><updated>2022-01-20T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(7)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(7)/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-3주차---linear-algebra-7">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (7)]</h1>
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<h2 id="lecture-9-singular-value-decomposition">Lecture 9: Singular Value Decomposition</h2>
+
+<p>2022-01-20</p>
+
+<p>지금까지 배웠던 선형대수 개념을 이용하여 EVD(고유값 분해)를 진행하였다.</p>
+
+<p>EVD는 정방행렬에 대해서만 적용이 가능하고 이번에 배운 SVD(특이값 분해)는 직사각행렬에 폭넓게 사용이 가능하다.</p>
+
+<p>SVD는 저번 포스팅에 올린 Spectral decomposition을 이용하면 직사각행렬을 고유값을 기저로하여 대각행렬로 분해할 수 있다.</p>
+
+<ul>
+  <li>SVD (Singular Value Decomposition)</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150263278-db454564-2ae9-4778-b748-7d03808872df.png" alt="스크린샷 2022-01-20 오전 11 49 35" style="zoom:80%;" /></p>
+
+<ul>
+  <li>U = [u_1, u_2, … , u_k+1, … , u_m]는 <strong>AA<sup>T</sup></strong>를 고유값분해로 직교대각화하여 얻은 <u>m by m</u> orthogonal matrix이며, 특히 [u_1, u_2, … , u_k]를 <strong>left singular vectors</strong>라고 함.</li>
+  <li>V = [v_1, v_2, … , v_k+1, … , v_n]는 <strong>A<sup>T</sup>A</strong>를 고유값분해로 직교대각화하여 얻은 <u>n by n</u> orthogonal matrix이며, 특히 [v_1, v_2, … , v_k]를 <strong>right singular vectors</strong>라고 함.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150264809-8f64cf65-9e4e-4cf2-9bb7-cf761077d2ab.png" alt="스크린샷 2022-01-20 오후 12 04 29" style="zoom:100%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150264842-67d0a27d-b77e-4cb2-b18c-d4deba14fc05.png" alt="스크린샷 2022-01-20 오후 12 04 54" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150264842-67d0a27d-b77e-4cb2-b18c-d4deba14fc05.png" alt="스크린샷 2022-01-20 오후 12 04 54" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150264962-5f52d2c6-7f6e-4697-9b1c-5d2ed0810732.png" alt="스크린샷 2022-01-20 오후 12 06 15" /></p>
+
+<blockquote>
+  <p>결국 SVD를 계산한다는 것은 AA<sup>T</sup>와 A<sup>T</sup>A의 고유벡터와 고유값을 구하는 것이라는 것을 알 수 있음.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150265139-e6c5a1f8-a5b5-486d-9de4-088b9ee25beb.png" alt="스크린샷 2022-01-20 오후 12 08 08" style="zoom:85%;" /></p>
+
+<p>* 그림 출처 : https://en.wikipedia.org/wiki/Singular_value_decomposition</p>
+
+<blockquote>
+  <p>직교행렬 V<sup>T</sup>에 의해서 원 행렬 M이 회전(방향 전환)을 하게 되며, 시그마에 의해서 크기가 달라졌고(scale 변환), 다시 직교행렬 U에 의해서 V<sup>T</sup>에 의한 회전과는 반대로 회전(방향 전환)을 함.</p>
+</blockquote>
+
+<ul>
+  <li>고유값분해(EVD)를 통한 대각화의 경우 고유벡터의 방향은 변화가 없고, <strong>크기만 고유값만큼</strong> 변함.</li>
+  <li>특이값분해(SVD)는 <strong>U, V<sup>T</sup>에 의해서 M의 방향이 변하고</strong>, <strong>시그마 특이값(singular values)들 만큼의 크기(scale)가 변했음</strong>을 알 수 있음.</li>
+</ul>
+
+<p><strong>Reduced Form of SVD</strong></p>
+
+<p>차원 축소할 때는 reduced SVD를 진행함. full SVD 대비 <strong>reduced SVD는 특이값들 중에서 <u>0인 것들을 제외</u></strong>하고 SVD를 함.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150265797-4b73708c-d44c-419d-887b-545126860bbf.png" alt="스크린샷 2022-01-20 오후 12 14 55" style="zoom:85%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150265924-bd356ea3-049d-49af-a7bd-34a42bb23b80.png" alt="스크린샷 2022-01-20 오후 12 16 18" style="zoom: 70%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150265933-8c38c001-696f-4364-894f-0fd57400cdec.png" alt="스크린샷 2022-01-20 오후 12 16 23" style="zoom:90%;" /></p>
+
+<p><strong>example of SVD</strong></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150266055-820e3329-1c9f-4743-b2a5-4e1d1f570648.png" alt="스크린샷 2022-01-20 오후 12 17 57" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150266061-27d21602-ba62-45e2-bc26-120bbd6e3835.png" alt="스크린샷 2022-01-20 오후 12 18 04" style="zoom:85%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150266074-ed37966e-e296-419c-82cd-f14259dcc762.png" alt="스크린샷 2022-01-20 오후 12 18 11" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150266082-c1dc2e5c-f4c4-464d-b297-cd35e1ba998e.png" alt="스크린샷 2022-01-20 오후 12 18 19" style="zoom:90%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150266122-154b4e7a-8678-46e4-b94e-36cab5770150.png" alt="스크린샷 2022-01-20 오후 12 18 51" style="zoom:85%;" /></p>
+
+<p><strong>본 그림의 출처는 아래와 같음.</strong></p>
+
+<p><a href="https://rfriend.tistory.com/">R 분석과 프로그래밍</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (7)] Linear Algebra]]></summary></entry><entry><title type="html">goormNLP [3주차 - Linear Algebra (6)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(6)/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra (6)]" /><published>2022-01-19T00:00:00+09:00</published><updated>2022-01-19T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(6)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(6)/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-3주차---linear-algebra-6">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (6)]</h1>
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<h2 id="lecture-8-advanced-eigendecomposition">Lecture 8: Advanced Eigendecomposition</h2>
+
+<p>2022-01-19</p>
+
+<p>저번 수업 내용을 상기해보면 <em>n</em> x <em>n</em> matrix <em>A</em>가 orthogonally diagonalizable하다면 아래와 같은 식이 성립하게 된다는 것을 알게되었다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150086061-513299b4-d650-4909-9fe5-0ef438e3a839.png" alt="스크린샷 2022-01-19 오후 4 43 15" style="zoom:70%;" /></p>
+
+<p>또한 EVD(고유값 분해)를 Algebraic / Geometric multiplicity 관점으로 바라보았다.</p>
+
+<p>내일 수업에서 보게될 SVD(특이값 분해)를 배우기 전에 오늘은 <strong>Spectral Decomposition</strong>에 대해 공부를 진행하였다.</p>
+
+<p>SVD는 행렬의 스펙트럼 이론을 임의의 직사각행렬에 대해 일반화한 것으로 볼 수 있다. <strong>스펙트럼 이론</strong>을 이용하면 직교 정사각행렬을 고유값을 기저로 하여 대각행렬로 분해할 수 있다.</p>
+
+<ul>
+  <li><strong>Spectral decomposition</strong></li>
+</ul>
+
+<p>An <em>n</em> x <em>n</em> symmetric matrix <em>A</em> has the following properties:</p>
+
+<ol>
+  <li><em>A</em> has <em>n</em> <strong>real eigenvalues</strong>, counting multiplicities.</li>
+  <li>
+    <p>The dimension of the eigenspace for each eigen value λ <strong>equals</strong> the multiplicity of λ as a root of the <em>characteristic equation</em>.
+ <strong>The dimension of the eigenspace</strong> ==&gt; Geometric multiplicity.
+ <strong>The multiplicity of λ</strong>                          ==&gt; Algebraic multiplicity.</p>
+  </li>
+  <li>The eigenspaces are mutually orthogonal.</li>
+  <li><strong>A</strong> is orthogonally diagonalizable.</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150087635-792eb8c9-d6b4-479b-99ed-4e2a2f51102f.png" alt="스크린샷 2022-01-19 오후 4 54 24" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150087662-fddc9e8a-823b-40f6-9a85-9472d84ff61e.png" alt="스크린샷 2022-01-19 오후 4 54 37" style="zoom:67%;" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (6)] Linear Algebra]]></summary></entry><entry><title type="html">goormNLP [3주차 - Linear Algebra (5)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(5)/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra (5)]" /><published>2022-01-18T00:00:00+09:00</published><updated>2022-01-18T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(5)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(5)/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-3주차---linear-algebra-5">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (5)]</h1>
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<h2 id="lecture-8-advanced-eigendecomposition">Lecture 8: Advanced Eigendecomposition</h2>
+
+<p>2022-01-18</p>
+
+<p>저번 포스팅에 고유값(eigenvalue), 고유벡터(eigenvector), 대각행렬(diagonal matrix) ,대각화(diagonalization)를 활용하여 n차 정방행렬의 p제곱을 구하였고, 이번에는 EVD(Eigenvalue-eigenvector Decomposition)에 대한 수업을 진행하였다. EVD는 <u>n by n 정방행렬</u>에 대해서만 적용이 가능하고 <strong>Markov process 과정</strong>을 적용하여 계산하였다.</p>
+
+<ul>
+  <li>
+    <p>Symmetric Matrix
+  If Matrix A is <em>symmetric</em>, then any two eigenvectors from different eigenspaces are <strong>orthogonal</strong>.</p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149876597-4bdf201b-d425-4bbe-9d8c-2ad4608f13d7.png" alt="스크린샷 2022-01-18 오후 2 31 03" /></p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149876648-6847f861-6f2c-4006-8fef-291207988bfe.png" alt="스크린샷 2022-01-18 오후 2 31 28" /></p>
+
+    <blockquote>
+      <p>An n x n matrix A is said to be <strong>orthogonally diagonalizable.</strong></p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149876771-ad63c63f-a543-403f-b8c0-8522c4f2e7fb.png" alt="스크린샷 2022-01-18 오후 2 32 38" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149876926-3a90e85d-9768-4f2a-bc69-3d0ac1c2e906.png" alt="스크린샷 2022-01-18 오후 2 34 16" style="zoom:80%;" /></p>
+
+<ul>
+  <li>
+    <p>ex) <strong>Markov Process</strong></p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149877164-554aa58c-041c-4370-914d-d118f2978a3c.png" alt="스크린샷 2022-01-18 오후 2 36 26" /></p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149877215-a28c5864-2c8f-4fcb-8605-1c053115dab0.png" alt="스크린샷 2022-01-18 오후 2 37 12" /></p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149877234-feab56b3-3929-409f-9d5b-0dd7d056bf39.png" alt="스크린샷 2022-01-18 오후 2 37 24" /></p>
+
+    <p><strong>step 1) eigenvalue 구하기</strong></p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149877300-967da64f-0a5a-47d8-91f3-36b823ff80fd.png" alt="스크린샷 2022-01-18 오후 2 38 17" style="zoom:80%;" /></p>
+
+    <p><strong>step 2) eigenvector 구하기</strong></p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149877565-13cadd2b-7232-4993-86e1-c7b2f54eda45.png" alt="image" style="zoom:90%;" /></p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149877584-db5a5d3c-edc0-451a-9d89-7d4a1f8b7cc7.png" alt="image" style="zoom:80%;" /></p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149877611-6abc623a-cd5e-4137-aa59-e12161f5f2b9.png" alt="스크린샷 2022-01-18 오후 2 41 30" style="zoom:85%;" /></p>
+
+    <p><strong>step 3) RESULT</strong></p>
+
+    <p><img src="https://user-images.githubusercontent.com/67947808/149877701-11c881f4-fe47-4dd0-90e3-0cb2cdf3cd35.png" alt="스크린샷 2022-01-18 오후 2 42 34" style="zoom:80%;" /></p>
+  </li>
+</ul>
+
+<p><strong>본 그림의 출처는 아래와 같음.</strong></p>
+
+<p><a href="https://rfriend.tistory.com/">R 분석과 프로그래밍</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (5)] Linear Algebra]]></summary></entry><entry><title type="html">goormNLP [3주차 - Linear Algebra (4)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(4)/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra (4)]" /><published>2022-01-17T00:00:00+09:00</published><updated>2022-01-17T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(4)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(4)/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-3주차---linear-algebra-4">AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)]</h1>
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<h2 id="lecture-7-eigendecomposition">Lecture 7: Eigendecomposition</h2>
+
+<p>2022-01-17</p>
+
+<p>고유값(eigenvalue), 고유벡터(eigenvector)에 대한 <u>정의</u>를 이해하고 <u>값</u>들을 구하였다.</p>
+
+<p>그 후 대각행렬(diagonal matrix) ,대각화(diagonalization)를 활용하여 n차 정방행렬의 <u>p제곱</u>을 구하였다.</p>
+
+<blockquote>
+  <p>정방행렬 A에 대하여 Ax = λx (상수 λ) 가 성립하는 0이 아닌 벡터 x가 존재할 때 
+상수 λ 를 행렬 A의 고유값 (eigenvalue), x 를 이에 대응하는 고유벡터 (eigenvector) 라고 함.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149726517-25f8e133-f092-4c4a-88b4-566223f62550.png" alt="스크린샷 2022-01-17 오후 4 32 48" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149726646-9536a72f-7083-48a1-a14e-b672435f6aa2.png" alt="스크린샷 2022-01-17 오후 4 33 56" style="zoom:85%;" /></p>
+
+<blockquote>
+  <p>행렬의 곱의 결과가 원래 벡터와 <strong>“방향”</strong>은 <u>같고</u>, <strong>“배율”</strong>만 상수 λ 만큼만 비례해서 <u>변한다</u>.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727000-43b20905-7c1e-457e-aba0-1ad5aece8ac6.png" alt="스크린샷 2022-01-17 오후 4 36 45" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727034-26906718-5976-475a-88c4-45c51ffb15a6.png" alt="스크린샷 2022-01-17 오후 4 37 01" style="zoom:80%;" /></p>
+
+<blockquote>
+  <p>eigenvector의 방향은 똑같고(same direction), 크기만 eigenvalue만큼씩 배수가 됨.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727266-f8a7b2a8-2258-4f5b-af09-cb22033c7c1b.png" alt="스크린샷 2022-01-17 오후 4 38 58" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727382-7c88c62e-3b87-4ad8-ab12-a85539bfc89a.png" alt="스크린샷 2022-01-17 오후 4 39 55" style="zoom:80%;" /></p>
+
+<blockquote>
+  <p>고유값과 고유벡터를 구하는 순서는, <strong>먼저 고유값을 구하고나서</strong>, 나중에 Gauss 소거법 사용하여 고유값에 대응하는 고유벡터를 구함.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727691-e03462e3-3025-4faf-b416-c16ac7e30e91.png" alt="스크린샷 2022-01-17 오후 4 42 15" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149727710-fa7fbac0-94dc-43f3-b90b-50467afe0359.png" alt="스크린샷 2022-01-17 오후 4 42 22" style="zoom:80%;" /></p>
+
+<hr />
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149728001-04c1ded9-7189-4e12-9dfc-3fbf15177fd6.png" alt="스크린샷 2022-01-17 오후 4 44 31" style="zoom:80%;" /></p>
+
+<blockquote>
+  <p>대각성분을 제외한 모든 성분이 0인 행렬을 대각행렬(diagonal matrix), 적절한 기저변환을 통하여 주어진 행렬을 대각행렬로 변환하는 것을 대각화(diagonolization)이라 함.</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149728224-6ea7600c-b6f5-4378-b748-63fe41491d6d.png" alt="스크린샷 2022-01-17 오후 4 46 17" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149728290-9c6d48f0-cb73-4fea-af30-80ce9e8d5b95.png" alt="스크린샷 2022-01-17 오후 4 46 47" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149728322-120eac70-9b9d-42b4-9322-dbd78b6968b5.png" alt="스크린샷 2022-01-17 오후 4 46 59" style="zoom:80%;" /></p>
+
+<blockquote>
+  <p><strong>고유값과 고유벡터를 이용한 n차 정방행렬의 p제곱의 정리를 이용하면 p가 매우 크더라도 연산량을 줄여서 쉽게 p제곱을 구할 수 있음</strong>.</p>
+</blockquote>
+
+<p><strong>본 그림의 출처는 아래와 같음.</strong></p>
+
+<p><a href="https://rfriend.tistory.com/">출처 주소</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (4)] Linear Algebra]]></summary></entry><entry><title type="html">goormNLP [2주차 - Linear Algebra Review (1)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-Review/" rel="alternate" type="text/html" title="goormNLP [2주차 - Linear Algebra Review (1)]" /><published>2022-01-14T00:00:00+09:00</published><updated>2022-01-14T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20Review</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-Review/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-2주차---linear-algebra-review-1">AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra Review (1)]</h1>
+<h1 id="linear-algebra-review-1">Linear Algebra Review (1)</h1>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459652-2f02c389-827b-416f-b0d7-f3f353c20e8e.png" alt="스크린샷 2022-01-14 오후 2 09 38" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459688-dae5f93d-a8fc-412b-a23c-122bbac286d3.png" alt="스크린샷 2022-01-14 오후 2 09 49" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459719-130c59b2-995b-431f-ab01-b4ea98036fca.png" alt="스크린샷 2022-01-14 오후 2 10 04" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459731-0bae101f-0fba-4cf9-9872-9bc5ab050b21.png" alt="스크린샷 2022-01-14 오후 2 10 31" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459741-2943138d-c16b-4a76-ab67-189b8bc60f69.png" alt="스크린샷 2022-01-14 오후 2 12 13" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459754-bd991613-daca-4433-b86e-e0efd534f295.png" alt="스크린샷 2022-01-14 오후 2 13 37" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459772-a1a34356-83df-43c2-bb99-fb2cdd565040.png" alt="스크린샷 2022-01-14 오후 2 14 36" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459814-acb0e107-3ef5-4909-9187-e14bdfc78784.png" alt="스크린샷 2022-01-14 오후 2 18 39" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459825-9b209f44-7e65-4694-b713-b5c226041fcc.png" alt="스크린샷 2022-01-14 오후 2 19 16" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459848-7c029bf9-8149-47a9-b906-b89035ca7a63.png" alt="스크린샷 2022-01-14 오후 2 20 29" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460273-79d41b6f-3715-42dc-b068-2f52a9cc033f.png" alt="스크린샷 2022-01-14 오후 2 21 43" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459904-d3869abd-7ca2-4d2d-af33-b7b176e8497e.png" alt="스크린샷 2022-01-14 오후 2 23 39" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459921-477566c1-3070-43ec-8bed-112d76e3e1cc.png" alt="스크린샷 2022-01-14 오후 2 24 31" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459932-19213487-89e9-4514-8292-7a5a47eb79a8.png" alt="스크린샷 2022-01-14 오후 2 25 05" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460314-34c7e740-74e3-4be2-a6e7-f1a2f1d8fa04.png" alt="스크린샷 2022-01-14 오후 2 26 02" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459960-c73d792a-400c-4bf8-b435-01d105278bb3.png" alt="스크린샷 2022-01-14 오후 2 26 40" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459977-be696969-0965-4fa1-a1ad-10be43f13f12.png" alt="스크린샷 2022-01-14 오후 2 27 03" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149459986-1c0d9791-de5b-43b1-aecb-e83f31815bc0.png" alt="스크린샷 2022-01-14 오후 2 27 50" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460016-de5e5e07-04a5-48ea-922c-939e807c4585.png" alt="스크린샷 2022-01-14 오후 2 29 51" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460031-40196820-673c-4480-a369-6df75556a707.png" alt="스크린샷 2022-01-14 오후 2 30 38" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460044-92979705-fe03-4a37-9fc5-d17db938454c.png" alt="스크린샷 2022-01-14 오후 2 31 57" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460057-a400ff3d-60c3-45e0-ba83-b447f63c347a.png" alt="스크린샷 2022-01-14 오후 2 34 44" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460077-bb0296fd-a214-49cb-9f69-d97837996655.png" alt="스크린샷 2022-01-14 오후 2 35 43" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460092-2ac52ab7-3606-4c86-91fa-0e7748204cef.png" alt="스크린샷 2022-01-14 오후 2 37 28" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460105-f96db737-22dc-4827-ba70-a71a4299c5c7.png" alt="스크린샷 2022-01-14 오후 2 39 02" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460114-9f5e1f5a-2e06-4395-a51b-b98d197154fb.png" alt="스크린샷 2022-01-14 오후 2 43 35" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460122-76f0da2d-015a-4d02-9a1c-ed15f0a7e318.png" alt="스크린샷 2022-01-14 오후 2 45 16" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460132-d4385732-f429-494f-a57e-533584c99b86.png" alt="스크린샷 2022-01-14 오후 2 50 27" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460143-3c29065d-6b0f-45b9-afe1-b200f8e3bd6f.png" alt="스크린샷 2022-01-14 오후 2 52 03" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460159-911e1ee2-edd8-4a8d-9f06-580e7b618ed5.png" alt="스크린샷 2022-01-14 오후 2 53 55" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460168-0b824cd8-cf43-4fe1-8db8-47a36c264320.png" alt="스크린샷 2022-01-14 오후 2 55 54" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460180-c8c112df-2f03-476e-95c2-ce95d296c906.png" alt="스크린샷 2022-01-14 오후 2 58 13" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460190-3753b70c-b05c-4bc4-a541-121c00b04485.png" alt="스크린샷 2022-01-14 오후 2 59 01" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460205-5c8add80-adf1-407f-9884-436948cf0cf2.png" alt="스크린샷 2022-01-14 오후 2 59 45" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149460207-f6da936f-706e-434d-9d5b-6f950eac6452.png" alt="스크린샷 2022-01-14 오후 3 00 27" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra Review (1)] Linear Algebra Review (1)]]></summary></entry><entry><title type="html">goormNLP [2주차 - Linear Algebra (3)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(3)/" rel="alternate" type="text/html" title="goormNLP [2주차 - Linear Algebra (3)]" /><published>2022-01-12T00:00:00+09:00</published><updated>2022-01-12T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(3)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(3)/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-2주차---linear-algebra-3">AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (3)]</h1>
+
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<h2 id="lecture-5-linear-transformation">Lecture 5: Linear transformation</h2>
+
+<h3 id="transformation">Transformation</h3>
+
+<ul>
+  <li>Domain (정의역): Set of all the possible values of <em>x</em>.</li>
+  <li>Co-domain (공역): Set of all the possible values of <em>y.</em></li>
+  <li>Image: a mapped output <em>y</em>, given <em>x.</em></li>
+  <li>Range (치역): Set of all the output values mapped by each <em>x</em> in the domain.</li>
+</ul>
+
+<p>=&gt; the output mapped by a particular <em>x</em> is <strong>uniquely determined</strong>.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149084633-49ff8772-f313-4825-8327-05beb9d66023.png" alt="스크린샷 2022-01-12 오후 4 42 16" style="zoom:85%;" /></p>
+
+<h3 id="linear-transformation">Linear Transformation</h3>
+
+<ul>
+  <li>Definition: A transformation (or mapping) <strong>T</strong> is <strong>linear</strong> if:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149084793-c38fde5e-a09f-402e-9f83-604bea3b3431.png" alt="스크린샷 2022-01-12 오후 4 43 32" style="zoom:85%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149084994-d82a6ff2-96b8-47cd-80da-be55883c4e8d.png" alt="스크린샷 2022-01-12 오후 4 44 56" style="zoom:85%;" /></p>
+
+<ul>
+  <li>standard matrix</li>
+</ul>
+
+<p>the matrix <strong>A</strong> is called the <strong>standard matrix</strong> of the linear transformation <em>T</em></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149085295-759da393-ab8c-47ee-b47b-5d362eef380a.png" alt="스크린샷 2022-01-12 오후 4 47 01" style="zoom:85%;" /></p>
+
+<h3 id="onto-and-one-to-one">ONTO and ONE-TO-ONE</h3>
+
+<ol>
+  <li>ONTO</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149085612-8925076d-6bc5-49cb-be48-994500cd2549.png" alt="스크린샷 2022-01-12 오후 4 49 20" style="zoom:85%;" /></p>
+
+<ol>
+  <li>ONE-TO-ONE</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149085686-c585e831-57ec-4d51-b332-66d1ba7a24c8.png" alt="스크린샷 2022-01-12 오후 4 49 53" style="zoom:85%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149085930-3dad2ad5-21e2-4dcf-84aa-42c1362ea826.png" alt="스크린샷 2022-01-12 오후 4 51 52" style="zoom:67%;" /></p>
+
+<p>example</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149086046-f5d0dfa1-766f-4394-b2b4-35c779c73c83.png" alt="스크린샷 2022-01-12 오후 4 52 51" style="zoom:85%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149086120-1d6464a4-5586-4c93-8b8a-2fd8d7d6cca2.png" alt="스크린샷 2022-01-12 오후 4 53 23" style="zoom:85%;" /></p>
+
+<hr />
+
+<h2 id="lecture-6-least-squares">Lecture 6: Least Squares</h2>
+
+<ul>
+  <li>The number <strong>u</strong><sup>T</sup><strong>v</strong> is called the <strong>inner product ** or **dot product</strong> of <strong>u</strong> and <strong>v</strong>, and it is written as:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149086562-f62eea94-2685-43e8-a9b0-4b8e5a740bb9.png" alt="스크린샷 2022-01-12 오후 4 56 22" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Properties of Inner Product:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149086682-9838578e-e872-4584-8b2f-7d01cebb2595.png" alt="스크린샷 2022-01-12 오후 4 57 08" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Vector Norm (벡터의 길이)</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>The <strong>length</strong> (or <strong>norm</strong>) of <strong>v</strong> is the non-negative scalar</td>
+      <td> </td>
+      <td><strong>v</strong></td>
+      <td> </td>
+      <td>defined as the square root:</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087030-65871ec0-a52a-4461-8b11-7b6dace23010.png" alt="스크린샷 2022-01-12 오후 4 59 35" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Unit vector (단위 벡터)</li>
+</ul>
+
+<p>A vector whose <strong>length</strong> is <em>1</em> is called a <strong>unit vector</strong>.</p>
+
+<p>Normalizing a vector: Given a nonzero vector <strong>v</strong>, if we divide it by its length, we obtain a unit vector as:</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087479-2cde0d21-23e6-424e-8ffa-b97df6cf02c3.png" alt="스크린샷 2022-01-12 오후 5 03 04" style="zoom:80%;" /></p>
+
+<p><strong>u</strong> is in the <u>same direction</u> as <strong>v</strong>, but <u>its length is 1.</u></p>
+
+<ul>
+  <li>Distance between Vectors in R<sup>n</sup></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087744-8bd46f81-3cde-4265-9820-d3902ffd798e.png" alt="스크린샷 2022-01-12 오후 5 04 54" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087774-14f364ce-8cca-454a-9908-95a25b623ab3.png" alt="스크린샷 2022-01-12 오후 5 05 07" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087970-562477ed-8225-4165-82c4-1a0060b180ff.png" alt="스크린샷 2022-01-12 오후 5 06 24" /></p>
+
+<ul>
+  <li>Inner Product and Angle Between Vectors</li>
+</ul>
+
+<p>Inner product between <strong>u</strong> and <strong>v</strong> can be rewritten using their norms and angle:</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149088259-cef58cda-7756-41ee-8b69-37575446fdeb.png" alt="스크린샷 2022-01-12 오후 5 08 24" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Orthogonal Vectors</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149088459-02c8b58e-b4f1-4020-afc4-b63f347b7f00.png" alt="스크린샷 2022-01-12 오후 5 09 56" style="zoom:80%;" /></p>
+
+<ul>
+  <li><strong>Back to Over-Determined System</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149088711-ab8aef45-c899-4bdd-beeb-70dece19b6cd.png" alt="스크린샷 2022-01-12 오후 5 11 47" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Least Squares: Best Approximation Criterion</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149088894-d077863f-2ea1-4118-867a-240782f01dcc.png" alt="스크린샷 2022-01-12 오후 5 13 04" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149089158-49a147c1-3671-4ecc-908e-14a435adfdd7.png" alt="스크린샷 2022-01-12 오후 5 14 51" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Geometric Interpretation of Least Squares.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149089603-c3aa566c-5cc0-4fff-8e84-45be4b78149e.png" alt="스크린샷 2022-01-12 오후 5 17 45" style="zoom:70%;" /></p>
+
+<ul>
+  <li>Normal Equation</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149089942-c80f51f3-2d9f-482f-b7b3-f5813cc88b37.png" alt="스크린샷 2022-01-12 오후 5 20 05" style="zoom:80%;" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (3)]]]></summary></entry><entry><title type="html">goormNLP [2주차 - Linear Algebra (2)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(2)/" rel="alternate" type="text/html" title="goormNLP [2주차 - Linear Algebra (2)]" /><published>2022-01-11T00:00:00+09:00</published><updated>2022-01-11T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(2)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(2)/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-2주차---linear-algebra-2">AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (2)]</h1>
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<h2 id="lecture-3-linear-combination-vector-equation-four-views-of-matrix-multiplication">Lecture 3: Linear combination, Vector equation, Four views of matrix multiplication</h2>
+
+<h3 id="linear-combination">Linear combination</h3>
+
+<p>c1<strong>v<sub>1</sub></strong> + … + c1<strong>v<sub>p</sub></strong> is called a <strong>linear combination</strong> of <strong>v<sub>1</sub></strong>, … , <strong>v<sub>p</sub></strong> with <strong>weights or coefficients</strong> c<sub>1</sub>**, … , **c<sub>p</sub>.</p>
+
+<ul>
+  <li>The weights in a linear combination can be <u>any real numbers, including zero</u>.</li>
+</ul>
+
+<h3 id="span">Span</h3>
+
+<ul>
+  <li>Definition: Span {V1, …, Vp} is defined as <strong>the set of all linear combinations of V1, … , Vp</strong>.
+  Span is also called the <strong>sub set of</strong> R<sup>n</sup> <strong>spanned.</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148902803-483e7e60-5696-4963-8bb7-71aeab0322e0.png" alt="image" style="zoom: 25%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148902982-c99bc511-f0c4-49a4-a1b6-6dc7767e711e.png" alt="스크린샷 2022-01-11 오후 4 57 14" style="zoom:67%;" /></p>
+
+<ul>
+  <li>b가 span 안에 있으면 O -&gt; 해가 존재함.</li>
+  <li>b가 span 안에 없으면 X -&gt; 해가 존재 하지 않음.</li>
+</ul>
+
+<h3 id="matrix-multiplications-as-column-combinations">Matrix Multiplications as Column Combinations</h3>
+
+<ul>
+  <li>Left matrix: <strong>bases</strong>, Right matrix: <strong>coefficients</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148903350-073b884a-1f84-49b3-86ea-fff5c3c95fb1.png" alt="스크린샷 2022-01-11 오후 5 00 01" /></p>
+
+<h3 id="matrix-multiplications-as-row-combinations">Matrix Multiplications as Row Combinations</h3>
+
+<ul>
+  <li>Left matrix: <strong>coefficients</strong>, Right matrix: <strong>bases</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148903475-b98bb688-0f12-43f4-9432-29900458566c.png" alt="스크린샷 2022-01-11 오후 5 01 01" style="zoom:90%;" /></p>
+
+<h3 id="matrix-multiplications-as-sum-of-rank-1-outer-products">Matrix Multiplications as Sum of (Rank-1) Outer Products</h3>
+
+<ul>
+  <li>(Rank-1) outer product</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148903838-a37c5a29-43f6-4955-bfa1-15adb8f4d5ab.png" alt="스크린샷 2022-01-11 오후 5 03 47" /></p>
+
+<ul>
+  <li>Sum of (Rank-1) outer products</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148903854-4dae8ea0-64bd-453e-9bb7-fbc5b8e1b7d7.png" alt="스크린샷 2022-01-11 오후 5 04 02" /></p>
+
+<p>=&gt; Sum of (Rank-1) outer products is widely used in machine learning.</p>
+
+<ul>
+  <li>Covariance matrix in multivariate Gaussian.</li>
+  <li>Gram matrix in style transfer.</li>
+</ul>
+
+<hr />
+
+<h2 id="lecture-4-linear-independence-span-subspace">Lecture 4: Linear Independence, Span, Subspace</h2>
+
+<h3 id="uniqueness-of-solution-for-ax--b">Uniqueness of Solution for Ax = b</h3>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148904257-f88be9d2-5b74-414c-baa0-c3e930961e38.png" alt="스크린샷 2022-01-11 오후 5 07 20" style="zoom:90%;" /></p>
+
+<ul>
+  <li>
+    <p><u>It is unique</u> when a<sub>1</sub>, a<sub>2</sub>, and<sub>3</sub> are <strong><u>linearly independent</u></strong>.
+선형 독립 –&gt; 해가 1개 존재.</p>
+  </li>
+  <li>
+    <p><u>Infinitely many solutins</u> exist when  a<sub>1</sub>, a<sub>2</sub>, and<sub>3</sub> are <strong><u>linearly dependent</u></strong>.
+선형 의존 –&gt; 해가 무수히 존재.</p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148904707-00c734be-3854-4a28-807e-7ac9b1767c73.png" alt="스크린샷 2022-01-11 오후 5 10 29" style="zoom:80%;" /></p>
+
+<ul>
+  <li>if <u>at least one</u> such <strong>V</strong><sub>j</sub> is found, then {V1, … , Vp} is <strong>linearly dependent.</strong></li>
+  <li>
+    <p>if <u>no</u> such <strong>V</strong><sub>j</sub> is found, the {V1, … , Vp} is <strong>linearly independent.</strong></p>
+  </li>
+  <li>**A linearly dependent vector does not increase Span ! **</li>
+</ul>
+
+<h3 id="span-and-subspace">Span and Subspace</h3>
+
+<ul>
+  <li>Definition: A <strong>subspace</strong> <em>H</em> is defined as a subset of <strong>R</strong><sup>n</sup> closed under linear combination.</li>
+</ul>
+
+<p>In fact, a subspace is <strong><u>always represented as Span {V1, ... , Vp}</u></strong></p>
+
+<h3 id="basis-of-a-subspace">Basis of a Subspace</h3>
+
+<ul>
+  <li>Definition: A basis of a sub space <em>H</em> is a set of vectors that satisfies both of the following:
+    <ol>
+      <li>Fully spans the given subspace <em>H</em>.</li>
+      <li>Linearly independent.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="column-space-of-matrix">Column Space of Matrix</h3>
+
+<ul>
+  <li>Definition: The <strong>column space</strong> of a matrix A is the subspace spanned by the columns of A.
+    <ul>
+      <li>We call the column spac eof A as <strong>Col A</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148906500-f23d383c-7637-417d-8cef-419023b19cf1.png" alt="스크린샷 2022-01-11 오후 5 23 13" style="zoom:85%;" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">What is dim Col A? ==&gt; 2</code></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148906682-710c8d07-f08e-4bd8-ba7b-6f1b99194729.png" alt="스크린샷 2022-01-11 오후 5 24 22" style="zoom:85%;" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">What is dim Col A? ==&gt; 2</code></p>
+
+<h3 id="rank-of-matrix">Rank of Matrix</h3>
+
+<ul>
+  <li>Definition: The <strong>rank</strong> of a matrix A, denoted by <strong>rank A</strong>, is the dimension of the column space of A:
+    <ul>
+      <li>rank A = <strong>dim</strong> Col A.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148906983-d3add804-4244-4c7e-a143-a43893fb3cad.png" alt="스크린샷 2022-01-11 오후 5 26 22" style="zoom:80%;" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (2)] Linear Algebra]]></summary></entry><entry><title type="html">goormNLP [2주차 - Linear Algebra (1)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(1)/" rel="alternate" type="text/html" title="goormNLP [2주차 - Linear Algebra (1)]" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(1)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(1)/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-2주차---linear-algebra-1">AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (1)]</h1>
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<p>2022-01-10 (월)</p>
+<blockquote>
+  <p>머신러닝과 선형대수의 관계</p>
+</blockquote>
+
+<p>2주차에는 머신/딥러닝에 들어가기에 앞서 Linear Algebra: 선형대수학에 대해서 수업을 진행하였다.</p>
+
+<p>선형대수학은 연립방정식을 손쉽게 풀고자하는 고민으로부터 시작되었다.
+머신러닝은 본질적으로는 컴퓨터가 이해할 수 있는 대량의 데이터. 즉 숫자를 이용해 복잡한 계산을 수행하는 것이므로 선형대수학의 수식과 계산 기법을 사용하면 최소한의 타이핑 만으로도 대량의 계산을 손쉽게 컴퓨터에게 지시하는 것이 가능해진다.</p>
+
+<h2 id="lecture-1-elements-in-linear-algebra">Lecture 1: Elements In Linear Algebra</h2>
+
+<h3 id="scalar-vector-matrix">Scalar, Vector, Matrix</h3>
+
+<ol>
+  <li><strong>Scalar</strong>: a single number.</li>
+  <li><strong>Vector</strong>: an ordered list of numbers.</li>
+  <li><strong>Matrix</strong>: a two-dimensional array of numbers.
+    <ul>
+      <li>Matrix size: 3 x 2 means [3 rows(행) and 2 columns(열)]</li>
+      <li>Row vector: a horizontal vector - 수평</li>
+      <li>Column vector: a vertical vector - 수직</li>
+    </ul>
+  </li>
+</ol>
+
+<ul>
+  <li>a vector of n-dimension is usually a <strong>column vector</strong>. <code class="language-plaintext highlighter-rouge">a matrix of the size n x 1</code></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148713988-140f3c79-2a14-482b-ad67-7a3cbbc64b97.png" alt="스크린샷 2022-01-10 오후 12 07 40" /></p>
+
+<ul>
+  <li>a row vector is usually written as its <strong>transpose</strong>.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148714037-1b14b09b-c74a-4509-8267-fb3bada46157.png" alt="스크린샷 2022-01-10 오후 12 08 30" /></p>
+
+<ul>
+  <li>
+    <p>Square matrix ( # rows = # columns ).</p>
+  </li>
+  <li>
+    <p>Rectangular matrix ( # rows != columns ).</p>
+  </li>
+  <li>
+    <p>A<sup>T</sup>: <strong>Transpose</strong> of matrix ( mirroring across the main diagonal ).</p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148714568-d180fc44-9982-45fd-bde6-f8995d573d51.png" alt="스크린샷 2022-01-10 오후 12 16 41" /></p>
+
+<ul>
+  <li>A<sub>2,1</sub> = 3 =&gt; ( i , j )-th component of A.</li>
+  <li>A<sub>2,:</sub> = [3 4] =&gt; i-th <strong>row vector</strong> of A.</li>
+</ul>
+
+<hr />
+
+<h3 id="vectormatrix-add--mul">Vector/Matrix Add &amp; Mul</h3>
+
+<ul>
+  <li>
+    <p>C = A + B : Element-wise <strong>addition.</strong></p>
+  </li>
+  <li>
+    <p>cA : <strong>Scalar multiple</strong> of vector/matrix.</p>
+  </li>
+  <li>
+    <p>C = AB  : <strong>matrix-matrix multiplication</strong></p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715076-af6f5378-5531-4137-998b-a3d450131c48.png" alt="스크린샷 2022-01-10 오후 12 25 33" /></p>
+
+<ul>
+  <li>AB != BA : Matrix multiplication is <strong>NOT</strong> commutative.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715153-9f881dec-af25-4706-bb4b-38ac3edfbe28.png" alt="스크린샷 2022-01-10 오후 12 26 54" /></p>
+
+<hr />
+
+<h3 id="other-properties">Other Properties.</h3>
+
+<ol>
+  <li>A(B+C) = AB + AC : <strong>Distributive</strong></li>
+  <li>A(BC) = (AB)C : <strong>Associative</strong></li>
+  <li>(AB)<sup>T</sup> = B<sup>T</sup>A<sup>T</sup> : <strong>Property of transpose</strong></li>
+</ol>
+
+<hr />
+
+<h2 id="lecture-2-linear-system">Lecture 2: Linear System</h2>
+
+<ul>
+  <li>A <strong>linear equation</strong> in the variables x1, …, x<sub>n</sub> is an equation that can be written in the form.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">a1x1 + a2x2+ ... + anxn = b</code></p>
+
+<ul>
+  <li>The above equation can be written as <strong>a<sup>T</sup>x = b</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715436-67923e9d-a3fd-4b6d-ae17-d28247cda969.png" alt="스크린샷 2022-01-10 오후 12 32 02" /></p>
+
+<ul>
+  <li>A system of linear equations (or a <strong>linear system</strong>) is a collection of <em>one or more linear equations</em> involving the <strong>same variables</strong>.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">X1, ..., Xn.</code></p>
+
+<h3 id="linear-system-example">Linear system example</h3>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715664-6927fa5a-eb65-4128-85c2-d37a68727068.png" alt="스크린샷 2022-01-10 오후 12 35 47" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715697-09eec0d4-006e-434a-a02d-621fa3e845ef.png" alt="스크린샷 2022-01-10 오후 12 36 38" /></p>
+
+<ul>
+  <li>we solve for x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub> given a new person with his/her <em>Weight, Height, Is_smoking</em>.
+  we can predict his/her <strong>life-span</strong>.</li>
+</ul>
+
+<p>Step 1. Let’s collect all the coefficients on the left and form a matrix.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715840-614f2962-7f84-45c4-be16-53325f651364.png" alt="스크린샷 2022-01-10 오후 12 38 54" /></p>
+
+<p>Step 2. Let’s form two vectors:</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715874-9fd186e1-0997-4892-b27e-acb90c0d4867.png" alt="스크린샷 2022-01-10 오후 12 39 26" /></p>
+
+<p>=&gt; Multiple equations can be converted into a <strong>single</strong> matrix equations.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148715925-5c18f20e-6e4a-47ae-93fb-65d58f51f2a7.png" alt="스크린샷 2022-01-10 오후 12 40 10" /></p>
+
+<hr />
+
+<p><strong>Identity Matrix</strong></p>
+
+<ul>
+  <li><strong>Definition</strong> : An identity matrix is a <strong>square</strong> matrix whose diagonal entries are all <strong>1’s</strong>, and all the other entries are <strong>zeros</strong>.</li>
+  <li>Often, we denote it as</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716067-9d7af812-827c-4e1e-b65c-4402c03e6c02.png" alt="스크린샷 2022-01-10 오후 12 42 44" /></p>
+
+<p><strong>Inverse Matrix</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Definition</strong> : For a <strong>square</strong> matrix, its inverse matrix A<sup>-1</sup> is defined such that A<sup>-1</sup>A = AA<sup>-1</sup> = I<sub>n</sub></p>
+  </li>
+  <li>
+    <p>For a 2 x 2 matrix, its inverse matrix A<sup>-1</sup> is defined as</p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716184-9511e070-bf45-44f2-8b18-bfcf70e1c5d4.png" alt="스크린샷 2022-01-10 오후 12 45 02" /></p>
+
+<ul>
+  <li>We can now solve A<strong>x</strong> = <strong>b</strong> as follows:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716230-5913710d-bccd-49d9-a378-15554a26a396.png" alt="스크린샷 2022-01-10 오후 12 45 51" /></p>
+
+<hr />
+
+<p>Step 4. Solving linear system via inverse matrix.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716293-6e49c095-1e08-45de-ba29-ded577dc08e0.png" alt="스크린샷 2022-01-10 오후 12 47 05" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716306-9b0acca2-f266-464b-92c9-d6a53bdbdaef.png" alt="스크린샷 2022-01-10 오후 12 47 20" /></p>
+
+<ul>
+  <li>
+    <p>Now, the life-span can be written as</p>
+
+    <p>(life - span) = <strong>-0.4</strong> * (Weight) + <strong>20</strong> * (Height) <strong>-20</strong> * (Is_smoking).</p>
+  </li>
+</ul>
+
+<hr />
+
+<p><strong>Non-Invertible Matrix</strong></p>
+
+<p>if A is invertible, the solution is <strong>uniquely obtained</strong> as x = A<sup>-1</sup>b.</p>
+
+<p>if A is <strong>NOT</strong> invertible, the inverse does not <em>exist?</em></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716618-9ab48170-8d5d-408a-8e9e-09477386a81e.png" alt="스크린샷 2022-01-10 오후 12 52 45" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716650-32e5f132-e522-43d7-bfbd-df7a1f027e3f.png" alt="스크린샷 2022-01-10 오후 12 53 13" /></p>
+
+<p><em>*det A ** determines whether A is invertible *(when det A != 0)</em> or not <em>(when det A = 0)</em>.</p>
+
+<p>=&gt; if A is non-invertible, A<strong>x</strong> = <strong>b</strong> will have either <strong>no solutuon</strong> or <strong>infinitely many solutions</strong>.</p>
+
+<hr />
+
+<h3 id="rectangular-matrix-a-in-ax--b">Rectangular Matrix A in Ax = b</h3>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148716803-4a3bbea8-4fbf-41c1-ac4e-0a5a71a14948.png" alt="스크린샷 2022-01-10 오후 12 56 09" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (1)] Linear Algebra]]></summary></entry><entry><title type="html">goormNLP [1주차 - Python (5)]</title><link href="http://localhost:4000/goormnlp/Python-(5)/" rel="alternate" type="text/html" title="goormNLP [1주차 - Python (5)]" /><published>2022-01-07T00:00:00+09:00</published><updated>2022-01-07T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Python%20(5)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Python-(5)/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-1주차---python-5">AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (5)]]</h1>
+<h1 id="python-programming">Python Programming</h1>
+<h2 id="lecture-12-io">Lecture 12: IO</h2>
+
+<ul>
+  <li>표준 출력 (stdout) : 따로 Redirection 없으면 콘솔 <strong>출력</strong>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">print('sentence')</code></li>
+    </ul>
+  </li>
+  <li>표준 입력 (stdin) : 따로 Redirection 없으면 콘솔 <strong>입력</strong>.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">var = input()</code></li>
+    </ul>
+  </li>
+  <li>파이썬은 File Descriptor를 열기 위하여 Open 내장 함수를 사용함.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">접근 모드</th>
+      <th style="text-align: center">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">r</td>
+      <td style="text-align: center">읽기 모드</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">rb</td>
+      <td style="text-align: center">이진 읽기 모드</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">w</td>
+      <td style="text-align: center">쓰기 모드</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">wb</td>
+      <td style="text-align: center">이진 쓰기 모드</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">a</td>
+      <td style="text-align: center">추가 모드</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="read">Read</h3>
+
+<ul>
+  <li>read 메소드로 파일 읽기 가능. <code class="language-plaintext highlighter-rouge">contents = file.read()</code></li>
+  <li>File descriptor 닫는 것을 깜빡할 때가 많음. -&gt; Context manager 형태로 사용 <code class="language-plaintext highlighter-rouge">with 문</code></li>
+  <li>줄 단위로 잘라서 읽기. for문을 이용함.</li>
+  <li>전체 읽은 후 줄단위로 잘라서 변환 -&gt; <code class="language-plaintext highlighter-rouge">file.readlines()</code></li>
+</ul>
+
+<h3 id="write">Write</h3>
+
+<ul>
+  <li>write 메소드로 파일 쓰기 가능. <code class="language-plaintext highlighter-rouge">file.write()</code></li>
+  <li>writelines 메소드로 여러 줄 작성. <code class="language-plaintext highlighter-rouge">file.writelines()</code></li>
+  <li>추가하기 모드 <code class="language-plaintext highlighter-rouge">a</code> 로 파일 뒤에 덧 붙이기 가능. <code class="language-plaintext highlighter-rouge">with open('text.txt, 'a') as file:</code></li>
+</ul>
+
+<h3 id="directory">Directory</h3>
+
+<ul>
+  <li>os 라이브러리로 플랫폼 독립적인 폴더 생성 가능.
+    <ul>
+      <li>파이썬에선 Windows, Unix 모두 ` / `로 폴더를 나타냄.</li>
+    </ul>
+  </li>
+  <li>
+    <p>path 라이브러리로 경로 관련 연산 가능. <code class="language-plaintext highlighter-rouge">os.path.isdir</code></p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">os.listdir</code> 함수로 폴더 내 파일/하위 폴더 검색 가능.</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">glob</code> 라이브러리로 유닉스 스타일 경로명 패턴 확장 적용 가능.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">print(*[entry for entry in glob.glob('test/*.txt')])</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="pickle">Pickle</h3>
+
+<ul>
+  <li>파이썬 객체를 <strong>그대로 저장</strong>하고 싶다면 -&gt; Pickle 이용.
+    <ul>
+      <li>장점: 쓰기 쉬움, 파이썬 객체를 그대로 저장.</li>
+      <li>단점: 파이썬에서만 읽을 수 있음. 보안 문제가 있음.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="csv">CSV</h3>
+
+<ul>
+  <li>CSV: Comma Separate Values</li>
+  <li>표 데이터를 프로그램에 상관없이 쓰기 위한 데이터 형식
+    <ul>
+      <li>필드를 쉼표(,)로 구분한 텍스트 파일.</li>
+    </ul>
+  </li>
+  <li>import csv로 쉽게 읽기 쓰기 가능.</li>
+</ul>
+
+<p>Reading CSV</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'test.csv'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">reader</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span>
+        <span class="n">delimiter</span><span class="o">=</span><span class="err">‘</span><span class="p">,</span><span class="err">’</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="err">‘“’</span><span class="p">,</span>
+        <span class="n">quoting</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">QUOTE_MINIMAL</span>
+		<span class="p">)</span>
+    <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span> 
+        <span class="k">print</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Writing CSV</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">csv</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'test.csv'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">writer</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span>
+        <span class="n">delimiter</span><span class="o">=</span><span class="err">‘</span><span class="p">,</span><span class="err">’</span><span class="p">,</span> <span class="n">quotechar</span><span class="o">=</span><span class="err">‘“’</span><span class="p">,</span>
+        <span class="n">quoting</span> <span class="o">=</span> <span class="n">csv</span><span class="p">.</span><span class="n">QUOTE_MINIMAL</span><span class="p">)</span>
+    <span class="n">writer</span><span class="p">.</span><span class="n">writerow</span><span class="p">([</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'label’])
+    writer.writerows([I, f'</span><span class="n">label_</span><span class="p">{</span><span class="n">i</span><span class="p">}</span><span class="s">'] 
+</span></code></pre></div></div>
+
+<h3 id="json">JSON</h3>
+
+<ul>
+  <li>JSON: JavaScript Object Notation</li>
+  <li>웹 언어인 Javascript의 데이터 객체 표현 방식
+    <ul>
+      <li>자료 구조 양식을 문자열로 표현.</li>
+      <li>간결하게 표현되어 사람과 컴퓨터 모두 읽기 편함.</li>
+      <li>최근 각광 받는 자료구조 형식</li>
+    </ul>
+  </li>
+  <li>
+    <p>그럼에도 <strong>parser</strong> 직접 작성은 매우 귀찮음.</p>
+  </li>
+  <li>JSON 라이브러리를 이용하여 읽기 쓰기 가능.</li>
+</ul>
+
+<h3 id="xml">XML</h3>
+
+<ul>
+  <li>XML: eXtensible Markup Language</li>
+  <li>데이터 구조와 의미를 설명하는 <strong>태그</strong>를 활용한 언어.</li>
+  <li>HTML 파일을 읽어 웹 크롤러 제작 가능.</li>
+</ul>
+
+<h2 id="lecture-13-setting--exception--logging">Lecture 13: Setting &amp; Exception &amp; Logging</h2>
+
+<h3 id="programming-seting">Programming Seting</h3>
+
+<p>프로그램의 설정 값을 만들어 주고 싶다면?</p>
+
+<ul>
+  <li>실행할 때마다 필요한 설정 값.
+    <ul>
+      <li>딥러닝 사용 횟수 (Epoch), 학습 계수 (Learning rate)</li>
+      <li>사용하는 GPU 개수
+==&gt; <strong>Command Line Argument로 입력.</strong></li>
+    </ul>
+  </li>
+  <li>한번 설정하면 수정을 잘 안하는 설정 값.
+    <ul>
+      <li>학습 자료 폴더 위치</li>
+      <li>웹 서버의 Listening Port
+==&gt; <strong>설정 파일에서 불러들이기.</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>argparser 라이브러리 활용.
+    <ul>
+      <li>인자 flag를 설정 가능하여 flag 별 입력 가능 ( -l , –left )</li>
+      <li>기본 값 설정가능.</li>
+    </ul>
+  </li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">argparse</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="p">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'-l'</span><span class="p">,</span> <span class="s">'--left'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">Parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'-r'</span><span class="p">,</span> <span class="s">'—right'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> 
+<span class="n">Parser</span><span class="p">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s">'—operation’, dest='</span><span class="n">op</span><span class="err">’</span><span class="p">,</span><span class="n">help</span><span class="o">=</span><span class="s">"Set Operation"</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s">'sum’) 
+args = parser.parse_args()
+print(args)
+if args.op == '</span><span class="nb">sum</span><span class="err">’</span><span class="p">:</span> <span class="c1"># 인자 접근 
+</span>    <span class="n">out</span> <span class="o">=</span> <span class="n">args</span><span class="p">.</span><span class="n">left</span> <span class="o">+</span> <span class="n">args</span><span class="p">.</span><span class="n">right</span>
+<span class="k">elif</span> <span class="n">args</span><span class="p">.</span><span class="n">op</span> <span class="o">==</span> <span class="s">'sub’:
+    out = args.left - args.right
+print(out)
+# 기본 값
+</span></code></pre></div></div>
+
+<ol>
+  <li>Config File 사용.
+    <ul>
+      <li>프로그램 실행 설정을 file에 저장함.</li>
+      <li>Section, Key, Value 값의 형태</li>
+      <li>이중 dict 형태 -&gt; 모든 key, value가 str</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148522484-e02839e7-a5f3-4355-be51-f5a8b901a04a.png" alt="스크린샷 2022-01-07 오후 6 24 59" style="zoom:67%;" /></p>
+
+<ol>
+  <li>configparser 사용.
+    <ul>
+      <li>configparser 라이브러리를 활용.</li>
+      <li>파이썬 기본  dict 처럼 사용.</li>
+      <li>기본적으로 모든건 str 타입으로 처리.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="exception-handling">Exception Handling</h3>
+
+<ul>
+  <li>프로그램 실행 중에는 다양한 예외/에러가 발생.</li>
+  <li>예외가 발생할 경우 대응 조치가 필요
+    <ul>
+      <li>불러올 파일이 없는 경우 -&gt; 파일이 없음을 사용자에게 알림.</li>
+      <li>서버와 연결이 끊김 -&gt; 다른 서버로 Rediredction</li>
+    </ul>
+  </li>
+  <li>예외가 발생할 수 있는 코드 -&gt; (특정 예외 발생시) 대응 코드 -&gt; 계속 진행.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">예외</span> <span class="n">발생</span> <span class="n">가능</span> <span class="n">코드</span><span class="o">&gt;</span>
+<span class="k">except</span> <span class="o">&lt;</span><span class="n">예외</span> <span class="n">클래스</span><span class="o">&gt;</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">대응</span> <span class="n">코드</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
+<p>Built-in Exceptions</p>
+
+<ul>
+  <li>내장 예외: 기본 정의된 예외 클래스</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148522947-9555966d-64e0-413f-81b8-e9a6a809b77f.png" alt="스크린샷 2022-01-07 오후 6 28 59" style="zoom:80%;" /></p>
+
+<ul>
+  <li>이 외에도 매우 많은 내장 예외 존재.</li>
+</ul>
+
+<p>Exception Class</p>
+
+<ul>
+  <li>파이썬 예외는 모두 BaseException 상속.
+    <ul>
+      <li>대부분 try로 최대 Exception단 까지만 잡음.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148523192-d7f286fe-de94-4a84-9b05-cb8e571333aa.png" alt="스크린샷 2022-01-07 오후 6 30 42" style="zoom:90%;" align="left" /></p>
+
+<p>Raising &amp; Referencing Exceptions</p>
+<ul>
+  <li>Raise 구문으로 예외 발생.
+    <ul>
+      <li>raise <예외 객체=""></예외></li>
+    </ul>
+  </li>
+  <li>as 구문으로 잡힌 에러를 참조 가능.
+    <ul>
+      <li>except <예외 클래스=""> as <예외 객체=""></예외></예외></li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s">"A B C 중 하나를 입력하세요: "</span><span class="p">)</span> 
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s">"ABC"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"잘못된 입력입니다. 종료합니다."</span><span class="p">)</span> <span class="c1"># 예외 발생
+</span>        <span class="k">print</span><span class="p">(</span><span class="s">"선택된 옵션:"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span> <span class="c1"># as 이하 구문으로 예외 객체 들고오기 가능 
+</span>        <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Assertion</p>
+<ul>
+  <li>조건을 확인하여 <strong>참</strong>이 아닐 시 AssertError 발생.
+    <ul>
+      <li>assert <조건></조건></li>
+      <li>assert <조건>, <에러 메세지=""></에러></조건></li>
+    </ul>
+  </li>
+  <li>에러 메시지가 없을 경우 빈칸 처리</li>
+</ul>
+
+<p>Logging</p>
+<ul>
+  <li>프로그램이 일어나는 동안 발생했던 정보를 기록.
+  =&gt; 결과 처리, 유저 접근, 예외 발생..
+  =&gt; 기록된 로그 분석을 통한 디버깅 &amp; 유저 패턴 파악.</li>
+  <li>기록 용도에 따른 차이: 
+  =&gt; 용도에 따라 출력 형식 및 필터링 필요.</li>
+</ul>
+
+<h2 id="lecture-14-web">Lecture 14: WEB</h2>
+
+<h4 id="html">HTML</h4>
+
+<ul>
+  <li>XML형태로 웹 페이지의 구조를 표현함.
+    <ul>
+      <li>Beautiful Soup 등 XML parser로 해석 가능.</li>
+    </ul>
+  </li>
+  <li>다운받은 HTML 파일을 웹 브라우저가 해석 &amp; 화면 표시.</li>
+</ul>
+
+<p>=&gt; HW2 과제로 이어짐.</p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="python" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (5)]] Python Programming Lecture 12: IO]]></summary></entry><entry><title type="html">goormNLP [HW 2 - Python crawling &amp;amp; class]</title><link href="http://localhost:4000/goormnlp/HW2/" rel="alternate" type="text/html" title="goormNLP [HW 2 - Python crawling &amp;amp; class]" /><published>2022-01-07T00:00:00+09:00</published><updated>2022-01-07T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/HW2</id><content type="html" xml:base="http://localhost:4000/goormnlp/HW2/"><![CDATA[<h1 id="ai-기술-자연어-처리-전문가-양성-3기-hw-2---python-crawling--class">AI 기술 자연어 처리 전문가 양성 3기 [HW 2 - Python crawling &amp; class]</h1>
+<h1 id="과제-2-나만의-데이터-셋-만들기">과제 2. 나만의 데이터 셋 만들기.</h1>
+
+<p>기계 학습 분야에서 중요한 것 중 하나가 학습에 사용할 자료를 수집하고 관리하는 것입니다.
+예를 들어 주어진 문장이 부정인지 긍정인지 판별하는 모델을 학습 시키기 위해서는 긍정 부정이 라벨링된 문장 자료가 필요합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>문장</th>
+      <th>긍부정</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>진짜 좋은 영화. 가히 올해의 영화라고 불릴만하다.</td>
+      <td>긍정</td>
+    </tr>
+    <tr>
+      <td>이런 영화에 100억원 이상 때려 넣은 감독은 충무로에서 쫓겨나야한다.</td>
+      <td>부정</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>그러나 우리가 이러한 자료를 직접 수집 및 라벨링하기는 쉽지 않다.</p>
+
+<p>한편, 내부 연구나 교육적 목적으로 이미 가공된 인터넷의 글들을 수집하는 것은 공정이용으로 저작권법에 어긋나지 않습니다.
+따라서 네이버 영화 리뷰를 크롤링하여 나만의 긍부정 문장 데이터 셋을 만들어 봅시다.</p>
+
+<h2 id="2-1-네이버-영화-리뷰-크롤링">2-1. 네이버 영화 리뷰 크롤링</h2>
+
+<script src="https://gist.github.com/wjh1065/42bc1e3f1ef68958d7a3b618bf8f0dad.js"></script>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100%|█████████████████████████████████████████| 110/110 [01:38&lt;00:00,  1.12it/s]
+</code></pre></div></div>
+
+<script src="https://gist.github.com/wjh1065/92831f6d1f58cc877992fa8896cb0c08.js"></script>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>['movie', 'sentence', 'score']
+['해피 뉴 이어', '영화 개봉전부터 굉장히 기대하고 있었는데 생각보다 재미도 없고 연출이 좀 부족'10']
+['기적', '2000~2010년 영화들 이래 정말 처음으로 영화다운 영화를 봤습니다. 감동,스토리,연기 뭐하나 빠지지않는 정말 명품영화였습니다. 덕분에 살면서 처음으로 감상평이란걸 남기고 갑니
+['씽2게더', '역시  실망시키지않은 애니메이션 너무재밌고 힐링됐어요~~~^^', '10']
+['스파이더맨: 노 웨이 홈', '스파이더맨들이 모여서 좋았음 ㅋㅋ', '9']
+['워터호스', '본지 몇 년 전이지만 그 때 감동이 잊혀지지 않아 다시 봤는데 재밌네요', '10']
+
+...
+...
+
+['소리도 없이', '아니 미친건가 영화  결말은 안만들었네?', '4']
+['닥터 슬립', '그냥  생각없이  따라가면 시간 가는줄 모름 근데 맨 마지막 씬 ?그건 왜? 뭐지?', '6']
+['경관의 피', '사람들 왜이래 넷플만 보다와서 자막에 익숙해졌나?박희순 배우님 대사 충분히 알아들을 수 있겠더만 신경쓰이는 부분 조금 있더라도 평점 낮게 줄 정도로 치명적이지 않는데이게 평점이 7점대란게 안믿기네', '10']
+['스파이더맨: 노 웨이 홈', '사건 발단부터가 어이가 없긴 했지만..솔직냉정하게. 닥터 스트레인지가 더 정신연령이 어려보이는건 나만 그러는 것인가?다만.. 토비맥과이어와 앤드류가필드가 등장해줘서 너무 고마웠다.오랜만에 등장한 빌런들은 반가웠지만 똥고집부리는 주인공이 이해가 안되는건 덤.', '4']
+['피어썸', '일단 전 재밌게 봤습니다. 중간중간 아쉬운 부분이 많았지만, 그래도 킬링타임용으론 손색이 없네요 ㅋㅋㅋ 일단 귀신분이 너무 예쁘셔서 저였어도 유혹을 뿌리치기 힘들었을 것 같습니다. 근데 개연성 부분이 밥말아드셨네요;;; 일단 처음에 귀신때문에 전 밴드사람들이 그만뒀다는 내용을 인지하고 있는 상황에서, 이미 여자는 화장실에서 귀신을 봤고, 바로도 아침마다 맨발로 흙투성이가 되서 등장하는데, 그때 이미 귀신이 있다는 사실을 깨달아야 정상 아닌가요?? 그런 기이한 일들이 반복되는데도, 계속 여자 델고왔냐고 물어보는게 어이없었어요 ㅋㅋㅋ 누가봐도 기이한 상황인데 ㅋㅋㅋ 개연성 부분만 좀 다듬었다면 더 좋은 영화가 되었을 것 같네요.', '6']
+['K-19 위도우메이커', '공산주의 몰락은 자본주의 승리가 아닌 부정부패의 자멸인 듯. 최고의 핵잠수함도 적군의 어뢰가 아닌 냉각수 부품의 하자로 몰락하다..', '8']
+['경관의 피', '함축된 얘기가 많은 듯한 느낌. 속편이 궁금해짐', '10']
+['테레사 팔머의 감금', '괜찮게 끌고 갔는데 결말 부분이 시원치 않다.', '5']
+['경관의 피', '영화는 좋으나 사운드가 별로입니다', '10']
+['정무문 : 100대 1의 전설', '재미 없다 전형적인 액션 중뽕 영화', '1']
+</code></pre></div></div>
+
+<h2 id="2-2-네이버-영화-데이터-셋-제작">2-2. 네이버 영화 데이터 셋 제작</h2>
+<p><code class="language-plaintext highlighter-rouge">CSV</code> 파일로 저장된 데이터를 쉽게 접근하기 위해서는 파이썬 내에서 구조화할 필요가 있습니다.
+이를 위하여 데이터에 접근 가능한 <code class="language-plaintext highlighter-rouge">RawMovieReview</code> 클래스를 만들어 봅시다.</p>
+
+<script src="https://gist.github.com/wjh1065/3aaf5fd926ff4ea46fa76a3ddcc43f82.js"></script>
+
+<script src="https://gist.github.com/wjh1065/39b88278749855143a2ca7a2acf512bc.js"></script>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>데이터 타입 : &lt;class 'tuple'&gt;
+한줄 평 : ('위시 드래곤', '재미는 있으나, 구성은 알라딘', 6)
+데이터 한줄 평 개수 : 1014
+&lt;class 'str'&gt;
+&lt;class 'str'&gt;
+&lt;class 'int'&gt;
+</code></pre></div></div>
+
+<h2 id="2-3-네이버-영화-학습-데이터-셋-제작">2-3. 네이버 영화 학습 데이터 셋 제작</h2>
+
+<p>위에서 제작한 데이터 셋은 <code class="language-plaintext highlighter-rouge">CSV</code> 파일을 모두 조회하지만, 학습에 바로 사용되기에는 다소 불편합니다.
+따라서 이를 상속한 <code class="language-plaintext highlighter-rouge">MovieReview</code>를 만들어 봅시다.</p>
+
+<script src="https://gist.github.com/wjh1065/d3d6e41162e09ccac76d6609d4b1add9.js"></script>
+
+<script src="https://gist.github.com/wjh1065/a16ea11794c682038ea09ffa3fca250e.js"></script>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>('두 엠마의 명연을 볼수있었던 101마리 달마시안의 재해석,,조커,할리퀸과 결이 다른 디즈니판 사이키 연기등장,IP의 중요성을 인식함', True)
+('액션은 좋았지만 엔딩이 아쉬웠어요', True)
+('추억의 스파이더맨등장으로 넘 잼잇어요~', True)
+
+...
+...
+
+('조진중 최우식 박희순....배우들 연기 볼만 했음!! 근디 사운드 믹싱이 잘못 되었는디 대사가 잘 안들리네요....별 하나 마이너스', True)
+('일단 캐스팅으로 죽여주고 그 다음은 메시지의 당위성', True)
+('올해 최고영화.예상을 뒤엎는 전개유아인과 유재명의 연기도 최고', True)
+('이런 한심한 코미디영화를 돈주고 봤다는 사실에서 난 살해당해야한다', False)
+('약간 진부하지만 재미있게봤습니다.라~이~타파이팅!!!', True)
+('초반부 창고에서 빈 종이 상자 맞고 기절하는 양아치들 보고 바로 손절…격투장면도 존나 엉성 이딴 쓰레기영화에 투자한 내 10여분이 존나 아깝고 억울함', False)
+('영화가 끝난 후에도 마음은 계속 캠퍼스에 머물렀던...', True)
+('싸움씬은 다 조앗어여', False)
+('반전이나 액션이 재밌는 추천작', True)
+('정말 최악의 영화중 하나였습니다', False)
+('너무나 인간적이고 아름다운 영화였다', True)
+('배우의 팬이다, 배우의 얼굴을 큰 화면으로 감상하고 싶다, 애기부터 할머니할아버지까지 단체로 영화를 보러간다 하시는 분들만 보세요~~~~옛날 로맨스 영화로만 연애를 배운 사람이 나름대로 전연령을 대상으로 하겠다며 되지도 않는 서사 이리저리 구겨넣은 것 마냥 감동도 재미도 없이 배우 얼굴만 기억에 남는 영화가 됐음ㅠㅠㅠㅠ', False)
+('마블빠들 수듄임니다^^ 정상적인, 객관적인 시야에서 영화를 내다보세요. 일반인들은 세뇌안되어서 이런 전개 역겨워서 척추가 요동칩니다', False)
+('기대 이상의 속편', True)
+</code></pre></div></div>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="python" /><summary type="html"><![CDATA[AI 기술 자연어 처리 전문가 양성 3기 [HW 2 - Python crawling &amp; class] 과제 2. 나만의 데이터 셋 만들기.]]></summary></entry></feed>
