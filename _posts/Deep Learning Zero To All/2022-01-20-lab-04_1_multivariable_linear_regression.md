@@ -108,7 +108,7 @@ for epoch in range(nb_epochs + 1):
 
 ## Matrix Data Representation
 
-$$
+$
 \begin{pmatrix}
 x_1 & x_2 & x_3
 \end{pmatrix}
@@ -122,9 +122,9 @@ w_3 \\
 \begin{pmatrix}
 x_1w_1 + x_2w_2 + x_3w_3
 \end{pmatrix}
-$$
+$
 
-$$ H(X) = XW $$
+$ H(X) = XW $
 
 
 ```python
