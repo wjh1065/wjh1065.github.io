@@ -1,0 +1,156 @@
+I"�<h1 id="ai-기술-자연어-처리-전문가-양성-3기-2주차---linear-algebra-3">AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (3)]</h1>
+
+<h1 id="linear-algebra">Linear Algebra</h1>
+
+<h2 id="lecture-5-linear-transformation">Lecture 5: Linear transformation</h2>
+
+<h3 id="transformation">Transformation</h3>
+
+<ul>
+  <li>Domain (정의역): Set of all the possible values of <em>x</em>.</li>
+  <li>Co-domain (공역): Set of all the possible values of <em>y.</em></li>
+  <li>Image: a mapped output <em>y</em>, given <em>x.</em></li>
+  <li>Range (치역): Set of all the output values mapped by each <em>x</em> in the domain.</li>
+</ul>
+
+<p>=&gt; the output mapped by a particular <em>x</em> is <strong>uniquely determined</strong>.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149084633-49ff8772-f313-4825-8327-05beb9d66023.png" alt="스크린샷 2022-01-12 오후 4 42 16" style="zoom:85%;" /></p>
+
+<h3 id="linear-transformation">Linear Transformation</h3>
+
+<ul>
+  <li>Definition: A transformation (or mapping) <strong>T</strong> is <strong>linear</strong> if:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149084793-c38fde5e-a09f-402e-9f83-604bea3b3431.png" alt="스크린샷 2022-01-12 오후 4 43 32" style="zoom:85%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149084994-d82a6ff2-96b8-47cd-80da-be55883c4e8d.png" alt="스크린샷 2022-01-12 오후 4 44 56" style="zoom:85%;" /></p>
+
+<ul>
+  <li>standard matrix</li>
+</ul>
+
+<p>the matrix <strong>A</strong> is called the <strong>standard matrix</strong> of the linear transformation <em>T</em></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149085295-759da393-ab8c-47ee-b47b-5d362eef380a.png" alt="스크린샷 2022-01-12 오후 4 47 01" style="zoom:85%;" /></p>
+
+<h3 id="onto-and-one-to-one">ONTO and ONE-TO-ONE</h3>
+
+<ol>
+  <li>ONTO</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149085612-8925076d-6bc5-49cb-be48-994500cd2549.png" alt="스크린샷 2022-01-12 오후 4 49 20" style="zoom:85%;" /></p>
+
+<ol>
+  <li>ONE-TO-ONE</li>
+</ol>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149085686-c585e831-57ec-4d51-b332-66d1ba7a24c8.png" alt="스크린샷 2022-01-12 오후 4 49 53" style="zoom:85%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149085930-3dad2ad5-21e2-4dcf-84aa-42c1362ea826.png" alt="스크린샷 2022-01-12 오후 4 51 52" style="zoom:67%;" /></p>
+
+<p>example</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149086046-f5d0dfa1-766f-4394-b2b4-35c779c73c83.png" alt="스크린샷 2022-01-12 오후 4 52 51" style="zoom:85%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149086120-1d6464a4-5586-4c93-8b8a-2fd8d7d6cca2.png" alt="스크린샷 2022-01-12 오후 4 53 23" style="zoom:85%;" /></p>
+
+<hr />
+
+<h2 id="lecture-6-least-squares">Lecture 6: Least Squares</h2>
+
+<ul>
+  <li>The number <strong>u</strong><sup>T</sup><strong>v</strong> is called the <strong>inner product ** or **dot product</strong> of <strong>u</strong> and <strong>v</strong>, and it is written as:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149086562-f62eea94-2685-43e8-a9b0-4b8e5a740bb9.png" alt="스크린샷 2022-01-12 오후 4 56 22" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Properties of Inner Product:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149086682-9838578e-e872-4584-8b2f-7d01cebb2595.png" alt="스크린샷 2022-01-12 오후 4 57 08" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Vector Norm (벡터의 길이)</li>
+</ul>
+
+<table>
+  <tbody>
+    <tr>
+      <td>The <strong>length</strong> (or <strong>norm</strong>) of <strong>v</strong> is the non-negative scalar</td>
+      <td> </td>
+      <td><strong>v</strong></td>
+      <td> </td>
+      <td>defined as the square root:</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087030-65871ec0-a52a-4461-8b11-7b6dace23010.png" alt="스크린샷 2022-01-12 오후 4 59 35" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Unit vector (단위 벡터)</li>
+</ul>
+
+<p>A vector whose <strong>length</strong> is <em>1</em> is called a <strong>unit vector</strong>.</p>
+
+<p>Normalizing a vector: Given a nonzero vector <strong>v</strong>, if we divide it by its length, we obtain a unit vector as:</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087479-2cde0d21-23e6-424e-8ffa-b97df6cf02c3.png" alt="스크린샷 2022-01-12 오후 5 03 04" style="zoom:80%;" /></p>
+
+<p><strong>u</strong> is in the <u>same direction</u> as <strong>v</strong>, but <u>its length is 1.</u></p>
+
+<ul>
+  <li>Distance between Vectors in R<sup>n</sup></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087744-8bd46f81-3cde-4265-9820-d3902ffd798e.png" alt="스크린샷 2022-01-12 오후 5 04 54" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087774-14f364ce-8cca-454a-9908-95a25b623ab3.png" alt="스크린샷 2022-01-12 오후 5 05 07" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149087970-562477ed-8225-4165-82c4-1a0060b180ff.png" alt="스크린샷 2022-01-12 오후 5 06 24" /></p>
+
+<ul>
+  <li>Inner Product and Angle Between Vectors</li>
+</ul>
+
+<p>Inner product between <strong>u</strong> and <strong>v</strong> can be rewritten using their norms and angle:</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149088259-cef58cda-7756-41ee-8b69-37575446fdeb.png" alt="스크린샷 2022-01-12 오후 5 08 24" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Orthogonal Vectors</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149088459-02c8b58e-b4f1-4020-afc4-b63f347b7f00.png" alt="스크린샷 2022-01-12 오후 5 09 56" style="zoom:80%;" /></p>
+
+<ul>
+  <li><strong>Back to Over-Determined System</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149088711-ab8aef45-c899-4bdd-beeb-70dece19b6cd.png" alt="스크린샷 2022-01-12 오후 5 11 47" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Least Squares: Best Approximation Criterion</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149088894-d077863f-2ea1-4118-867a-240782f01dcc.png" alt="스크린샷 2022-01-12 오후 5 13 04" style="zoom:80%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149089158-49a147c1-3671-4ecc-908e-14a435adfdd7.png" alt="스크린샷 2022-01-12 오후 5 14 51" style="zoom:80%;" /></p>
+
+<ul>
+  <li>Geometric Interpretation of Least Squares.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149089603-c3aa566c-5cc0-4fff-8e84-45be4b78149e.png" alt="스크린샷 2022-01-12 오후 5 17 45" style="zoom:70%;" /></p>
+
+<ul>
+  <li>Normal Equation</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/149089942-c80f51f3-2d9f-482f-b7b3-f5813cc88b37.png" alt="스크린샷 2022-01-12 오후 5 20 05" style="zoom:80%;" /></p>
+
+:ET

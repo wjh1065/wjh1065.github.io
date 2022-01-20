@@ -1,0 +1,187 @@
+I"�?<h1 id="lab-3-minimizing-cost">Lab 3: Minimizing Cost</h1>
+
+<p>Author: Seungjae Lee (이승재)</p>
+
+<div class="alert alert-warning">
+    We use elemental PyTorch to implement linear regression here. However, in most actual applications, abstractions such as <code>nn.Module</code> or <code>nn.Linear</code> are used.
+</div>
+
+<h2 id="theoretical-overview">Theoretical Overview</h2>
+
+<p>$ H(x) = Wx $</p>
+
+\[cost(W) = \frac{1}{m} \sum^m_{i=1} \left( Wx^{(i)} - y^{(i)} \right)^2\]
+
+<ul>
+  <li>$H(x)$: 주어진 $x$ 값에 대해 예측을 어떻게 할 것인가</li>
+  <li>$cost(W)$: $H(x)$ 가 $y$ 를 얼마나 잘 예측했는가</li>
+</ul>
+
+<p>Note that it is simplified, without the bias $b$ added to $H(x)$.</p>
+
+<h2 id="imports">Imports</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">import</span> <span class="nn">torch.optim</span> <span class="k">as</span> <span class="n">optim</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># For reproducibility
+</span><span class="n">torch</span><span class="p">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;torch._C.Generator at 0x404b7a95d0&gt;
+</code></pre></div></div>
+
+<h2 id="data">Data</h2>
+
+<p>We will use fake data for this example.</p>
+
+<p>기본적으로 PyTorch는 NCHW 형태이다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x_train</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">FloatTensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">FloatTensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Data
+</span><span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Best-fit line
+</span><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.lines.Line2D at 0x40529b6710&gt;]
+</code></pre></div></div>
+
+<h2 id="cost-by-w">Cost by W</h2>
+
+\[H(x) = Wx\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">W_l</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">cost_l</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">W</span> <span class="ow">in</span> <span class="n">W_l</span><span class="p">:</span>
+    <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">W</span> <span class="o">*</span> <span class="n">x_train</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">mean</span><span class="p">((</span><span class="n">hypothesis</span> <span class="o">-</span> <span class="n">y_train</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">cost_l</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost</span><span class="p">.</span><span class="n">item</span><span class="p">())</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">W_l</span><span class="p">,</span> <span class="n">cost_l</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'$W$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Cost'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="gradient-descent-by-hand">Gradient Descent by Hand</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">W</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></div>
+
+\[cost(W) = \frac{1}{m} \sum^m_{i=1} \left( Wx^{(i)} - y^{(i)} \right)^2\]
+
+\[\nabla W = \frac{\partial cost}{\partial W} = \frac{2}{m} \sum^m_{i=1} \left( Wx^{(i)} - y^{(i)} \right)x^{(i)}\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gradient</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">W</span> <span class="o">*</span> <span class="n">x_train</span> <span class="o">-</span> <span class="n">y_train</span><span class="p">)</span> <span class="o">*</span> <span class="n">x_train</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">gradient</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor(-14.)
+</code></pre></div></div>
+
+\[W := W - \alpha \nabla W\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lr</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">W</span> <span class="o">-=</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">gradient</span>
+<span class="k">print</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor(1.4000)
+</code></pre></div></div>
+
+<h2 id="training">Training</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 데이터
+</span><span class="n">x_train</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">FloatTensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">FloatTensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="c1"># 모델 초기화
+</span><span class="n">W</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># learning rate 설정
+</span><span class="n">lr</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="n">nb_epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_epochs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    
+    <span class="c1"># H(x) 계산
+</span>    <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">*</span> <span class="n">W</span>
+    
+    <span class="c1"># cost gradient 계산
+</span>    <span class="n">cost</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">mean</span><span class="p">((</span><span class="n">hypothesis</span> <span class="o">-</span> <span class="n">y_train</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">gradient</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">sum</span><span class="p">((</span><span class="n">W</span> <span class="o">*</span> <span class="n">x_train</span> <span class="o">-</span> <span class="n">y_train</span><span class="p">)</span> <span class="o">*</span> <span class="n">x_train</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">'Epoch {:4d}/{} W: {:.3f}, Cost: {:.6f}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
+        <span class="n">epoch</span><span class="p">,</span> <span class="n">nb_epochs</span><span class="p">,</span> <span class="n">W</span><span class="p">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">cost</span><span class="p">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="p">))</span>
+
+    <span class="c1"># cost gradient로 H(x) 개선
+</span>    <span class="n">W</span> <span class="o">-=</span> <span class="n">lr</span> <span class="o">*</span> <span class="n">gradient</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch    0/10 W: 0.000, Cost: 4.666667
+Epoch    1/10 W: 1.400, Cost: 0.746666
+Epoch    2/10 W: 0.840, Cost: 0.119467
+Epoch    3/10 W: 1.064, Cost: 0.019115
+Epoch    4/10 W: 0.974, Cost: 0.003058
+Epoch    5/10 W: 1.010, Cost: 0.000489
+Epoch    6/10 W: 0.996, Cost: 0.000078
+Epoch    7/10 W: 1.002, Cost: 0.000013
+Epoch    8/10 W: 0.999, Cost: 0.000002
+Epoch    9/10 W: 1.000, Cost: 0.000000
+Epoch   10/10 W: 1.000, Cost: 0.000000
+</code></pre></div></div>
+
+<h2 id="training-with-optim">Training with <code class="language-plaintext highlighter-rouge">optim</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 데이터
+</span><span class="n">x_train</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">FloatTensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">FloatTensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="c1"># 모델 초기화
+</span><span class="n">W</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c1"># optimizer 설정
+</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">([</span><span class="n">W</span><span class="p">],</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+
+<span class="n">nb_epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_epochs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    
+    <span class="c1"># H(x) 계산
+</span>    <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">*</span> <span class="n">W</span>
+    
+    <span class="c1"># cost 계산
+</span>    <span class="n">cost</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">mean</span><span class="p">((</span><span class="n">hypothesis</span> <span class="o">-</span> <span class="n">y_train</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s">'Epoch {:4d}/{} W: {:.3f} Cost: {:.6f}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span>
+        <span class="n">epoch</span><span class="p">,</span> <span class="n">nb_epochs</span><span class="p">,</span> <span class="n">W</span><span class="p">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">cost</span><span class="p">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="p">))</span>
+
+    <span class="c1"># cost로 H(x) 개선
+</span>    <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">cost</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch    0/10 W: 0.000 Cost: 4.666667
+Epoch    1/10 W: 1.400 Cost: 0.746667
+Epoch    2/10 W: 0.840 Cost: 0.119467
+Epoch    3/10 W: 1.064 Cost: 0.019115
+Epoch    4/10 W: 0.974 Cost: 0.003058
+Epoch    5/10 W: 1.010 Cost: 0.000489
+Epoch    6/10 W: 0.996 Cost: 0.000078
+Epoch    7/10 W: 1.002 Cost: 0.000013
+Epoch    8/10 W: 0.999 Cost: 0.000002
+Epoch    9/10 W: 1.000 Cost: 0.000000
+Epoch   10/10 W: 1.000 Cost: 0.000000
+</code></pre></div></div>
+
+:ET

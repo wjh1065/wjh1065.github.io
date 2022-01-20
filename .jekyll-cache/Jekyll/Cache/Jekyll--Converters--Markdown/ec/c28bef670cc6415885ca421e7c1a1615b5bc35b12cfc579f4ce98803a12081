@@ -1,0 +1,89 @@
+I"�<h1 id="3d-이미지-패치-학습">3D 이미지 패치 학습</h1>
+
+<h2 id="1-추진배경-및-필요성">1. 추진배경 및 필요성</h2>
+
+<ul>
+  <li>본 프로젝트는 비디오 메모리가 작은 GPU에서도 큰 Shape의 3D 데이터들을 패치로 분할하여 학습할 수 있는 방식을 제안함. 3차원 영상은 영상 데이터의 크기가 매우 크기 때문에, GPU 메모리의 한계로 인하여 학습을 진행하는데 어려움을 겪게 됨. 패치 학습을 사용하게 되면, 각 이미지의 크기가 줄어들어 적은 메모리를 가진 하드웨어로도 한 번에 여러 개를 학습하는 효과가 있음. 또한 학습이 안정화되고 가속화 되는 장점을 얻을 수 있음.</li>
+</ul>
+
+<blockquote>
+  <p>데이터를 여러개로 쪼갠 패치(patch)를 학습 데이터로 사용함.
+지역적인 특성(Local feature)을 학습하는 방법이기에, 전체적인 특성(Global Feature)을 학습해야하는 데이터에는 적절치 못함.</p>
+</blockquote>
+
+<h2 id="2-연구-결과">2. 연구 결과</h2>
+
+<ul>
+  <li>패치 조각 만들기</li>
+</ul>
+
+<script src="https://gist.github.com/wjh1065/cbf98e98fadd74bb64ce15ce922fa6b2.js"></script>
+
+<ul>
+  <li>패치 조각 합치기</li>
+</ul>
+
+<script src="https://gist.github.com/wjh1065/c33e0506db4061f9866a72d5520c07b3.js"></script>
+
+<ul>
+  <li>예시: 한개의 3D 데이터 (256, 256, 256)</li>
+</ul>
+
+<p><img src="https://images.velog.io/images/wjh1065/post/b847a6aa-cdb9-4307-a17b-af7324650d9a/example.png" alt="" /></p>
+
+<script src="https://gist.github.com/wjh1065/a9a64a6d00fda8694110d7b492d51d31.js"></script>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">실행결과</span><span class="p">:</span> 
+
+<span class="mi">3</span><span class="n">D</span> <span class="n">data</span> <span class="n">shape</span> <span class="p">:</span>  <span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+
+<span class="n">patched</span> <span class="n">data</span> <span class="n">shape</span> <span class="p">:</span>  <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+
+<span class="n">reconstructed</span> <span class="n">data</span> <span class="n">shape</span> <span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>예시: 네 개의 3D 데이터 (4, 256, 256, 256)</li>
+</ul>
+
+<script src="https://gist.github.com/wjh1065/54337afb55c8bffc87142839d5c0875e.js"></script>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">실행결과</span><span class="p">:</span> 
+
+<span class="o">--------------</span> <span class="n">get_patch</span> <span class="o">--------------</span>
+
+<span class="mi">4</span> <span class="n">big</span> <span class="n">cubes</span> <span class="n">shape</span> <span class="p">:</span>  <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+
+<span class="n">patched</span> <span class="n">cube</span> <span class="n">shape</span> <span class="p">:</span>  <span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">)</span>
+
+<span class="o">--------------</span> <span class="n">reconstruct_patch</span> <span class="o">--------------</span>
+
+<span class="n">All</span> <span class="n">reconstructed</span> <span class="n">data</span> <span class="n">shape</span> <span class="p">:</span>  <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+
+<span class="o">--------------</span> <span class="n">done</span> <span class="o">--------------</span>
+</code></pre></div></div>
+
+<h2 id="3-요약-및-개선점">3. 요약 및 개선점</h2>
+
+<ul>
+  <li>3D 영상을 여러 개의 패치 데이터로 분할하여 학습하는 전략.</li>
+  <li>함수 내 size를 이용하면 패치 데이터의 크기를 설정 할 수 있고, stride를 조절하면 패치 데이터 간 overlap을 할 수 있음.</li>
+  <li>future work: <strong>Sliding window inference</strong>. 
+  모델의 평가를 진행할 때 sliding window inference를 이용한다면 데이터의 손실을 조금이나마 줄일 수 있음.</li>
+</ul>
+
+<h2 id="4-연구결과-활용">4. 연구결과 활용</h2>
+
+<ol>
+  <li>3D-ResUnet을 이용한 PET 영상의 Partial volume Effect correction. <a href="https://github.com/wjh1065/PVC-of-PET-images-using-3D-ResUnet">깃허브 링크</a>
+ [2021년 대한전자공학회 하계학술대회], [2021년 OHBM 포스터 발표]</li>
+  <li>3D-ResUnet을 이용한 자기공명영상의 뇌 회백질 영상 분할. <a href="https://github.com/wjh1065/Gray-matter-segmentation-of-MR-images-Using-3D-ResUnet">깃허브 링크</a></li>
+  <li>3D-ResUnet을 이용한 뇌 자기공명영상의 초해상도 영상복원.[IPIU2020]</li>
+</ol>
+
+<p><strong>References</strong></p>
+
+<ul>
+  <li><a href="https://github.com/karolzak/keras-unet.git">keras-unet</a></li>
+</ul>
+:ET

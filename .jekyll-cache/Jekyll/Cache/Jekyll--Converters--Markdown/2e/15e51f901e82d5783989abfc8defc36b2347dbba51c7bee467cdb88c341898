@@ -1,0 +1,286 @@
+I"�L<h1 id="ai-기술-자연어-처리-전문가-양성-3기-1주차---python-2">AI 기술 자연어 처리 전문가 양성 3기 [1주차 - Python (2)]</h1>
+<h1 id="python-programming">Python Programming</h1>
+
+<h2 id="lecture-4-data-structure">Lecture 4: Data Structure</h2>
+
+<h2 id="list">List</h2>
+
+<ul>
+  <li>배열: 일련의 데이터를 하나로 묶음. (파이썬에서 중요한 데이터 자료 중 하나)</li>
+  <li>파이썬 배열은 대괄호로 선언.  <code class="language-plaintext highlighter-rouge">[value 1, value 2, ...]</code></li>
+  <li>길이가 정해져 있지 않음.</li>
+</ul>
+
+<h3 id="list-indexing">List indexing</h3>
+
+<ul>
+  <li>seq[index] 형태로 요소 하나 접근.</li>
+  <li>0부터 숫자세기 시작.</li>
+  <li>음수 가능. (뒤에서 부터 접근)</li>
+</ul>
+
+<h3 id="list-slicing">List Slicing</h3>
+
+<ul>
+  <li>seq[start: end: step] 형태로 List 자르기.</li>
+  <li>end번째는 포함하지 않음. ex) [3:5] -&gt; 3이상 5미만으로 생각하면 쉬움.</li>
+</ul>
+
+<h3 id="list-operators">List Operators</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="c1"># 리스트 합치기.
+</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># 리스트 내 값 바꾸기.
+</span><span class="n">a</span> <span class="o">*</span> <span class="mi">2</span> <span class="c1"># 곱하기로 리스트 반복.
+</span><span class="s">'value'</span> <span class="ow">in</span> <span class="n">List</span> <span class="c1"># 리스트 안에 요소가 있는지 확인. (True or False)
+</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span> <span class="c1"># 내장 함수를 이용하여 리스트 길이 구하기.
+</span><span class="n">seq</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">'value'</span><span class="p">)</span> <span class="c1"># 맨 뒤에 요소 추가, 메소드 형태
+</span><span class="n">seq</span><span class="p">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span> <span class="c1"># 맨 뒤에 리스트 추가, seq += [5, 6]
+</span><span class="n">seq</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span> <span class="c1"># 1번째에 1.5 삽입. (index, val)
+</span>
+<span class="k">del</span> <span class="n">seq</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># 1번재 요소 삭제.
+</span><span class="n">seq</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="s">'val'</span><span class="p">)</span> <span class="c1"># 원하는 값을 삭제.
+</span></code></pre></div></div>
+
+<h2 id="reserved-words--built-in-functions--methods">Reserved words &amp; Built-in Functions &amp; Methods</h2>
+
+<h3 id="예약어">예약어</h3>
+<ul>
+  <li>일종의 문법적인 요소.</li>
+  <li>괄호를 쓰지 않음.</li>
+  <li>재정의 불가능.
+    <blockquote>
+      <p>example) <code class="language-plaintext highlighter-rouge">del</code>, <code class="language-plaintext highlighter-rouge">if ... else ...</code>, <code class="language-plaintext highlighter-rouge">assert</code></p>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="내장-함수">내장 함수</h3>
+<ul>
+  <li>기본 정의된 함수.</li>
+  <li>별개의 함수 사용.</li>
+  <li>재정의 가능.</li>
+  <li>편의성 향상.
+    <blockquote>
+      <p>example) <code class="language-plaintext highlighter-rouge">len()</code>, <code class="language-plaintext highlighter-rouge">sum()</code>, <code class="language-plaintext highlighter-rouge">range()</code></p>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="메소드">메소드</h3>
+<ul>
+  <li>객체 내에 정의된 함수.</li>
+  <li>.method()으로 접근.</li>
+  <li>Overriding.</li>
+  <li>해당 객체를 다룸
+    <blockquote>
+      <p>example) <code class="language-plaintext highlighter-rouge">.append()</code>, <code class="language-plaintext highlighter-rouge">insert()</code>,<code class="language-plaintext highlighter-rouge">.extend()</code></p>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="tuple-불변-타입-리스트immutable-list">Tuple: 불변 타입 리스트(Immutable List)</h2>
+<ul>
+  <li>List는 선언 시 <code class="language-plaintext highlighter-rouge">[ ]</code>을 사용하고, Tuple은 <code class="language-plaintext highlighter-rouge">( )</code>을 사용, 문맥에 따라 괄호 생략 가능.</li>
+  <li>List의 연산, 인덱싱, 슬라이싱 등을 동일하게 사용.</li>
+  <li>일반적으로 함수에서 2개 이상 요소를 반환할 때 사용.</li>
+  <li>Tuple 안의 요소는 가변 타입일 수 있음.</li>
+</ul>
+
+<h3 id="packing--unpacking">Packing &amp; Unpacking</h3>
+<ul>
+  <li>패킹: 여러 데이터를 묶기.</li>
+  <li>언패킹: 묶인 데이터를 풀기.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span><span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">_</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">t</span>
+<span class="o">&gt;&gt;&gt;</span><span class="n">c</span>
+<span class="mi">3</span>
+
+<span class="o">&gt;&gt;&gt;</span><span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">t</span> <span class="c1"># *(Asterisk)로 남는 요소를 리스트로 한번에 남기기 가능.
+</span><span class="o">&gt;&gt;&gt;</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="dictionary">Dictionary</h3>
+
+<ul>
+  <li>일종의 매핑을 위한 데이터 구조.</li>
+  <li>Key -&gt; Value 형태로 구현.</li>
+  <li>불변(Immutable) 타입으로만 이루어져 있으면 Key로 사용 가능.
+example) <code class="language-plaintext highlighter-rouge">{Key1 : Value1, Key2 : Value2, ...}</code> 형태로 선언.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s">'한국어'</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'영어'</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">'중국어'</span> <span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">.</span><span class="n">items</span><span class="p">()</span>
+<span class="n">dict_items</span><span class="p">([(</span><span class="s">'한국어'</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="s">'영어'</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="s">'중국어'</span><span class="p">,</span><span class="mi">2</span><span class="p">)])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="n">dict_keys</span><span class="p">([</span><span class="s">'한국어'</span><span class="p">,</span><span class="s">'영어'</span><span class="p">,</span><span class="s">'중국어'</span><span class="p">])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span><span class="p">.</span><span class="n">values</span><span class="p">()</span>
+<span class="n">dict_values</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Dictionary는 hash로 구현: indexing 속도가 O(1).</p>
+</blockquote>
+
+<h3 id="set">Set</h3>
+<ul>
+  <li>Dictionary의 <code class="language-plaintext highlighter-rouge">Key</code>만 모여 있는 형태 -&gt; 집합형.</li>
+  <li>수학적 집합 연산자가 존재. (교집합, 합집합, 차집합, 배타적 합집합)</li>
+</ul>
+
+<hr />
+
+<h1 id="lecture-5-condition--loop">Lecture 5: Condition &amp; Loop</h1>
+<h2 id="1-conditional-statements">1. Conditional Statements</h2>
+<ul>
+  <li>특정 <strong>조건</strong>이 만족될 경우 실행할 문항을 설정.</li>
+  <li><code class="language-plaintext highlighter-rouge">if [조건]</code> - 조건을 검사하여 code block을 실행.</li>
+  <li><code class="language-plaintext highlighter-rouge">elif [조건]</code> - 이전 조건과 맞지 않을 경우 조건을 다시 검사 및 실행.</li>
+  <li><code class="language-plaintext highlighter-rouge">else</code> - 이전 모든 조건이 맞지 않을 경우 실행.</li>
+  <li>비교 연산자와 논리 연산자를 사용할 수 있음.
+    <h3 id="11-ternary-operators-삼항-연산자">1.1 Ternary operators: 삼항 연산자</h3>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">[Value 1] if [Condition] else [Value2]</code></li>
+  <li>Condition이 참이면 Value1을 //  거짓이면 Value2를 반환.</li>
+  <li><strong>연산자로 사용.</strong></li>
+</ul>
+
+<h2 id="while-statement">While Statement</h2>
+<ul>
+  <li>반복해서 구문을 수행.</li>
+  <li>조건을 만족하는 동안 출력.
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># 초기 값
+</span><span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span> <span class="c1"># i가 10보다 작은 동안
+</span>  <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># i 출력
+</span>  <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># i에 1씩 더함.
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="for-statement">For Statement</h2>
+<ul>
+  <li>Python의 For문은 주어진 객체를 순환하는 개념.</li>
+  <li><code class="language-plaintext highlighter-rouge">for [Element] in [Iterable]</code>의 형태로 사용.</li>
+  <li><code class="language-plaintext highlighter-rouge">Break문</code>으로 <strong>가장 바깥의 반복문</strong>을 나가는 것이 가능.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>  
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">17</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  
+        <span class="k">break</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># 결과 None
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Continue문</code>으로 <strong>가장 바깥의 반복문의 처음</strong>으로 되돌아가기 가능.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>  
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">17</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  
+        <span class="k">continue</span>
+  <span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1"># 결과 1,2,3,4,,,16,18,19 (17의 배수 스킵).
+</span></code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Else문</code>으로 반복을 완전히 돌았을 경우 실행되는 block 지정가능.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'Loop complete'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Break문</code>으로 중간에 나오게 되면 <code class="language-plaintext highlighter-rouge">Else문</code>이 실행되지 않음.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+		<span class="k">break</span>
+<span class="k">else</span><span class="p">:</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'Loop complete without break'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+<h1 id="lecture-6-function">Lecture 6: Function</h1>
+
+<h2 id="function">Function</h2>
+<ul>
+  <li>함수: 명령을 수행하는 일종의 기능 단위.
+    <ol>
+      <li>코드를 논리적으로 분리, 캡슐화 용도.</li>
+      <li>필요한 경우 반복적으로 호출.</li>
+      <li>Return이 없는 경우 None 반환.</li>
+    </ol>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="err">[</span><span class="nf">function</span><span class="p">]([</span><span class="n">parameter1</span><span class="p">],[</span><span class="n">parameter2</span><span class="p">])</span>
+	<span class="n">function</span><span class="o">-</span><span class="n">명령</span> <span class="mi">1</span>
+	<span class="n">function</span><span class="o">-</span><span class="n">명령</span> <span class="mi">2</span>
+	<span class="k">return</span> <span class="p">[</span><span class="n">value</span><span class="p">]</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="variable-scope">Variable Scope</h3>
+<ul>
+  <li>파이썬에서는 <strong>상위</strong>에 정의된 변수는 언제나 <u>참조</u> 가능.</li>
+  <li>
+    <p>함수 내에 정의된 변수 이름은 <u>그 함수 내</u>에서만 유효.</p>
+
+    <p>Global: 최상위에 선언, 다른 파일에서 접근 가능.</p>
+
+    <p>Local: 함수 안에 선언, 상위 함수에서는 접근 불가.</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>스파게티 코드의 주원인이기에 <u>사용하지 않는 것을 권장함.</u></p>
+</blockquote>
+
+<h3 id="decorator-꾸밈자">Decorator: 꾸밈자</h3>
+<ul>
+  <li>함수 하나를 인자로 받아 같은 형태의 함수를 반환하는 함수.</li>
+  <li><strong>@</strong>을 사용하여 함수를 꾸미는데 사용 가능.</li>
+  <li>Class를 사용할 시 Decorator에 인자 추가 가능.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">print_decorator</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>  
+    <span class="k">def</span> <span class="nf">print_closure</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>  
+        <span class="k">print</span><span class="p">(</span><span class="s">"Input : "</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span>  
+        <span class="n">out</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>  
+        <span class="k">print</span><span class="p">(</span><span class="s">"Output : "</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>  
+    <span class="k">return</span> <span class="n">print_closure</span>  
+  
+<span class="o">@</span><span class="n">print_decorator</span>  
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">var</span><span class="p">):</span>  
+    <span class="k">return</span> <span class="n">var</span> <span class="o">+</span> <span class="mi">2</span>  
+  
+<span class="n">add</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="recursive-function">Recursive Function</h3>
+<ul>
+  <li>자기 자신을 호출하여 반복적으로 수행.</li>
+  <li>수학의 점화식과 동일.</li>
+</ul>
+
+<h3 id="type-hints">Type hints</h3>
+<ul>
+  <li>파이썬은 동적 타이핑 -&gt; 다소 interface를 알기 어려움.</li>
+  <li>함수에 타입 힌트 제공이 가능.</li>
+  <li><code class="language-plaintext highlighter-rouge">[function]([var]: [type], ...)</code>의 형태</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">multply_text</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+	<span class="k">return</span> <span class="n">text</span> <span class="o">*</span> <span class="n">n</span>
+</code></pre></div></div>
+:ET
