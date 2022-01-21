@@ -1,0 +1,178 @@
+I"I<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torchvision.datasets</span> <span class="k">as</span> <span class="n">dsets</span>
+<span class="kn">import</span> <span class="nn">torchvision.transforms</span> <span class="k">as</span> <span class="n">transforms</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"torch version : </span><span class="si">{</span><span class="n">torch</span><span class="p">.</span><span class="n">__version__</span><span class="si">}</span><span class="s"> "</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>torch version : 1.10.0 
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">device</span> <span class="o">=</span> <span class="s">'cuda'</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s">'cpu'</span>
+
+<span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">777</span><span class="p">)</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">777</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">device</span> <span class="o">==</span> <span class="s">'cuda'</span><span class="p">:</span>
+    <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="mi">777</span><span class="p">)</span>
+    
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Used device : </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Used device : cpu
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">training_epochs</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">mnist_train</span> <span class="o">=</span> <span class="n">dsets</span><span class="p">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'MNIST_data/'</span><span class="p">,</span>
+                         <span class="n">train</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+                         <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                         <span class="n">download</span>  <span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">mnist_test</span> <span class="o">=</span> <span class="n">dsets</span><span class="p">.</span><span class="n">MNIST</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="s">'MNIST_data/'</span><span class="p">,</span>
+                         <span class="n">train</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span>
+                         <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+                         <span class="n">download</span>  <span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">data_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">mnist_train</span><span class="p">,</span>
+                                         <span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span>
+                                         <span class="n">shuffle</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span>
+                                         <span class="n">drop_last</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz to MNIST_data/MNIST/raw/train-images-idx3-ubyte.gz
+
+
+
+  0%|          | 0/9912422 [00:00&lt;?, ?it/s]
+
+
+Extracting MNIST_data/MNIST/raw/train-images-idx3-ubyte.gz to MNIST_data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz to MNIST_data/MNIST/raw/train-labels-idx1-ubyte.gz
+
+
+
+  0%|          | 0/28881 [00:00&lt;?, ?it/s]
+
+
+Extracting MNIST_data/MNIST/raw/train-labels-idx1-ubyte.gz to MNIST_data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz to MNIST_data/MNIST/raw/t10k-images-idx3-ubyte.gz
+
+
+
+  0%|          | 0/1648877 [00:00&lt;?, ?it/s]
+
+
+Extracting MNIST_data/MNIST/raw/t10k-images-idx3-ubyte.gz to MNIST_data/MNIST/raw
+
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
+Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz to MNIST_data/MNIST/raw/t10k-labels-idx1-ubyte.gz
+
+
+
+  0%|          | 0/4542 [00:00&lt;?, ?it/s]
+
+
+Extracting MNIST_data/MNIST/raw/t10k-labels-idx1-ubyte.gz to MNIST_data/MNIST/raw
+
+
+
+/opt/homebrew/Caskroom/miniforge/base/envs/DL-pytorch/lib/python3.8/site-packages/torchvision/datasets/mnist.py:498: UserWarning: The given NumPy array is not writeable, and PyTorch does not support non-writeable tensors. This means you can write to the underlying (supposedly non-writeable) NumPy array using the tensor. You may want to copy the array to protect its data or make it writeable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at  /Users/runner/miniforge3/conda-bld/pytorch-recipe_1635217280611/work/torch/csrc/utils/tensor_numpy.cpp:189.)
+  return torch.from_numpy(parsed.astype(m[2], copy=False)).view(*s)
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">784</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="bp">True</span><span class="p">).</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">CrossEntropyLoss</span><span class="p">().</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="p">.</span><span class="n">parameters</span><span class="p">(),</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">training_epochs</span><span class="p">):</span>
+    <span class="n">avg_cost</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">total_batch</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_loader</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="ow">in</span> <span class="n">data_loader</span><span class="p">:</span>
+        <span class="c1"># print(X.shape) =&gt; torch.Size([100, 1, 28, 28])
+</span>        <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">).</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="c1"># print(X.shape) =&gt; torch.Size([100, 784])
+</span>        <span class="n">Y</span> <span class="o">=</span> <span class="n">Y</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">optimizer</span><span class="p">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">hypothesis</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">cost</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">hypothesis</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+        <span class="n">cost</span><span class="p">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">()</span>
+        
+        <span class="n">avg_cost</span> <span class="o">+=</span> <span class="n">cost</span> <span class="o">/</span> <span class="n">total_batch</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="s">'Epoch : '</span><span class="p">,</span> <span class="s">'%04d'</span> <span class="o">%</span> <span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="s">'cost = '</span><span class="p">,</span> <span class="s">'{:.9f}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">avg_cost</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'Learning finished'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch :  0001 cost =  0.535150588
+Epoch :  0002 cost =  0.359577715
+Epoch :  0003 cost =  0.331264287
+Epoch :  0004 cost =  0.316404670
+Epoch :  0005 cost =  0.307107031
+Epoch :  0006 cost =  0.300456554
+Epoch :  0007 cost =  0.294933408
+Epoch :  0008 cost =  0.290956169
+Epoch :  0009 cost =  0.287074089
+Epoch :  0010 cost =  0.284515589
+Epoch :  0011 cost =  0.281914055
+Epoch :  0012 cost =  0.279526860
+Epoch :  0013 cost =  0.277636588
+Epoch :  0014 cost =  0.275874764
+Epoch :  0015 cost =  0.274422735
+Epoch :  0016 cost =  0.272883624
+Epoch :  0017 cost =  0.271629602
+Epoch :  0018 cost =  0.270609766
+Epoch :  0019 cost =  0.269295037
+Epoch :  0020 cost =  0.268277347
+Epoch :  0021 cost =  0.267255515
+Epoch :  0022 cost =  0.266613424
+Epoch :  0023 cost =  0.265661448
+Epoch :  0024 cost =  0.264922351
+Epoch :  0025 cost =  0.263888687
+Epoch :  0026 cost =  0.263269752
+Epoch :  0027 cost =  0.262586147
+Epoch :  0028 cost =  0.261751622
+Epoch :  0029 cost =  0.261135817
+Epoch :  0030 cost =  0.260536879
+Learning finished
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">).</span><span class="nb">float</span><span class="p">().</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">Y_test</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">targets</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">correct_prediction</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="n">Y_test</span>
+    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">correct_prediction</span><span class="p">.</span><span class="nb">float</span><span class="p">().</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Accuracy : </span><span class="si">{</span><span class="n">accuracy</span><span class="p">.</span><span class="n">item</span><span class="p">()</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    
+    <span class="n">r</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mnist_test</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">X_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">].</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="o">*</span><span class="mi">28</span><span class="p">).</span><span class="nb">float</span><span class="p">().</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">Y_single_data</span> <span class="o">=</span> <span class="n">mnist_test</span><span class="p">.</span><span class="n">targets</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">].</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    
+    <span class="k">print</span><span class="p">(</span><span class="s">'Label : '</span><span class="p">,</span> <span class="n">Y_single_data</span><span class="p">.</span><span class="n">item</span><span class="p">())</span>
+    <span class="n">single_prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_single_data</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Prediction : '</span><span class="p">,</span> <span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">single_prediction</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="n">item</span><span class="p">())</span>
+    
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mnist_test</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">].</span><span class="n">view</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">28</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'Greys'</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">'nearest'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Accuracy : 0.8705000281333923
+Label :  2
+Prediction :  2
+</code></pre></div></div>
+
+<p><img src="mnist_files/mnist_5_1.png" alt="png" /></p>
+
+:ET

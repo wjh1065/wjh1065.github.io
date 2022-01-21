@@ -107,45 +107,15 @@ var store = [{
         "url": "/goormnlp/Linear_Algebra-(6)/",
         "teaser": null
       },{
-        "title": "Deep Learning Zero To All - Pytorch (1일 차) - 1",
-        "excerpt":"Lab 1: Tensor Manipulation First Author: Seungjae Ryan Lee (seungjaeryanlee at gmail dot com) Second Author: Ki Hyun Kim (nlp.with.deep.learning at gmail dot com) NOTE: This corresponds to Lab 8 of Deep Learning Zero to All Season 1 for TensorFlow. Imports Run pip install -r requirements.txt in terminal to install...","categories": ["Deep Learning Zero To All"],
-        "tags": ["study","python","pytorch"],
-        "url": "/deep%20learning%20zero%20to%20all/lab-01_tensor_manipulation/",
-        "teaser": null
-      },{
-        "title": "Deep Learning Zero To All - Pytorch (1일 차) - 2",
-        "excerpt":"Lab 2: Linear Regression Author: Seungjae Lee (이승재) We use elemental PyTorch to implement linear regression here. However, in most actual applications, abstractions such as nn.Module or nn.Linear are used. Theoretical Overview $ H(x) = Wx + b $ $ cost(W, b) = \\frac{1}{m} \\sum^m_{i=1} \\left( H(x^{(i)}) - y^{(i)} \\right)^2...","categories": ["Deep Learning Zero To All"],
-        "tags": ["study","python","pytorch"],
-        "url": "/deep%20learning%20zero%20to%20all/lab-02_linear_regression/",
-        "teaser": null
-      },{
-        "title": "Deep Learning Zero To All - Pytorch (1일 차) - 3",
-        "excerpt":"Lab 3: Minimizing Cost Author: Seungjae Lee (이승재) We use elemental PyTorch to implement linear regression here. However, in most actual applications, abstractions such as nn.Module or nn.Linear are used. Theoretical Overview $H(x) = Wx$ $ cost(W) = \\frac{1}{m} \\sum^m_{i=1} \\left( Wx^{(i)} - y^{(i)} \\right)^2 $ $H(x)$: 주어진 $x$ 값에...","categories": ["Deep Learning Zero To All"],
-        "tags": ["study","python","pytorch"],
-        "url": "/deep%20learning%20zero%20to%20all/lab-03_minimizing_cost/",
-        "teaser": null
-      },{
-        "title": "Deep Learning Zero To All - Pytorch (1일 차) - 4",
-        "excerpt":"Lab 4-1: Multivariate Linear Regression Author: Seungjae Lee (이승재) We use elemental PyTorch to implement linear regression here. However, in most actual applications, abstractions such as nn.Module or nn.Linear are used. Theoretical Overview $ H(x_1, x_2, x_3) = x_1w_1 + x_2w_2 + x_3w_3 + b $ $ cost(W, b) =...","categories": ["Deep Learning Zero To All"],
-        "tags": ["study","python","pytorch"],
-        "url": "/deep%20learning%20zero%20to%20all/lab-04_1_multivariable_linear_regression/",
-        "teaser": null
-      },{
-        "title": "Deep Learning Zero To All - Pytorch (1일 차) - 5",
-        "excerpt":"Lab 4-2: Load Data Author: Seungjae Lee (이승재) We use elemental PyTorch to implement linear regression here. However, in most actual applications, abstractions such as nn.Module or nn.Linear are used. Slicing 1D Array nums = [0, 1, 2, 3, 4] print(nums) [0, 1, 2, 3, 4] index 2에서 4 전까지...","categories": ["Deep Learning Zero To All"],
-        "tags": ["study","python","pytorch"],
-        "url": "/deep%20learning%20zero%20to%20all/lab-04_2_load_data/",
-        "teaser": null
-      },{
-        "title": "Deep Learning Zero To All - Pytorch (1일 차) - 6",
-        "excerpt":"Lab 5: Logistic Classification Author: Seungjae Lee (이승재) We use elemental PyTorch to implement linear regression here. However, in most actual applications, abstractions such as nn.Module or nn.Linear are used. You can see those implementations near the end of this notebook. Reminder: Logistic Regression Hypothesis $ H(X) = \\frac{1}{1+e^{-W^T X}}...","categories": ["Deep Learning Zero To All"],
-        "tags": ["study","python","pytorch"],
-        "url": "/deep%20learning%20zero%20to%20all/lab-05_logistic_classification/",
-        "teaser": null
-      },{
         "title": "goormNLP [3주차 - Linear Algebra (7)]",
         "excerpt":"AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (7)] Linear Algebra Lecture 9: Singular Value Decomposition 2022-01-20 지금까지 배웠던 선형대수 개념을 이용하여 EVD(고유값 분해)를 진행하였다. EVD는 정방행렬에 대해서만 적용이 가능하고 이번에 배운 SVD(특이값 분해)는 직사각행렬에 폭넓게 사용이 가능하다. SVD는 저번 포스팅에 올린 Spectral decomposition을 이용하면 직사각행렬을 고유값을...","categories": ["goormNLP"],
         "tags": ["study","math"],
         "url": "/goormnlp/Linear_Algebra-(7)/",
+        "teaser": null
+      },{
+        "title": "mnist",
+        "excerpt":"import torch import torchvision.datasets as dsets import torchvision.transforms as transforms import matplotlib.pyplot as plt import random print(f\"torch version : {torch.__version__} \") torch version : 1.10.0 device = 'cuda' if torch.cuda.is_available() else 'cpu' random.seed(777) torch.manual_seed(777) if device == 'cuda': torch.cuda.manual_seed_all(777) print(f\"Used device : {device}\") Used device : cpu training_epochs = 30...","categories": ["Pytorch zero to all"],
+        "tags": ["pytorch"],
+        "url": "/pytorch%20zero%20to%20all/mnist/",
         "teaser": null
       }]
