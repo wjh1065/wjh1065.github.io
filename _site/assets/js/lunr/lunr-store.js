@@ -113,9 +113,9 @@ var store = [{
         "url": "/goormnlp/Linear_Algebra-(7)/",
         "teaser": null
       },{
-        "title": "mnist",
-        "excerpt":"import torch import torchvision.datasets as dsets import torchvision.transforms as transforms import matplotlib.pyplot as plt import random print(f\"torch version : {torch.__version__} \") torch version : 1.10.0 device = 'cuda' if torch.cuda.is_available() else 'cpu' random.seed(777) torch.manual_seed(777) if device == 'cuda': torch.cuda.manual_seed_all(777) print(f\"Used device : {device}\") Used device : cpu training_epochs = 30...","categories": ["Pytorch zero to all"],
-        "tags": ["pytorch"],
-        "url": "/pytorch%20zero%20to%20all/mnist/",
+        "title": "goormNLP [3주차 - Linear Algebra Review (2)]",
+        "excerpt":"AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra Review (2)]   Linear Algebra Review (2)                                                                                                        ","categories": ["goormNLP"],
+        "tags": ["study","math"],
+        "url": "/goormnlp/Linear_Algebra-Review/",
         "teaser": null
       }]
