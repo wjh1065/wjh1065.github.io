@@ -1,4 +1,3 @@
----
 layout: archive
 permalink: /about/
 title: "About"
@@ -6,7 +5,6 @@ author_profile: true
 toc: true
 toc_sticky: true
 toc_label: "MYSELF"
----
 
 <center>이창석</center>
 
@@ -105,8 +103,6 @@ toc_label: "MYSELF"
     뇌 자기공명영상의 저해상도 영상을 고해상도로 복원하는 딥러닝 알고리즘 구현
 
 ---
-
-
 
 ## Skills and Certification
 - Language : Python, Matlab, Shell script
