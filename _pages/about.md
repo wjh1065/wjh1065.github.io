@@ -1,4 +1,5 @@
 ---
+
 layout: archive
 permalink: /about/
 title: "About"
@@ -67,7 +68,7 @@ toc_label: "MYSELF"
 
     고려대학교 실전문제연구단 프로젝트: 최우수상
 
-    DeepSORT 알고리즘과 Bird Eye View 기술을 결합하여 사람 간 중첩되어 소멸되는 Human ID를 유지해주는 프로젝트 수행 - [세부 내용](https://github.com/wjh1065/DeepSORT-with-Bird-Eye-View)
+    DeepSORT 알고리즘과 Bird Eye View 기술을 결합하여 사람 간 중첩되어 소멸되는 Human ID를 유지해주는 프로젝트 수행 - [세부 내용](https://wjh1065.github.io/project/DeepSORT-with-BEV/)
 
 ---
 
@@ -76,7 +77,7 @@ toc_label: "MYSELF"
 
     2020년 국내 대한전자공학회 학술대회 발표 - [자료](https://docs.google.com/document/d/1yTypzubBaEpFEyvPjvWv3GUEmFFgHkAY/edit?usp=sharing&ouid=100968520414242450367&rtpof=true&sd=true)
 
-    정상인과 자폐아 사이의 비대칭성을 확인하고 비대칭성에 영향을 끼치는 이유를 분석
+    그래프 이론을 이용하여 정상인과 자폐아 사이의 비대칭성을 확인하고 비대칭성에 영향을 끼치는 이유를 분석
 
 ---
 
@@ -86,14 +87,14 @@ toc_label: "MYSELF"
     2021년 국내 대한전자공학회 학술대회 발표 - [자료](https://drive.google.com/file/d/1DUi_a2rvAgi21ji3pNr5H6ZQ9cSARquX/view?usp=sharing)  
     2021년 국제 Organization for Human Brain Mapping (OHBM) 포스터 세션 발표 - [자료](https://drive.google.com/file/d/1WxfQTBUNqNVi1C0ccTvI-YtAq4s6_uJc/view?usp=sharing)
 
-    오랜 시간이 걸리는 기존의 PVC 과정을 딥러닝 알고리즘으로 대체하여 정확도를 유지하면서도 처리 시간을 단축하는 딥러닝 알고리즘 구현 - [세부 내용](https://github.com/wjh1065/PVC-of-PET-images-using-3D-ResUnet)
+    오랜 시간이 걸리는 기존의 PVC 과정을 딥러닝 알고리즘으로 대체하여 정확도를 유지하면서도 처리 시간을 단축하는 딥러닝 알고리즘 구현 - [세부 내용](https://wjh1065.github.io/project/PVC-of-PET-images-using-3D-ResUnet/)
 
 ---
 
 - **Grey matter Segmentation of MR images using 3D ResUnet**  
     \- 개인 수행
 
-    시간이 다소 소요되는 기존 영상분할 작업을 딥러닝 알고리즘으로 구현 - [세부 내용](https://github.com/wjh1065/Gray-matter-segmentation-of-MR-images-Using-3D-ResUnet)
+    시간이 다소 소요되는 기존 영상분할 작업을 딥러닝 알고리즘으로 구현 - [세부 내용](https://wjh1065.github.io/project/GM-segmentation-of-MR-images-using-3D-ResUnet/)
 
 ---
 
