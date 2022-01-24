@@ -5,6 +5,7 @@ categories:
 tags:
  - study
  - regression
+use_math: true
 ---
 
 Auspice by Goorm, Manage by DAVIAN @ KAIST
