@@ -1,10 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-24T12:56:08+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">while True()</title><subtitle>메모장!.</subtitle><author><name>Lee ChangSeok</name></author><entry><title type="html">goormNLP [4주차 - Linear Regression (1)]</title><link href="http://localhost:4000/goormnlp/Linear_Regression-(1)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Linear Regression (1)]" /><published>2022-01-24T00:00:00+09:00</published><updated>2022-01-24T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Regression%20(1)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Regression-(1)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-24T17:47:02+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">while True()</title><subtitle>메모장!.</subtitle><author><name>Lee ChangSeok</name></author><entry><title type="html">goormNLP [4주차 - Linear Regression (1)]</title><link href="http://localhost:4000/goormnlp/Linear_Regression-(1)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Linear Regression (1)]" /><published>2022-01-24T00:00:00+09:00</published><updated>2022-01-24T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Regression%20(1)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Regression-(1)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
 
 <h2 id="lecture-linear-regression-with-one-variable">Lecture: Linear regression with one variable</h2>
 
 <p>2022-01-24</p>
 
-<p>지금까지 배웠던 선형대수 개념을 이용하여 EVD(고유값 분해)를 진행하였다.</p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="regression" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [3주차 - Linear Algebra Review (2)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-Review/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra Review (2)]" /><published>2022-01-21T00:00:00+09:00</published><updated>2022-01-21T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20Review</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-Review/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+<p>Linear regression을 <u>one variable일 때의 Cost function, Gradient descent</u>에 대한 이론 및 실습을 진행하였다.</p>
+
+<p>Linear regression는 Supervised Learning(지도 학습)이라는 큰 범위 내에 포함되어 있고, 한개 이상의 독립 변수 $X$와 종속 변수 $Y$의 선형 관계를 모델링하는 방법론이라 한다.</p>
+
+<p>Regression Problem은 학부 및 대학원에서도 많이 다뤄본 주제이기에 다소 어렵지 않은 내용이였다.</p>
+
+<p>Gradient descent는 머신/딥러닝 알고리즘에서 중요한 이론 중 하나이며 면접에서도 자주 물어보는 내용 중 하나이다.</p>
+
+<h2 id="model-representation">Model representation</h2>
+
+<h3 id="linear-regression">Linear regression</h3>
+
+<p>선형 관계를 모델링한다는 것은 1차로 이루어진 직선을 구하는 것임.</p>
+
+<p>우리의 데이터를 가장 잘 설명하는 최적의 직선을 찾아냄으로써 독립 변수와 종속 변수 사이의 관계를 도출해 내는 과정임.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150726237-b44ba52c-0abe-453b-8bbb-f76bf4231181.png" alt="스크린샷 2022-01-24 오후 2 19 18" /></p>
+
+<h3 id="cost-function">Cost function</h3>
+
+<p>우리의 데이터를 가장 잘 설명하는 직선은 우리가 직선을 통해 <u>예측한 값이 실제 데이터의 값과 가장 비슷해야 함</u>. 우리의 모델이 예측한 값은 위에서 알 수 있듯 $f(x_i)$임. 그리고 실제 데이터는 $y$ 입니다. 실제 데이터(위 그림에서 빨간 점) 과 직선 사이의 차이를 줄이는 것이 우리의 목적이며 그것을 바탕으로 cost function을 아래와 같이 정의함.</p>
+
+<p><strong>cost function =</strong> $\frac{1}{N}\sum_{i=1}^n (y_i - f(x_i))^2$</p>
+
+<p>EX)</p>
+
+<p>$f(w) = w^2 + 3w -5$</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150726811-83cb008d-9d2c-4259-bd8f-745344312b5c.png" alt="스크린샷 2022-01-24 오후 2 25 56" /></p>
+
+<p>f_prime = $2w+3$ ==&gt; $w$ = $-3/2$</p>
+
+<h3 id="gradient-descent">Gradient Descent</h3>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150726913-15732821-cd02-4773-9cd8-7daba1903c20.png" alt="스크린샷 2022-01-24 오후 2 27 13" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fpnum</span> <span class="o">=</span> <span class="n">sympy</span><span class="p">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">fprime</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">fpnum</span><span class="p">)</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="mf">10.0</span>   <span class="c1"># starting guess for the min
+</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">fpnum</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">*</span><span class="mf">0.01</span> <span class="c1"># with 0.01 the step size
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">1.4999999806458753</span>
+</code></pre></div></div>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="regression" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">Pytorch 논문 구현 [UNet (1)]</title><link href="http://localhost:4000/pytorch/UNet-(1)/" rel="alternate" type="text/html" title="Pytorch 논문 구현 [UNet (1)]" /><published>2022-01-24T00:00:00+09:00</published><updated>2022-01-24T00:00:00+09:00</updated><id>http://localhost:4000/pytorch/UNet%20(1)</id><content type="html" xml:base="http://localhost:4000/pytorch/UNet-(1)/"><![CDATA[<p>Pytorch Zero to All</p>
+
+<h2 id="unet-1">UNet (1)</h2>
+
+<p>2022-01-24</p>
+
+<p>UNet 모델은 학부생때 딥러닝 주제를 정하고 케라스로 처음으로 구현해본 모델이다. 구현을 한 경험이 있고 논문 또한 정독을 많이 했기에 파이토치로 구현했을때 어려운 점은 없었다. <del>(class 모듈화 공부를 더 해야할 듯..)</del></p>
+
+<p>사용한 데이터: <strong>ISBI 2012 EM segmentation Challenge</strong></p>
+
+<hr />
+
+<script src="https://gist.github.com/wjh1065/03257ee47f96f35175cbb0856747c467.js"></script>
+
+<script src="https://gist.github.com/wjh1065/4141606ea35e1d3d6a64017712d54c65.js"></script>
+
+<script src="https://gist.github.com/wjh1065/eb2b26bfdf28ac0faacca9356a3e1431.js"></script>]]></content><author><name>Lee ChangSeok</name></author><category term="Pytorch" /><category term="study" /><category term="python" /><summary type="html"><![CDATA[Pytorch Zero to All]]></summary></entry><entry><title type="html">Pytorch 논문 구현 [MNIST]</title><link href="http://localhost:4000/pytorch/MNIST/" rel="alternate" type="text/html" title="Pytorch 논문 구현 [MNIST]" /><published>2022-01-23T00:00:00+09:00</published><updated>2022-01-23T00:00:00+09:00</updated><id>http://localhost:4000/pytorch/MNIST</id><content type="html" xml:base="http://localhost:4000/pytorch/MNIST/"><![CDATA[<p>Pytorch Zero to All</p>
+
+<h2 id="mnist">MNIST</h2>
+
+<p>2022-01-23</p>
+
+<p>케라스는 파이토치, 텐서플로우에 비해 High Level로써 입문자에게 처음 딥러닝 실습에 적합한 언어라 생각한다. 연구실 생활때, 빠른 결과물을 내야했고.. 파이토치, 텐서플로우를 처음부터 배울 시간이 없었기에 케라스를 이용하여 연구에 대한 결과를 만들어 학회에 발표를 한 경험이 있다.</p>
+
+<p>하지만 인공지능 계열로 취업을 준비했을때 많은 회사들이 Tensorflow보다는 Pytorch 스킬을 요구하였고 나 또한 텐서플로우 기반인 케라스를 다뤄본 적이 있어서 이번 기회에 Pytorch로 전향 할 생각이다.</p>
+
+<p>Pytorch는  상대적으로 Low Level이여서 CUDA 가속화를 할 수 있고 내가 원하는 (정적) 코드로 수정 할 수 있다.</p>
+
+<hr />
+
+<script src="https://gist.github.com/wjh1065/d9e0539abb3a4138a94f487819e6ba82.js"></script>
+
+<script src="https://gist.github.com/wjh1065/57aee1d72476b6e984033027647a9f19.js"></script>
+
+<script src="https://gist.github.com/wjh1065/c60e567eb0d23ed51fe7483cf8340bee.js"></script>]]></content><author><name>Lee ChangSeok</name></author><category term="Pytorch" /><category term="study" /><category term="python" /><summary type="html"><![CDATA[Pytorch Zero to All]]></summary></entry><entry><title type="html">goormNLP [3주차 - Linear Algebra Review (2)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-Review/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra Review (2)]" /><published>2022-01-21T00:00:00+09:00</published><updated>2022-01-21T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20Review</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-Review/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
 
 <h1 id="linear-algebra-review-2">Linear Algebra Review (2)</h1>
 
@@ -524,349 +604,4 @@
   <li>Normal Equation</li>
 </ul>
 
-<p><img src="https://user-images.githubusercontent.com/67947808/149089942-c80f51f3-2d9f-482f-b7b3-f5813cc88b37.png" alt="스크린샷 2022-01-12 오후 5 20 05" style="zoom:80%;" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [2주차 - Linear Algebra (2)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(2)/" rel="alternate" type="text/html" title="goormNLP [2주차 - Linear Algebra (2)]" /><published>2022-01-11T00:00:00+09:00</published><updated>2022-01-11T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(2)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(2)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
-
-<h2 id="lecture-3-linear-combination-vector-equation-four-views-of-matrix-multiplication">Lecture 3: Linear combination, Vector equation, Four views of matrix multiplication</h2>
-
-<h3 id="linear-combination">Linear combination</h3>
-
-<p>c1<strong>v<sub>1</sub></strong> + … + c1<strong>v<sub>p</sub></strong> is called a <strong>linear combination</strong> of <strong>v<sub>1</sub></strong>, … , <strong>v<sub>p</sub></strong> with <strong>weights or coefficients</strong> c<sub>1</sub>**, … , **c<sub>p</sub>.</p>
-
-<ul>
-  <li>The weights in a linear combination can be <u>any real numbers, including zero</u>.</li>
-</ul>
-
-<h3 id="span">Span</h3>
-
-<ul>
-  <li>Definition: Span {V1, …, Vp} is defined as <strong>the set of all linear combinations of V1, … , Vp</strong>.
-  Span is also called the <strong>sub set of</strong> R<sup>n</sup> <strong>spanned.</strong></li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148902803-483e7e60-5696-4963-8bb7-71aeab0322e0.png" alt="image" style="zoom: 25%;" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148902982-c99bc511-f0c4-49a4-a1b6-6dc7767e711e.png" alt="스크린샷 2022-01-11 오후 4 57 14" style="zoom:67%;" /></p>
-
-<ul>
-  <li>b가 span 안에 있으면 O -&gt; 해가 존재함.</li>
-  <li>b가 span 안에 없으면 X -&gt; 해가 존재 하지 않음.</li>
-</ul>
-
-<h3 id="matrix-multiplications-as-column-combinations">Matrix Multiplications as Column Combinations</h3>
-
-<ul>
-  <li>Left matrix: <strong>bases</strong>, Right matrix: <strong>coefficients</strong></li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148903350-073b884a-1f84-49b3-86ea-fff5c3c95fb1.png" alt="스크린샷 2022-01-11 오후 5 00 01" /></p>
-
-<h3 id="matrix-multiplications-as-row-combinations">Matrix Multiplications as Row Combinations</h3>
-
-<ul>
-  <li>Left matrix: <strong>coefficients</strong>, Right matrix: <strong>bases</strong></li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148903475-b98bb688-0f12-43f4-9432-29900458566c.png" alt="스크린샷 2022-01-11 오후 5 01 01" style="zoom:90%;" /></p>
-
-<h3 id="matrix-multiplications-as-sum-of-rank-1-outer-products">Matrix Multiplications as Sum of (Rank-1) Outer Products</h3>
-
-<ul>
-  <li>(Rank-1) outer product</li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148903838-a37c5a29-43f6-4955-bfa1-15adb8f4d5ab.png" alt="스크린샷 2022-01-11 오후 5 03 47" /></p>
-
-<ul>
-  <li>Sum of (Rank-1) outer products</li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148903854-4dae8ea0-64bd-453e-9bb7-fbc5b8e1b7d7.png" alt="스크린샷 2022-01-11 오후 5 04 02" /></p>
-
-<p>=&gt; Sum of (Rank-1) outer products is widely used in machine learning.</p>
-
-<ul>
-  <li>Covariance matrix in multivariate Gaussian.</li>
-  <li>Gram matrix in style transfer.</li>
-</ul>
-
-<hr />
-
-<h2 id="lecture-4-linear-independence-span-subspace">Lecture 4: Linear Independence, Span, Subspace</h2>
-
-<h3 id="uniqueness-of-solution-for-ax--b">Uniqueness of Solution for Ax = b</h3>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148904257-f88be9d2-5b74-414c-baa0-c3e930961e38.png" alt="스크린샷 2022-01-11 오후 5 07 20" style="zoom:90%;" /></p>
-
-<ul>
-  <li>
-    <p><u>It is unique</u> when a<sub>1</sub>, a<sub>2</sub>, and<sub>3</sub> are <strong><u>linearly independent</u></strong>.
-선형 독립 –&gt; 해가 1개 존재.</p>
-  </li>
-  <li>
-    <p><u>Infinitely many solutins</u> exist when  a<sub>1</sub>, a<sub>2</sub>, and<sub>3</sub> are <strong><u>linearly dependent</u></strong>.
-선형 의존 –&gt; 해가 무수히 존재.</p>
-  </li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148904707-00c734be-3854-4a28-807e-7ac9b1767c73.png" alt="스크린샷 2022-01-11 오후 5 10 29" style="zoom:80%;" /></p>
-
-<ul>
-  <li>if <u>at least one</u> such <strong>V</strong><sub>j</sub> is found, then {V1, … , Vp} is <strong>linearly dependent.</strong></li>
-  <li>
-    <p>if <u>no</u> such <strong>V</strong><sub>j</sub> is found, the {V1, … , Vp} is <strong>linearly independent.</strong></p>
-  </li>
-  <li>**A linearly dependent vector does not increase Span ! **</li>
-</ul>
-
-<h3 id="span-and-subspace">Span and Subspace</h3>
-
-<ul>
-  <li>Definition: A <strong>subspace</strong> <em>H</em> is defined as a subset of <strong>R</strong><sup>n</sup> closed under linear combination.</li>
-</ul>
-
-<p>In fact, a subspace is <strong><u>always represented as Span {V1, ... , Vp}</u></strong></p>
-
-<h3 id="basis-of-a-subspace">Basis of a Subspace</h3>
-
-<ul>
-  <li>Definition: A basis of a sub space <em>H</em> is a set of vectors that satisfies both of the following:
-    <ol>
-      <li>Fully spans the given subspace <em>H</em>.</li>
-      <li>Linearly independent.</li>
-    </ol>
-  </li>
-</ul>
-
-<h3 id="column-space-of-matrix">Column Space of Matrix</h3>
-
-<ul>
-  <li>Definition: The <strong>column space</strong> of a matrix A is the subspace spanned by the columns of A.
-    <ul>
-      <li>We call the column spac eof A as <strong>Col A</strong>.</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148906500-f23d383c-7637-417d-8cef-419023b19cf1.png" alt="스크린샷 2022-01-11 오후 5 23 13" style="zoom:85%;" /></p>
-
-<p><code class="language-plaintext highlighter-rouge">What is dim Col A? ==&gt; 2</code></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148906682-710c8d07-f08e-4bd8-ba7b-6f1b99194729.png" alt="스크린샷 2022-01-11 오후 5 24 22" style="zoom:85%;" /></p>
-
-<p><code class="language-plaintext highlighter-rouge">What is dim Col A? ==&gt; 2</code></p>
-
-<h3 id="rank-of-matrix">Rank of Matrix</h3>
-
-<ul>
-  <li>Definition: The <strong>rank</strong> of a matrix A, denoted by <strong>rank A</strong>, is the dimension of the column space of A:
-    <ul>
-      <li>rank A = <strong>dim</strong> Col A.</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148906983-d3add804-4244-4c7e-a143-a43893fb3cad.png" alt="스크린샷 2022-01-11 오후 5 26 22" style="zoom:80%;" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [2주차 - Linear Algebra (1)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(1)/" rel="alternate" type="text/html" title="goormNLP [2주차 - Linear Algebra (1)]" /><published>2022-01-10T00:00:00+09:00</published><updated>2022-01-10T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(1)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(1)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
-
-<p>2022-01-10 (월)</p>
-<blockquote>
-  <p>머신러닝과 선형대수의 관계</p>
-</blockquote>
-
-<p>2주차에는 머신/딥러닝에 들어가기에 앞서 Linear Algebra: 선형대수학에 대해서 수업을 진행하였다.</p>
-
-<p>선형대수학은 연립방정식을 손쉽게 풀고자하는 고민으로부터 시작되었다.
-머신러닝은 본질적으로는 컴퓨터가 이해할 수 있는 대량의 데이터. 즉 숫자를 이용해 복잡한 계산을 수행하는 것이므로 선형대수학의 수식과 계산 기법을 사용하면 최소한의 타이핑 만으로도 대량의 계산을 손쉽게 컴퓨터에게 지시하는 것이 가능해진다.</p>
-
-<h2 id="lecture-1-elements-in-linear-algebra">Lecture 1: Elements In Linear Algebra</h2>
-
-<h3 id="scalar-vector-matrix">Scalar, Vector, Matrix</h3>
-
-<ol>
-  <li><strong>Scalar</strong>: a single number.</li>
-  <li><strong>Vector</strong>: an ordered list of numbers.</li>
-  <li><strong>Matrix</strong>: a two-dimensional array of numbers.
-    <ul>
-      <li>Matrix size: 3 x 2 means [3 rows(행) and 2 columns(열)]</li>
-      <li>Row vector: a horizontal vector - 수평</li>
-      <li>Column vector: a vertical vector - 수직</li>
-    </ul>
-  </li>
-</ol>
-
-<ul>
-  <li>a vector of n-dimension is usually a <strong>column vector</strong>. <code class="language-plaintext highlighter-rouge">a matrix of the size n x 1</code></li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148713988-140f3c79-2a14-482b-ad67-7a3cbbc64b97.png" alt="스크린샷 2022-01-10 오후 12 07 40" /></p>
-
-<ul>
-  <li>a row vector is usually written as its <strong>transpose</strong>.</li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148714037-1b14b09b-c74a-4509-8267-fb3bada46157.png" alt="스크린샷 2022-01-10 오후 12 08 30" /></p>
-
-<ul>
-  <li>
-    <p>Square matrix ( # rows = # columns ).</p>
-  </li>
-  <li>
-    <p>Rectangular matrix ( # rows != columns ).</p>
-  </li>
-  <li>
-    <p>A<sup>T</sup>: <strong>Transpose</strong> of matrix ( mirroring across the main diagonal ).</p>
-  </li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148714568-d180fc44-9982-45fd-bde6-f8995d573d51.png" alt="스크린샷 2022-01-10 오후 12 16 41" /></p>
-
-<ul>
-  <li>A<sub>2,1</sub> = 3 =&gt; ( i , j )-th component of A.</li>
-  <li>A<sub>2,:</sub> = [3 4] =&gt; i-th <strong>row vector</strong> of A.</li>
-</ul>
-
-<hr />
-
-<h3 id="vectormatrix-add--mul">Vector/Matrix Add &amp; Mul</h3>
-
-<ul>
-  <li>
-    <p>C = A + B : Element-wise <strong>addition.</strong></p>
-  </li>
-  <li>
-    <p>cA : <strong>Scalar multiple</strong> of vector/matrix.</p>
-  </li>
-  <li>
-    <p>C = AB  : <strong>matrix-matrix multiplication</strong></p>
-  </li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148715076-af6f5378-5531-4137-998b-a3d450131c48.png" alt="스크린샷 2022-01-10 오후 12 25 33" /></p>
-
-<ul>
-  <li>AB != BA : Matrix multiplication is <strong>NOT</strong> commutative.</li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148715153-9f881dec-af25-4706-bb4b-38ac3edfbe28.png" alt="스크린샷 2022-01-10 오후 12 26 54" /></p>
-
-<hr />
-
-<h3 id="other-properties">Other Properties.</h3>
-
-<ol>
-  <li>A(B+C) = AB + AC : <strong>Distributive</strong></li>
-  <li>A(BC) = (AB)C : <strong>Associative</strong></li>
-  <li>(AB)<sup>T</sup> = B<sup>T</sup>A<sup>T</sup> : <strong>Property of transpose</strong></li>
-</ol>
-
-<hr />
-
-<h2 id="lecture-2-linear-system">Lecture 2: Linear System</h2>
-
-<ul>
-  <li>A <strong>linear equation</strong> in the variables x1, …, x<sub>n</sub> is an equation that can be written in the form.</li>
-</ul>
-
-<p><code class="language-plaintext highlighter-rouge">a1x1 + a2x2+ ... + anxn = b</code></p>
-
-<ul>
-  <li>The above equation can be written as <strong>a<sup>T</sup>x = b</strong></li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148715436-67923e9d-a3fd-4b6d-ae17-d28247cda969.png" alt="스크린샷 2022-01-10 오후 12 32 02" /></p>
-
-<ul>
-  <li>A system of linear equations (or a <strong>linear system</strong>) is a collection of <em>one or more linear equations</em> involving the <strong>same variables</strong>.</li>
-</ul>
-
-<p><code class="language-plaintext highlighter-rouge">X1, ..., Xn.</code></p>
-
-<h3 id="linear-system-example">Linear system example</h3>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148715664-6927fa5a-eb65-4128-85c2-d37a68727068.png" alt="스크린샷 2022-01-10 오후 12 35 47" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148715697-09eec0d4-006e-434a-a02d-621fa3e845ef.png" alt="스크린샷 2022-01-10 오후 12 36 38" /></p>
-
-<ul>
-  <li>we solve for x<sub>1</sub>, x<sub>2</sub>, x<sub>3</sub> given a new person with his/her <em>Weight, Height, Is_smoking</em>.
-  we can predict his/her <strong>life-span</strong>.</li>
-</ul>
-
-<p>Step 1. Let’s collect all the coefficients on the left and form a matrix.</p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148715840-614f2962-7f84-45c4-be16-53325f651364.png" alt="스크린샷 2022-01-10 오후 12 38 54" /></p>
-
-<p>Step 2. Let’s form two vectors:</p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148715874-9fd186e1-0997-4892-b27e-acb90c0d4867.png" alt="스크린샷 2022-01-10 오후 12 39 26" /></p>
-
-<p>=&gt; Multiple equations can be converted into a <strong>single</strong> matrix equations.</p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148715925-5c18f20e-6e4a-47ae-93fb-65d58f51f2a7.png" alt="스크린샷 2022-01-10 오후 12 40 10" /></p>
-
-<hr />
-
-<p><strong>Identity Matrix</strong></p>
-
-<ul>
-  <li><strong>Definition</strong> : An identity matrix is a <strong>square</strong> matrix whose diagonal entries are all <strong>1’s</strong>, and all the other entries are <strong>zeros</strong>.</li>
-  <li>Often, we denote it as</li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148716067-9d7af812-827c-4e1e-b65c-4402c03e6c02.png" alt="스크린샷 2022-01-10 오후 12 42 44" /></p>
-
-<p><strong>Inverse Matrix</strong></p>
-
-<ul>
-  <li>
-    <p><strong>Definition</strong> : For a <strong>square</strong> matrix, its inverse matrix A<sup>-1</sup> is defined such that A<sup>-1</sup>A = AA<sup>-1</sup> = I<sub>n</sub></p>
-  </li>
-  <li>
-    <p>For a 2 x 2 matrix, its inverse matrix A<sup>-1</sup> is defined as</p>
-  </li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148716184-9511e070-bf45-44f2-8b18-bfcf70e1c5d4.png" alt="스크린샷 2022-01-10 오후 12 45 02" /></p>
-
-<ul>
-  <li>We can now solve A<strong>x</strong> = <strong>b</strong> as follows:</li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148716230-5913710d-bccd-49d9-a378-15554a26a396.png" alt="스크린샷 2022-01-10 오후 12 45 51" /></p>
-
-<hr />
-
-<p>Step 4. Solving linear system via inverse matrix.</p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148716293-6e49c095-1e08-45de-ba29-ded577dc08e0.png" alt="스크린샷 2022-01-10 오후 12 47 05" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148716306-9b0acca2-f266-464b-92c9-d6a53bdbdaef.png" alt="스크린샷 2022-01-10 오후 12 47 20" /></p>
-
-<ul>
-  <li>
-    <p>Now, the life-span can be written as</p>
-
-    <p>(life - span) = <strong>-0.4</strong> * (Weight) + <strong>20</strong> * (Height) <strong>-20</strong> * (Is_smoking).</p>
-  </li>
-</ul>
-
-<hr />
-
-<p><strong>Non-Invertible Matrix</strong></p>
-
-<p>if A is invertible, the solution is <strong>uniquely obtained</strong> as x = A<sup>-1</sup>b.</p>
-
-<p>if A is <strong>NOT</strong> invertible, the inverse does not <em>exist?</em></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148716618-9ab48170-8d5d-408a-8e9e-09477386a81e.png" alt="스크린샷 2022-01-10 오후 12 52 45" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148716650-32e5f132-e522-43d7-bfbd-df7a1f027e3f.png" alt="스크린샷 2022-01-10 오후 12 53 13" /></p>
-
-<p><em>*det A ** determines whether A is invertible *(when det A != 0)</em> or not <em>(when det A = 0)</em>.</p>
-
-<p>=&gt; if A is non-invertible, A<strong>x</strong> = <strong>b</strong> will have either <strong>no solutuon</strong> or <strong>infinitely many solutions</strong>.</p>
-
-<hr />
-
-<h3 id="rectangular-matrix-a-in-ax--b">Rectangular Matrix A in Ax = b</h3>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/148716803-4a3bbea8-4fbf-41c1-ac4e-0a5a71a14948.png" alt="스크린샷 2022-01-10 오후 12 56 09" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry></feed>
+<p><img src="https://user-images.githubusercontent.com/67947808/149089942-c80f51f3-2d9f-482f-b7b3-f5813cc88b37.png" alt="스크린샷 2022-01-12 오후 5 20 05" style="zoom:80%;" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry></feed>

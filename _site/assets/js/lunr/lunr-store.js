@@ -119,8 +119,20 @@ var store = [{
         "url": "/goormnlp/Linear_Algebra-Review/",
         "teaser": null
       },{
+        "title": "Pytorch 논문 구현 [MNIST]",
+        "excerpt":"Pytorch Zero to All MNIST 2022-01-23 케라스는 파이토치, 텐서플로우에 비해 High Level로써 입문자에게 처음 딥러닝 실습에 적합한 언어라 생각한다. 연구실 생활때, 빠른 결과물을 내야했고.. 파이토치, 텐서플로우를 처음부터 배울 시간이 없었기에 케라스를 이용하여 연구에 대한 결과를 만들어 학회에 발표를 한 경험이 있다. 하지만 인공지능 계열로 취업을 준비했을때 많은 회사들이 Tensorflow보다는 Pytorch...","categories": ["Pytorch"],
+        "tags": ["study","python"],
+        "url": "/pytorch/MNIST/",
+        "teaser": null
+      },{
+        "title": "Pytorch 논문 구현 [UNet (1)]",
+        "excerpt":"Pytorch Zero to All   UNet (1)   2022-01-24   UNet 모델은 학부생때 딥러닝 주제를 정하고 케라스로 처음으로 구현해본 모델이다. 구현을 한 경험이 있고 논문 또한 정독을 많이 했기에 파이토치로 구현했을때 어려운 점은 없었다. (class 모듈화 공부를 더 해야할 듯..)   사용한 데이터: ISBI 2012 EM segmentation Challenge           ","categories": ["Pytorch"],
+        "tags": ["study","python"],
+        "url": "/pytorch/UNet-(1)/",
+        "teaser": null
+      },{
         "title": "goormNLP [4주차 - Linear Regression (1)]",
-        "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST   Lecture: Linear regression with one variable   2022-01-24   지금까지 배웠던 선형대수 개념을 이용하여 EVD(고유값 분해)를 진행하였다.   ","categories": ["goormNLP"],
+        "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST Lecture: Linear regression with one variable 2022-01-24 Linear regression을 one variable일 때의 Cost function, Gradient descent에 대한 이론 및 실습을 진행하였다. Linear regression는 Supervised Learning(지도 학습)이라는 큰 범위 내에 포함되어 있고, 한개 이상의 독립 변수 $X$와 종속 변수 $Y$의 선형 관계를 모델링하는...","categories": ["goormNLP"],
         "tags": ["study","regression"],
         "url": "/goormnlp/Linear_Regression-(1)/",
         "teaser": null

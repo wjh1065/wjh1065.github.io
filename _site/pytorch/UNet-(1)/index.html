@@ -9,28 +9,32 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>while True() - 페이지 5</title>
-<meta name="description" content="메모장!.">
+<!-- begin _includes/seo.html --><title>Pytorch 논문 구현 [UNet (1)] - while True()</title>
+<meta name="description" content="Pytorch Zero to All">
 
 
   <meta name="author" content="Lee ChangSeok">
   
+  <meta property="article:author" content="Lee ChangSeok">
+  
 
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="while True()">
-<meta property="og:title" content="while True()">
-<meta property="og:url" content="http://localhost:4000/page5/">
+<meta property="og:title" content="Pytorch 논문 구현 [UNet (1)]">
+<meta property="og:url" content="http://localhost:4000/pytorch/UNet-(1)/">
 
 
-  <meta property="og:description" content="메모장!.">
-
-
-
+  <meta property="og:description" content="Pytorch Zero to All">
 
 
 
+
+
+
+
+  <meta property="article:published_time" content="2022-01-24T00:00:00+09:00">
 
 
 
@@ -41,10 +45,8 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/page5/">
+<link rel="canonical" href="http://localhost:4000/pytorch/UNet-(1)/">
 
-
-  <link rel="prev" href="http://localhost:4000/page4/">
 
 
 
@@ -102,7 +104,7 @@
 
   </head>
 
-  <body class="layout--home">
+  <body class="layout--single">
     <nav class="skip-links">
   <ul>
     <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
@@ -266,29 +268,153 @@
 
 
 
-  <div class="archive">
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Pytorch 논문 구현 [UNet (1)]">
+    <meta itemprop="description" content="Pytorch Zero to All">
+    <meta itemprop="datePublished" content="2022-01-24T00:00:00+09:00">
     
-      <h1 id="page-title" class="page__title"></h1>
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/pytorch/UNet-(1)/" class="u-url" itemprop="url">Pytorch 논문 구현 [UNet (1)]
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
     
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-24T00:00:00+09:00">2022.01.24</time>
+      </span>
     
 
-<h3 class="archive__subtitle">최근 포스트</h3>
+    
+
+    
+  </p>
 
 
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p>Pytorch Zero to All</p>
+
+<h2 id="unet-1">UNet (1)</h2>
+
+<p>2022-01-24</p>
+
+<p>UNet 모델은 학부생때 딥러닝 주제를 정하고 케라스로 처음으로 구현해본 모델이다. 구현을 한 경험이 있고 논문 또한 정독을 많이 했기에 파이토치로 구현했을때 어려운 점은 없었다. <del>(class 모듈화 공부를 더 해야할 듯..)</del></p>
+
+<p>사용한 데이터: <strong>ISBI 2012 EM segmentation Challenge</strong></p>
+
+<hr />
+
+<script src="https://gist.github.com/wjh1065/03257ee47f96f35175cbb0856747c467.js"></script>
+
+<script src="https://gist.github.com/wjh1065/4141606ea35e1d3d6a64017712d54c65.js"></script>
+
+<script src="https://gist.github.com/wjh1065/eb2b26bfdf28ac0faacca9356a3e1431.js"></script>
 
 
-<div class="entries-list">
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
   
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
     
+      <a href="/tags/#python" class="page__taxonomy-item p-category" rel="tag">python</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+    
+    </span>
+  </p>
 
 
 
-<div class="list__item">
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#pytorch" class="page__taxonomy-item p-category" rel="tag">Pytorch</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-24T00:00:00+09:00">2022.01.24</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Pytorch+%EB%85%BC%EB%AC%B8+%EA%B5%AC%ED%98%84+%5BUNet+%281%29%5D%20http%3A%2F%2Flocalhost%3A4000%2Fpytorch%2FUNet-%281%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fpytorch%2FUNet-%281%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fpytorch%2FUNet-%281%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/pytorch/MNIST/" class="pagination--pager" title="Pytorch 논문 구현 [MNIST]
+">이전</a>
+    
+    
+      <a href="/goormnlp/Linear_Regression-(1)/" class="pagination--pager" title="goormNLP [4주차 - Linear Regression (1)]
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/project/PVC-of-PET-images-using-3D-ResUnet/" rel="permalink">Project 3. PVC of PET images using 3D ResUnet
+        <a href="/goormnlp/Linear_Regression-(1)/" rel="permalink">goormNLP [4주차 - Linear Regression (1)]
 </a>
       
     </h2>
@@ -300,7 +426,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2021-05-15T00:00:00+09:00">2021.05.15</time>
+        <time datetime="2022-01-24T00:00:00+09:00">2022.01.24</time>
       </span>
     
 
@@ -310,22 +436,22 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">3D-ResUnet을 이용한 PET 영상의 Partial volume Effect correction
+    <p class="archive__item-excerpt" itemprop="description">Auspice by Goorm, Manage by DAVIAN @ KAIST
 </p>
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/project/DeepSORT-with-BEV/" rel="permalink">Project 2. DeepSORT with Bird Eye View
+        <a href="/pytorch/MNIST/" rel="permalink">Pytorch 논문 구현 [MNIST]
 </a>
       
     </h2>
@@ -337,7 +463,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2020-12-30T00:00:00+09:00">2020.12.30</time>
+        <time datetime="2022-01-23T00:00:00+09:00">2022.01.23</time>
       </span>
     
 
@@ -347,22 +473,22 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">DeepSORT with Bird Eye View (BEV)
+    <p class="archive__item-excerpt" itemprop="description">Pytorch Zero to All
 </p>
   </article>
 </div>
 
-  
-    
+        
+          
 
 
 
-<div class="list__item">
+<div class="grid__item">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/project/3D-%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%8C%A8%EC%B9%98-%ED%95%99%EC%8A%B5/" rel="permalink">Project 1. 3D 이미지 패치 학습
+        <a href="/goormnlp/Linear_Algebra-Review/" rel="permalink">goormNLP [3주차 - Linear Algebra Review (2)]
 </a>
       
     </h2>
@@ -374,7 +500,7 @@
       <span class="page__meta-date">
         <i class="far fa-calendar-alt" aria-hidden="true"></i>
         
-        <time datetime="2020-04-01T00:00:00+09:00">2020.04.01</time>
+        <time datetime="2022-01-21T00:00:00+09:00">2022.01.21</time>
       </span>
     
 
@@ -384,74 +510,53 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">3D 이미지 패치 학습
+    <p class="archive__item-excerpt" itemprop="description">Auspice by Goorm, Manage by DAVIAN @ KAIST
 </p>
   </article>
 </div>
 
-  
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Linear_Algebra-(7)/" rel="permalink">goormNLP [3주차 - Linear Algebra (7)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-20T00:00:00+09:00">2022.01.20</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Auspice by Goorm, Manage by DAVIAN @ KAIST
+</p>
+  </article>
 </div>
 
-
-<nav class="pagination">
+        
+      </div>
+    </div>
   
-  <ul>
-    
-    
-      
-        <li><a href="/page4/">이전</a></li>
-      
-    
-
-    
-    
-      <li><a href="/">1</a></li>
-    
-
-    
-    
-      
-      
-      <li><a href="#" class="disabled">&hellip;</a></li>
-    
-
-    
-    
-    
-
-    
-      
-        
-        
-        
-        <li><a href="/page3/">3</a></li>
-      
-    
-      
-        
-        
-        
-        <li><a href="/page4/">4</a></li>
-      
-    
-
-    
-    
-
-    
-      <li><a href="#" class="disabled current">5</a></li>
-    
-
-    
-    
-      <li><a href="#" class="disabled"><span aria-hidden="true">다음</span></a></li>
-    
-  </ul>
-</nav>
-
-
-
-  </div>
+  
 </div>
     </div>
 
@@ -502,6 +607,25 @@
 
 
 
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/pytorch/UNet-(1)/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/pytorch/UNet (1)"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-wjh1065-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
 
 
 

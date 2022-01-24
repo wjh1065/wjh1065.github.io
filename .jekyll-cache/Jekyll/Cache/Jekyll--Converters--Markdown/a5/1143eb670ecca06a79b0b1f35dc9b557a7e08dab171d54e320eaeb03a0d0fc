@@ -1,0 +1,19 @@
+I"�<p>Pytorch Zero to All</p>
+
+<h2 id="unet-1">UNet (1)</h2>
+
+<p>2022-01-24</p>
+
+<p>UNet 모델은 학부생때 딥러닝 주제를 정하고 케라스로 처음으로 구현해본 모델이다. 구현을 한 경험이 있고 논문 또한 정독을 많이 했기에 파이토치로 구현했을때 어려운 점은 없었다. <del>(class 모듈화 공부를 더 해야할 듯..)</del></p>
+
+<p>사용한 데이터: <strong>ISBI 2012 EM segmentation Challenge</strong></p>
+
+<hr />
+
+<script src="https://gist.github.com/wjh1065/03257ee47f96f35175cbb0856747c467.js"></script>
+
+<script src="https://gist.github.com/wjh1065/4141606ea35e1d3d6a64017712d54c65.js"></script>
+
+<script src="https://gist.github.com/wjh1065/eb2b26bfdf28ac0faacca9356a3e1431.js"></script>
+
+:ET
