@@ -7,8 +7,7 @@ tags:
  - math
 ---
 
-# AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (1)]
-# Linear Algebra
+Auspice by Goorm, Manage by DAVIAN @ KAIST
 
 2022-01-10 (월)
 > 머신러닝과 선형대수의 관계

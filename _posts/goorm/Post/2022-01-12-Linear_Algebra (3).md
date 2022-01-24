@@ -7,9 +7,7 @@ tags:
  - math
 ---
 
-# AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra (3)]
-
-# Linear Algebra
+Auspice by Goorm, Manage by DAVIAN @ KAIST
 
 ## Lecture 5: Linear transformation
 

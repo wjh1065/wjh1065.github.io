@@ -7,7 +7,8 @@ tags:
  - math
 ---
 
-# AI 기술 자연어 처리 전문가 양성 3기 [2주차 - Linear Algebra Review (1)]
+Auspice by Goorm, Manage by DAVIAN @ KAIST
+
 # Linear Algebra Review (1)
 
 ![스크린샷 2022-01-14 오후 2 09 38](https://user-images.githubusercontent.com/67947808/149459652-2f02c389-827b-416f-b0d7-f3f353c20e8e.png)

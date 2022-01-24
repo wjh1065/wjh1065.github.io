@@ -7,8 +7,7 @@ tags:
  - math
 ---
 
-# AI 기술 자연어 처리 전문가 양성 3기 [3주차 - Linear Algebra (7)]
-# Linear Algebra
+Auspice by Goorm, Manage by DAVIAN @ KAIST
 
 ## Lecture 9: Singular Value Decomposition
 

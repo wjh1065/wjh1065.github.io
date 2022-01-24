@@ -1,0 +1,143 @@
+I"L<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+
+<h2 id="lecture-3-linear-combination-vector-equation-four-views-of-matrix-multiplication">Lecture 3: Linear combination, Vector equation, Four views of matrix multiplication</h2>
+
+<h3 id="linear-combination">Linear combination</h3>
+
+<p>c1<strong>v<sub>1</sub></strong> + … + c1<strong>v<sub>p</sub></strong> is called a <strong>linear combination</strong> of <strong>v<sub>1</sub></strong>, … , <strong>v<sub>p</sub></strong> with <strong>weights or coefficients</strong> c<sub>1</sub>**, … , **c<sub>p</sub>.</p>
+
+<ul>
+  <li>The weights in a linear combination can be <u>any real numbers, including zero</u>.</li>
+</ul>
+
+<h3 id="span">Span</h3>
+
+<ul>
+  <li>Definition: Span {V1, …, Vp} is defined as <strong>the set of all linear combinations of V1, … , Vp</strong>.
+  Span is also called the <strong>sub set of</strong> R<sup>n</sup> <strong>spanned.</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148902803-483e7e60-5696-4963-8bb7-71aeab0322e0.png" alt="image" style="zoom: 25%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148902982-c99bc511-f0c4-49a4-a1b6-6dc7767e711e.png" alt="스크린샷 2022-01-11 오후 4 57 14" style="zoom:67%;" /></p>
+
+<ul>
+  <li>b가 span 안에 있으면 O -&gt; 해가 존재함.</li>
+  <li>b가 span 안에 없으면 X -&gt; 해가 존재 하지 않음.</li>
+</ul>
+
+<h3 id="matrix-multiplications-as-column-combinations">Matrix Multiplications as Column Combinations</h3>
+
+<ul>
+  <li>Left matrix: <strong>bases</strong>, Right matrix: <strong>coefficients</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148903350-073b884a-1f84-49b3-86ea-fff5c3c95fb1.png" alt="스크린샷 2022-01-11 오후 5 00 01" /></p>
+
+<h3 id="matrix-multiplications-as-row-combinations">Matrix Multiplications as Row Combinations</h3>
+
+<ul>
+  <li>Left matrix: <strong>coefficients</strong>, Right matrix: <strong>bases</strong></li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148903475-b98bb688-0f12-43f4-9432-29900458566c.png" alt="스크린샷 2022-01-11 오후 5 01 01" style="zoom:90%;" /></p>
+
+<h3 id="matrix-multiplications-as-sum-of-rank-1-outer-products">Matrix Multiplications as Sum of (Rank-1) Outer Products</h3>
+
+<ul>
+  <li>(Rank-1) outer product</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148903838-a37c5a29-43f6-4955-bfa1-15adb8f4d5ab.png" alt="스크린샷 2022-01-11 오후 5 03 47" /></p>
+
+<ul>
+  <li>Sum of (Rank-1) outer products</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148903854-4dae8ea0-64bd-453e-9bb7-fbc5b8e1b7d7.png" alt="스크린샷 2022-01-11 오후 5 04 02" /></p>
+
+<p>=&gt; Sum of (Rank-1) outer products is widely used in machine learning.</p>
+
+<ul>
+  <li>Covariance matrix in multivariate Gaussian.</li>
+  <li>Gram matrix in style transfer.</li>
+</ul>
+
+<hr />
+
+<h2 id="lecture-4-linear-independence-span-subspace">Lecture 4: Linear Independence, Span, Subspace</h2>
+
+<h3 id="uniqueness-of-solution-for-ax--b">Uniqueness of Solution for Ax = b</h3>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148904257-f88be9d2-5b74-414c-baa0-c3e930961e38.png" alt="스크린샷 2022-01-11 오후 5 07 20" style="zoom:90%;" /></p>
+
+<ul>
+  <li>
+    <p><u>It is unique</u> when a<sub>1</sub>, a<sub>2</sub>, and<sub>3</sub> are <strong><u>linearly independent</u></strong>.
+선형 독립 –&gt; 해가 1개 존재.</p>
+  </li>
+  <li>
+    <p><u>Infinitely many solutins</u> exist when  a<sub>1</sub>, a<sub>2</sub>, and<sub>3</sub> are <strong><u>linearly dependent</u></strong>.
+선형 의존 –&gt; 해가 무수히 존재.</p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148904707-00c734be-3854-4a28-807e-7ac9b1767c73.png" alt="스크린샷 2022-01-11 오후 5 10 29" style="zoom:80%;" /></p>
+
+<ul>
+  <li>if <u>at least one</u> such <strong>V</strong><sub>j</sub> is found, then {V1, … , Vp} is <strong>linearly dependent.</strong></li>
+  <li>
+    <p>if <u>no</u> such <strong>V</strong><sub>j</sub> is found, the {V1, … , Vp} is <strong>linearly independent.</strong></p>
+  </li>
+  <li>**A linearly dependent vector does not increase Span ! **</li>
+</ul>
+
+<h3 id="span-and-subspace">Span and Subspace</h3>
+
+<ul>
+  <li>Definition: A <strong>subspace</strong> <em>H</em> is defined as a subset of <strong>R</strong><sup>n</sup> closed under linear combination.</li>
+</ul>
+
+<p>In fact, a subspace is <strong><u>always represented as Span {V1, ... , Vp}</u></strong></p>
+
+<h3 id="basis-of-a-subspace">Basis of a Subspace</h3>
+
+<ul>
+  <li>Definition: A basis of a sub space <em>H</em> is a set of vectors that satisfies both of the following:
+    <ol>
+      <li>Fully spans the given subspace <em>H</em>.</li>
+      <li>Linearly independent.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="column-space-of-matrix">Column Space of Matrix</h3>
+
+<ul>
+  <li>Definition: The <strong>column space</strong> of a matrix A is the subspace spanned by the columns of A.
+    <ul>
+      <li>We call the column spac eof A as <strong>Col A</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148906500-f23d383c-7637-417d-8cef-419023b19cf1.png" alt="스크린샷 2022-01-11 오후 5 23 13" style="zoom:85%;" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">What is dim Col A? ==&gt; 2</code></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148906682-710c8d07-f08e-4bd8-ba7b-6f1b99194729.png" alt="스크린샷 2022-01-11 오후 5 24 22" style="zoom:85%;" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">What is dim Col A? ==&gt; 2</code></p>
+
+<h3 id="rank-of-matrix">Rank of Matrix</h3>
+
+<ul>
+  <li>Definition: The <strong>rank</strong> of a matrix A, denoted by <strong>rank A</strong>, is the dimension of the column space of A:
+    <ul>
+      <li>rank A = <strong>dim</strong> Col A.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/148906983-d3add804-4244-4c7e-a143-a43893fb3cad.png" alt="스크린샷 2022-01-11 오후 5 26 22" style="zoom:80%;" /></p>
+:ET
