@@ -13,7 +13,7 @@ Auspice by Goorm, Manage by DAVIAN @ KAIST
 
 ## Lecture: Linear regression with multiple variables
 
-2022-01-24
+2022-01-25
 
 지난번 포스팅에는 하나의 독립 변수 $x$에 대해서 하나의 종속 변수 $y$ 사이의 관계를 알아보는 simple linear regression에 대해서 실습을 하였다.
 
@@ -49,7 +49,7 @@ Feature Scaling은 $0<=X<=1$, $-1<=X<=1$과 같은 범위로 나오게 되며,
 
 
 
-**Polynomial Regression**은 항이 여러 개인 가설 함수로 결과를 예측하는 방법이다.
+**Polynomial Regression**은 항이 여러 개인 가설 함수로 결과를 예측하는 방법이다.  
 <u>서로 다른 두 Feature를 하나의 Feature</u>로 만들어서 해당 Feature를 입력으로 2차 이상의 함수를 예측하는 것이다.
 
 <img src="https://user-images.githubusercontent.com/67947808/150906733-e65649a3-d975-47a3-b77c-6fe7a7d455de.png" alt="스크린샷 2022-01-25 오후 12 40 06" style="zoom: 50%;" />
@@ -64,10 +64,10 @@ Feature Scaling은 $0<=X<=1$, $-1<=X<=1$과 같은 범위로 나오게 되며,
 
 
 
-실제로 <u>예측을 하고자 할 때 보통 하나 이상의 변수</u>들을 고려해야 한다.
+실제로 <u>예측을 하고자 할 때 보통 하나 이상의 변수</u>들을 고려해야 한다.  
 예를 들면 집 값을 예측을 하고자 한다면 <u>집의 크기, 주변의 편의 시설, 위치, 화장실의 개수, 건축 년도 등등 고려해야할 변수들</u>이 많다.
 
-이번 포스팅에서는 다양한 입력 변수 들을 다루는 Multiple linear regression **예시**를 들어 볼 것이다.
+이번 포스팅에서는 다양한 입력 변수 들을 다루는 Multiple linear regression **예시**를 들어 볼 것이다.  
 사용한 데이터셋: **자동차의 여러 기술적인 사양들을 고려하여 연비를 예측하는 auto miles per gallon(MPG) dataset.**
 
 
@@ -78,9 +78,9 @@ Feature Scaling은 $0<=X<=1$, $-1<=X<=1$과 같은 범위로 나오게 되며,
 
 
 
-Accerlation, model_year => 양의 상관관계.
-나머지 => 음의 상관관계.
-위와 같은 상관관계를 통해서 Linear model이 연비를 예측하는데 충분함.
+Accerlation, model_year => 양의 상관관계.  
+나머지 => 음의 상관관계.  
+위와 같은 상관관계를 통해서 Linear model이 연비를 예측하는데 충분함.  
 
 
 
@@ -102,7 +102,7 @@ gradient descent를 이용하여 weights를 찾은 결과 loss가 무한대를 �
 
 $x' = \frac{x - \min(x)}{\max(x)-\min(x)}$
 
-
+---
 
 만든 모델이 얼마나 정확한지 알아보기위해, Regression 문제에서 주로 사용되는 두개의 기본 지표를 사용함.
 

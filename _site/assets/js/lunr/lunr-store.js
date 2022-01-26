@@ -136,4 +136,16 @@ var store = [{
         "tags": ["study","regression"],
         "url": "/goormnlp/Linear_Regression-(1)/",
         "teaser": null
+      },{
+        "title": "goormNLP [4주차 - Linear Regression (2)]",
+        "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST Lecture: Linear regression with multiple variables 2022-01-25 지난번 포스팅에는 하나의 독립 변수 $x$에 대해서 하나의 종속 변수 $y$ 사이의 관계를 알아보는 simple linear regression에 대해서 실습을 하였다. 이번 포스팅에서는 다양한 입력 변수들을 다루는 multiple linear regression 에 대해서 알아볼 예정이다. Multiple features...","categories": ["goormNLP"],
+        "tags": ["study","regression"],
+        "url": "/goormnlp/Linear_Regression-(2)/",
+        "teaser": null
+      },{
+        "title": "goormNLP [4주차 - Linear Regression (3)]",
+        "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST Lecture: Logistic Regression 2022-01-26 지금까지 주어진 데이터와 가장 잘 맞는 직선을 찾는 Linear Regression을 진행했었다. 이번에는 예측 값이 연속적인 값을 갖지 않는 Logistic Regression에 대해서 알아볼 것이다. Classification Logistic function Logistic regression을 진행하기 위해서는 출력 값을 0과 1의 값으로 맞춰주어야 한다. 이를...","categories": ["goormNLP"],
+        "tags": ["study","regression"],
+        "url": "/goormnlp/Linear_Regression-(3)/",
+        "teaser": null
       }]
