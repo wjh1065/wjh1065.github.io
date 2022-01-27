@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [4주차 - Linear Regression (3)]"  
+title: "goormNLP [4주차 - Regression (3)]"  
 categories:
  - goormNLP
 tags:
@@ -77,7 +77,7 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.
 
 
 
-## Logistic Regression example
+## Practice
 
 ![image](https://user-images.githubusercontent.com/67947808/151112156-4497c2ab-2a8d-4345-91fd-aebb32f6c82a.png)
 
@@ -87,3 +87,8 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.
 
 ![image](https://user-images.githubusercontent.com/67947808/151112386-0d305db3-0515-477d-a554-776a5db3dca7.png)
 
+
+
+---
+
+[HW12 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Regression/sol/%5BHW12%5D_Logistic_Regression.ipynb)

@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [4주차 - Linear Regression (2)]"  
+title: "goormNLP [4주차 - Regression (2)]"  
 categories:
  - goormNLP
 tags:
@@ -60,7 +60,7 @@ Feature Scaling은 $0<=X<=1$, $-1<=X<=1$과 같은 범위로 나오게 되며,
 
 
 
-## Example
+## Practice
 
 
 
@@ -117,4 +117,8 @@ ${MAE}(\mathbf{y}, \hat{\mathbf{y}}) = \frac{1}{N} \sum_{i=1}^N \left\vert y^{(i
 ${RMSE}(\mathbf{y}, \hat{\mathbf{y}}) =\sqrt{ \frac{1}{N} \sum_{i=1}^N (y^{(i)} - \hat{y}^{(i)})^2}$
 
 
+
+---
+
+[HW11 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Regression/sol/%5BHW11%5D_Multiple_Linear_Regression.ipynb)
 
