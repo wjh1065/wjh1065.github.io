@@ -86,7 +86,7 @@ var store = [{
         "title": "goormNLP [2주차 - Linear Algebra Review (1)]",
         "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST   Linear Algebra Review (1)                                                                                                           ","categories": ["goormNLP"],
         "tags": ["study","math"],
-        "url": "/goormnlp/Linear_Algebra-Review/",
+        "url": "/goormnlp/Linear_Algebra-Review-(1)/",
         "teaser": null
       },{
         "title": "goormNLP [3주차 - Linear Algebra (4)]",
@@ -116,36 +116,48 @@ var store = [{
         "title": "goormNLP [3주차 - Linear Algebra Review (2)]",
         "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST   Linear Algebra Review (2)                                                                                                        ","categories": ["goormNLP"],
         "tags": ["study","math"],
-        "url": "/goormnlp/Linear_Algebra-Review/",
+        "url": "/goormnlp/Linear_Algebra-Review-(2)/",
         "teaser": null
       },{
-        "title": "Pytorch 논문 구현 [MNIST]",
-        "excerpt":"Pytorch Zero to All MNIST 2022-01-23 케라스는 파이토치, 텐서플로우에 비해 High Level로써 입문자에게 처음 딥러닝 실습에 적합한 언어라 생각한다. 연구실 생활때, 빠른 결과물을 내야했고.. 파이토치, 텐서플로우를 처음부터 배울 시간이 없었기에 케라스를 이용하여 연구에 대한 결과를 만들어 학회에 발표를 한 경험이 있다. 하지만 인공지능 계열로 취업을 준비했을때 많은 회사들이 Tensorflow보다는 Pytorch...","categories": ["Pytorch"],
+        "title": "Pytorch START",
+        "excerpt":"Pytorch Zero to All 2022-01-23 케라스는 파이토치, 텐서플로우에 비해 High Level로써 입문자에게 처음 딥러닝 실습에 적합한 언어라 생각한다. 연구실 생활때, 빠른 결과물을 내야했고.. 파이토치, 텐서플로우를 처음부터 배울 시간이 없었기에 케라스를 이용하여 연구에 대한 결과를 만들어 학회에 발표를 한 경험이 있다. 하지만 인공지능 계열로 취업을 준비했을때 많은 회사들이 Tensorflow보다는 Pytorch 스킬을...","categories": ["Pytorch"],
         "tags": ["study","python"],
-        "url": "/pytorch/MNIST/",
+        "url": "/pytorch/START/",
         "teaser": null
       },{
-        "title": "Pytorch 논문 구현 [UNet (1)]",
-        "excerpt":"Pytorch Zero to All   UNet (1)   2022-01-24   UNet 모델은 학부생때 딥러닝 주제를 정하고 케라스로 처음으로 구현해본 모델이다. 구현을 한 경험이 있고 논문 또한 정독을 많이 했기에 파이토치로 구현했을때 어려운 점은 없었다. (class 모듈화 공부를 더 해야할 듯..)   사용한 데이터: ISBI 2012 EM segmentation Challenge           ","categories": ["Pytorch"],
+        "title": "Pytorch 논문 구현 [UNet]",
+        "excerpt":"Pytorch Zero to All   UNet   2022-01-24   UNet 모델은 학부생때 딥러닝 주제를 정하고 케라스로 처음으로 구현해본 모델이다. 구현을 한 경험이 있고 논문 또한 정독을 많이 했기에 파이토치로 구현했을때 어려운 점은 없었다. (class 모듈화 공부를 더 해야할 듯..)   edit.. edit..    ","categories": ["Pytorch"],
         "tags": ["study","python"],
         "url": "/pytorch/UNet-(1)/",
         "teaser": null
       },{
-        "title": "goormNLP [4주차 - Linear Regression (1)]",
+        "title": "goormNLP [4주차 - Machine Learning (1)]",
         "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST Lecture: Linear regression with one variable 2022-01-24 Linear regression을 one variable일 때의 Cost function, Gradient descent에 대한 이론 및 실습을 진행하였다. Linear regression는 Supervised Learning(지도 학습)이라는 큰 범위 내에 포함되어 있고, 한개 이상의 독립 변수 $X$와 종속 변수 $Y$의 선형 관계를 모델링하는...","categories": ["goormNLP"],
-        "tags": ["study","regression"],
-        "url": "/goormnlp/Linear_Regression-(1)/",
+        "tags": ["study","machine learning"],
+        "url": "/goormnlp/Machine-Learning-(1)/",
         "teaser": null
       },{
-        "title": "goormNLP [4주차 - Linear Regression (2)]",
+        "title": "goormNLP [4주차 - Machine Learning (2)]",
         "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST Lecture: Linear regression with multiple variables 2022-01-25 지난번 포스팅에는 하나의 독립 변수 $x$에 대해서 하나의 종속 변수 $y$ 사이의 관계를 알아보는 simple linear regression에 대해서 실습을 하였다. 이번 포스팅에서는 다양한 입력 변수들을 다루는 multiple linear regression 에 대해서 알아볼 예정이다. Multiple features...","categories": ["goormNLP"],
-        "tags": ["study","regression"],
-        "url": "/goormnlp/Linear_Regression-(2)/",
+        "tags": ["study","machine learning"],
+        "url": "/goormnlp/Machine-Learning-(2)/",
         "teaser": null
       },{
-        "title": "goormNLP [4주차 - Linear Regression (3)]",
+        "title": "goormNLP [4주차 - Machine Learning (3)]",
         "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST Lecture: Logistic Regression 2022-01-26 지금까지 주어진 데이터와 가장 잘 맞는 직선을 찾는 Linear Regression을 진행했었다. 이번에는 예측 값이 연속적인 값을 갖지 않는 Logistic Regression에 대해서 알아볼 것이다. Classification Logistic function Logistic regression을 진행하기 위해서는 출력 값을 0과 1의 값으로 맞춰주어야 한다. 이를...","categories": ["goormNLP"],
-        "tags": ["study","regression"],
-        "url": "/goormnlp/Linear_Regression-(3)/",
+        "tags": ["study","machine learning"],
+        "url": "/goormnlp/Machine-Learning-(3)/",
+        "teaser": null
+      },{
+        "title": "goormNLP [4주차 - Machine Learning (4)]",
+        "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST Lecture: Regularization 2022-01-27 Regression에 적용할 수 있는 Regularization 방법에 대한 이론 및 실습을 진행하였다. 과거 프로젝트를 진행했었을 때 그저 학습이 좋아지게 한다는 도구로써 사용했던 Regularization을 세세하게 이해하였고 다음 프로젝트 및 Competition에 적용하여 더 좋은 점수를 나오게 진행을 해봐야겠다… The problem of overfitting...","categories": ["goormNLP"],
+        "tags": ["study","machine learning"],
+        "url": "/goormnlp/Machine-Learning-(4)/",
+        "teaser": null
+      },{
+        "title": "goormNLP [4주차 - Machine Learning (5)]",
+        "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST Lecture: Cross Validation &amp; Dimension Reduction 2022-01-28 지금까지 간단한 데이터를 이용하여 Regression에 대한 실습을 진행하였다. 본 파트는 훈련한 모델의 성능을 높이기 위한 Cross Validation 기법과, Dimension Reduction을 통해 특정 Feature를 선택하거나 추출하는 기법에 대한 수업을 진행하였다. 지난 학기 수업때 PCA 기법을 단지...","categories": ["goormNLP"],
+        "tags": ["study","machine learning"],
+        "url": "/goormnlp/Machine-Learning-(5)/",
         "teaser": null
       }]

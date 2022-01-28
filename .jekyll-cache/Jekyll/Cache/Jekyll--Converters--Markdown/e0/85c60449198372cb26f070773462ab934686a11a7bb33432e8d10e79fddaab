@@ -1,0 +1,58 @@
+I"K<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+
+<h2 id="lecture-linear-regression-with-one-variable">Lecture: Linear regression with one variable</h2>
+
+<p>2022-01-24</p>
+
+<p>Linear regression을 <u>one variable일 때의 Cost function, Gradient descent</u>에 대한 이론 및 실습을 진행하였다.</p>
+
+<p>Linear regression는 Supervised Learning(지도 학습)이라는 큰 범위 내에 포함되어 있고, 한개 이상의 독립 변수 $X$와 종속 변수 $Y$의 선형 관계를 모델링하는 방법론이라 한다.</p>
+
+<p>Regression Problem은 학부 및 대학원에서도 많이 다뤄본 주제이기에 다소 어렵지 않은 내용이였다.</p>
+
+<p>Gradient descent는 머신/딥러닝 알고리즘에서 중요한 이론 중 하나이며 면접에서도 자주 물어보는 내용 중 하나이다.</p>
+
+<h2 id="model-representation">Model representation</h2>
+
+<h3 id="linear-regression">Linear regression</h3>
+
+<p>선형 관계를 모델링한다는 것은 1차로 이루어진 직선을 구하는 것임.</p>
+
+<p>우리의 데이터를 가장 잘 설명하는 최적의 직선을 찾아냄으로써 독립 변수와 종속 변수 사이의 관계를 도출해 내는 과정임.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150726237-b44ba52c-0abe-453b-8bbb-f76bf4231181.png" alt="스크린샷 2022-01-24 오후 2 19 18" /></p>
+
+<h3 id="cost-function">Cost function</h3>
+
+<p>우리의 데이터를 가장 잘 설명하는 직선은 우리가 직선을 통해 <u>예측한 값이 실제 데이터의 값과 가장 비슷해야 함</u>. 우리의 모델이 예측한 값은 위에서 알 수 있듯 $f(x_i)$임. 그리고 실제 데이터는 $y$ 입니다. 실제 데이터(위 그림에서 빨간 점) 과 직선 사이의 차이를 줄이는 것이 우리의 목적이며 그것을 바탕으로 cost function을 아래와 같이 정의함.</p>
+
+<p><strong>cost function =</strong> $\frac{1}{N}\sum_{i=1}^n (y_i - f(x_i))^2$</p>
+
+<p>EX)</p>
+
+<p>$f(w) = w^2 + 3w -5$</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150726811-83cb008d-9d2c-4259-bd8f-745344312b5c.png" alt="스크린샷 2022-01-24 오후 2 25 56" /></p>
+
+<p>f_prime = $2w+3$ ==&gt; $w$ = $-3/2$</p>
+
+<h3 id="gradient-descent">Gradient Descent</h3>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/150726913-15732821-cd02-4773-9cd8-7daba1903c20.png" alt="스크린샷 2022-01-24 오후 2 27 13" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fpnum</span> <span class="o">=</span> <span class="n">sympy</span><span class="p">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">fprime</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">fpnum</span><span class="p">)</span>
+
+<span class="n">w</span> <span class="o">=</span> <span class="mf">10.0</span>   <span class="c1"># starting guess for the min
+</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">w</span> <span class="o">-</span> <span class="n">fpnum</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">*</span><span class="mf">0.01</span> <span class="c1"># with 0.01 the step size
+</span>
+<span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">1.4999999806458753</span>
+</code></pre></div></div>
+
+<hr />
+
+<p><a href="https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW10%5D_Simple_Linear_Regression.ipynb">HW10 링크</a></p>
+:ET

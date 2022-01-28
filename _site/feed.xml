@@ -1,4 +1,212 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-26T15:12:10+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">while True()</title><subtitle>메모장!.</subtitle><author><name>Lee ChangSeok</name></author><entry><title type="html">goormNLP [4주차 - Linear Regression (3)]</title><link href="http://localhost:4000/goormnlp/Linear_Regression-(3)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Linear Regression (3)]" /><published>2022-01-26T00:00:00+09:00</published><updated>2022-01-26T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Regression%20(3)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Regression-(3)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-01-28T12:55:59+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">while True()</title><subtitle>메모장!.</subtitle><author><name>Lee ChangSeok</name></author><entry><title type="html">goormNLP [4주차 - Machine Learning (5)]</title><link href="http://localhost:4000/goormnlp/Machine-Learning-(5)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Machine Learning (5)]" /><published>2022-01-28T00:00:00+09:00</published><updated>2022-01-28T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Machine%20Learning%20(5)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Machine-Learning-(5)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+
+<h2 id="lecture-cross-validation--dimension-reduction">Lecture: Cross Validation &amp; Dimension Reduction</h2>
+
+<p>2022-01-28</p>
+
+<p>지금까지 간단한 데이터를 이용하여 Regression에 대한 실습을 진행하였다.<br />
+본 파트는 훈련한 모델의 성능을 높이기 위한 <strong>Cross Validation</strong> 기법과,<br />
+<strong>Dimension Reduction</strong>을 통해 특정 Feature를 선택하거나 추출하는 기법에 대한 수업을 진행하였다.</p>
+
+<p>지난 학기 수업때 PCA 기법을 단지 그림과 암기로만 이해를 했었는데,<br />
+지난 주에 배운 Linear Algebra 지식을 활용하니 새로운 시점으로 이해를 하게 되었다.</p>
+
+<h2 id="cross-validation">Cross-Validation</h2>
+
+<ul>
+  <li>Leave-one-out CV</li>
+</ul>
+
+<p>LOOCV는 ex) 총 100개의 데이터가 있으면, 99개의 Train 데이터와 1개의 Test 데이터로 나눈다.<br />
+그리고 이러한 행위를 총 100번에 대해서 각 데이터들을 무조건 한 번씩 Test 데이터로 설정한다.<br />
+이는 총 100개의 acc 및 loss의 평균을 구하는 방식이다.</p>
+
+<ul>
+  <li>K-fold CV
+K-fold는 K번씩 데이터를 나누는 것이다.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151482137-40d3786b-feb7-4b26-ba65-73b2c202f541.png" alt="스크린샷 2022-01-28 오후 12 25 03" style="zoom:67%;" /></p>
+
+<h2 id="dimension-reduction">Dimension Reduction</h2>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151482498-716d83e4-01d2-4420-b7e6-2a2557101dd7.png" alt="스크린샷 2022-01-28 오후 12 29 43" style="zoom:67%;" /></p>
+
+<p><strong>Benefits of Dimension Reduction</strong></p>
+<ul>
+  <li>Less storage: 데이터의 차원을 줄이니 당연히 용량을 적게 먹음.</li>
+  <li>
+    <p>Faster computation: 100,000 dim vs. 10 dim vectors 결과 당연히 10개 차원의 계산 속도가 빠름.</p>
+  </li>
+  <li>
+    <p>Noise removal: 더 좋은 performance를 위해 pre-processing를 진행함.</p>
+  </li>
+  <li><strong>2D / 3D representation</strong>: Interactive visual exploration.</li>
+</ul>
+
+<p><strong>Two Main Techniques</strong></p>
+
+<p>==&gt; <em>Feature = Variable = Dimension</em></p>
+
+<ol>
+  <li>Feature <strong>selection</strong></li>
+</ol>
+
+<p>Selects a subset of the <strong>original variables</strong> as <u>reduced dimensions.</u></p>
+
+<ul>
+  <li>Widely-used criteria.</li>
+  <li>Typically combinatorial optimization problems.</li>
+  <li><strong>greedy methods</strong> are popular.
+    <ul>
+      <li><u>Forward</u> selection: <strong>Empty</strong> set -&gt; <strong>Add</strong> one variable at a time.</li>
+      <li><u>Backward</u> elimination: <strong>Entire</strong> set -&gt; <strong>Remove</strong> one variable at a time.</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>Feature <strong>extraction</strong> (<u>MAIN TOPIC</u>)</li>
+</ol>
+
+<p>Each reduced dimension <strong>combines</strong> <u>multiple original dimensions.</u></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151483384-daf50fd9-ef0f-42e7-9b9f-e2ea140ffbab.png" alt="스크린샷 2022-01-28 오후 12 41 06" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151483508-dc94ba59-0c30-461c-ba1f-53a5dfe7ac12.png" alt="스크린샷 2022-01-28 오후 12 42 31" style="zoom:67%;" /></p>
+
+<ul>
+  <li>
+    <p>Represents each <u>reduced dimension</u> as a <strong>linear combination</strong> of original dimensions.</p>
+  </li>
+  <li>
+    <p>Naturally capable of mapping new data to the same space.</p>
+  </li>
+</ul>
+
+<h2 id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h2>
+
+<ul>
+  <li>
+    <p>Finds the axis showing the <u>**largest variation**</u>, and <u>**project**</u> all points into this axis.</p>
+  </li>
+  <li>
+    <p>Reduced dimensions are <strong>orthogonal</strong>.</p>
+  </li>
+  <li>
+    <p>Algorithm: Eigen-decomposition.</p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151483999-efe705e8-0bfb-4c69-942d-8621bf12b814.png" alt="스크린샷 2022-01-28 오후 12 48 12" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151484091-7d2aa2bb-d6d9-4a05-a566-3a25279a564a.png" alt="스크린샷 2022-01-28 오후 12 49 21" style="zoom:67%;" /></p>
+
+<hr />
+
+<p><a href="https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW14%5D_Multiple_Logistic_Regression.ipynb">HW14 링크</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="machine learning" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [4주차 - Machine Learning (4)]</title><link href="http://localhost:4000/goormnlp/Machine-Learning-(4)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Machine Learning (4)]" /><published>2022-01-27T00:00:00+09:00</published><updated>2022-01-27T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Machine%20Learning%20(4)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Machine-Learning-(4)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+
+<h2 id="lecture-regularization">Lecture: Regularization</h2>
+
+<p>2022-01-27</p>
+
+<p>Regression에 적용할 수 있는 <strong>Regularization</strong> 방법에 대한 이론 및 실습을 진행하였다.</p>
+
+<p>과거 프로젝트를 진행했었을 때 그저 학습이 좋아지게 한다는 도구로써 사용했던 Regularization을 세세하게 이해하였고</p>
+
+<p>다음 프로젝트 및 Competition에 적용하여 더 좋은 점수를 나오게 진행을 해봐야겠다…</p>
+
+<h2 id="the-problem-of-overfitting">The problem of overfitting</h2>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151284807-1d818609-09cb-42b4-a001-7b3ae76fdc7a.png" alt="스크린샷 2022-01-27 오후 12 05 29" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151284842-91bc1e9a-c641-469c-a5c2-99257111a58b.png" alt="스크린샷 2022-01-27 오후 12 05 48" style="zoom:67%;" /></p>
+
+<p>Addressing overfitting:</p>
+
+<ol>
+  <li>Reduce number of features.
+    <ul>
+      <li>Manually select which features to keep.</li>
+      <li>Model selection algorithm.</li>
+    </ul>
+  </li>
+  <li><strong>Regularization</strong>
+    <ul>
+      <li>Keep all the features, but reduce magnitude/values of parameters.</li>
+      <li>Works well when we have a lot of features, each of which contributes a bit to predicting $y$.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="cost-function">Cost function</h2>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151285170-7d0442f0-d8d5-4736-8ea8-5f72ba74a925.png" alt="스크린샷 2022-01-27 오후 12 09 32" style="zoom:67%;" /></p>
+
+<p>기존에 있는 cost function에 <strong>regularization parameter</strong>를 추가하고, <strong>λ</strong>의 value를 조정하여 overfitting과 underfitting을 탈출함.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151285399-7470729a-6ce7-4bb4-bc6e-548344eb8e21.png" alt="스크린샷 2022-01-27 오후 12 12 03" style="zoom:67%;" /></p>
+
+<p><strong>λ</strong>의 value가 크면 underfit, <strong>λ</strong>의 value가 작으면 overfit이 됨.</p>
+
+<h2 id="practice">Practice</h2>
+<p>지난 practice에서는 Linear / Rogistic regression에 대해서 알아보았다.</p>
+
+<p>이번에는 <strong>Polynomial regression</strong>과 <strong>Regularization</strong>을 실습을 통해 알아볼 것이다.</p>
+
+<p><strong>1.</strong> 4차 polynomial function: $y = x^4 + x^3 - 4x^2$ 을 이용해서 데이터를 생성함.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151285916-9e2b99a0-b835-4719-a571-e9ef3bafb89c.png" alt="image" /></p>
+
+<p><strong>2.</strong> $d$ 차 곡선을 정의하고 polynomial regression 또한 multiple linear regression 문제와 동일하기 때문에, 아래의 행렬처럼 나타낼 수 있음.</p>
+
+<p>$\hat{y} = w_0 + w_1x + w_2x^2 + … + w_dx^d$</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151286139-df8803b5-74b5-4314-a627-41792d7a7609.png" alt="스크린샷 2022-01-27 오후 12 20 06" /></p>
+
+<p><strong>3.</strong> 데이터들을 MinMaxScaler하고, 모델 <strong>(3차 항)</strong>을 훈련한 결과, 아래와 같이 잘 훈련된 결과가 plot 됨.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151286292-c7b650b9-ac42-4659-870e-a2b104d12a2b.png" alt="image" /></p>
+
+<p><strong>4.</strong> 3차 항의 모델이 아닌 <strong>1차 항과 15차 항 모델</strong>을 훈련한 결과, 아래와 같이 plot 됨.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151286520-dd26536f-b9fb-45af-9fdd-518bc0d12b82.png" alt="image" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151286727-539b9ee1-4eb6-4ae6-a0e9-82e547a5188e.png" alt="image" style="zoom:67%;" /></p>
+
+<p>1차 항의 결과, <strong>직선</strong>은 너무 간단해서 데이터가 흩뿌려져 있을 때는 그 데이터를 잘 설명하지 못함.<br />
+이것은 <strong>underfitting</strong> 되었다고 할 수 있음.</p>
+
+<p>==&gt; <strong>high bias(정답에서 멀음), low variance(한 군데에 모여있음)</strong></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151286534-5bb3ea3c-4854-4cb5-a73e-a6cfa57cbc40.png" alt="image" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151286727-539b9ee1-4eb6-4ae6-a0e9-82e547a5188e.png" alt="image" style="zoom:67%;" /></p>
+
+<p>15차 항의 결과, Training data를 모두 커버하려고 매우 복잡한 모델이 되기 때문에, Test data를 잘 못 맞추게 됨.<br />
+이것은 <strong>overfitting</strong> 되었다고 할 수 있음.</p>
+
+<p>==&gt; <strong>low bias(정답에서 가까움), high variance(한 군데에 모여있지 않음)</strong></p>
+
+<p><strong>5.</strong> Regularization</p>
+
+<p>regularization term 인 $\lambda\sum_{j=1}^dw_j^2$를 추가하고,. Mean-squared error를 사용한 cost function에 추가하면 다음과 같다..</p>
+
+<p>$L(\mathbf{w}) = \frac{1}{N} \lVert \mathbf{y} - \mathbf{Xw} \rVert^2 + \lambda \sum_{j=1}^d w_j^2$</p>
+
+<p>새롭게 만든 cost function은 <strong>계수들이 작은 값이 되는 것을 선호</strong>하게 됨. 계수들이 커지게 되면 <u>두번째 항이 커지게 돼서 cost 값이 늘어나기 때문</u>.</p>
+
+<p><strong>λ</strong>는 regularization paramter이며 <u>얼마나 큰 제약을 줄 것인가</u>를 결정함. <strong>λ</strong>가 큰 값을 가질수록 계수들을 더 작게 할 수 있음.<br />
+이번 practice에서는 <strong>λ</strong>의 값을 1로 설정함.</p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151287326-e49fd01d-dec5-4a77-9bea-47d01027e41e.png" alt="image" style="zoom:67%;" /></p>
+
+<p>Regularization의 결과, 15차 항에서 예측 모델이 진동하는 것이 아닌 부드럽게 학습 데이터들을 지나가는 것을 볼 수 있음.<br />
+이렇게 된다면 새롭게 들어오는 데이터도 잘 예측할 수 있게 됨.</p>
+
+<hr />
+
+<p><a href="https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW13%5D_Polynomial_Regression_%26_Regularization.ipynb">HW13 링크</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="machine learning" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [4주차 - Machine Learning (3)]</title><link href="http://localhost:4000/goormnlp/Machine-Learning-(3)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Machine Learning (3)]" /><published>2022-01-26T00:00:00+09:00</published><updated>2022-01-26T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Machine%20Learning%20(3)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Machine-Learning-(3)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
 
 <h2 id="lecture-logistic-regression">Lecture: Logistic Regression</h2>
 
@@ -52,7 +260,7 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.</p>
 
 <p><img src="https://user-images.githubusercontent.com/67947808/151112076-8f7cfbef-4506-40fc-ae3b-1967e4fe8f71.png" alt="image" /></p>
 
-<h2 id="logistic-regression-example">Logistic Regression example</h2>
+<h2 id="practice">Practice</h2>
 
 <p><img src="https://user-images.githubusercontent.com/67947808/151112156-4497c2ab-2a8d-4345-91fd-aebb32f6c82a.png" alt="image" /></p>
 
@@ -60,7 +268,11 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.</p>
 기준값을 정한 후, 그것보다 크면 1, 작으면 0으로 분류를 진행하게 된다.<br />
 아래 사진은 기준값을 0.5로 설정한 예시이다.</p>
 
-<p><img src="https://user-images.githubusercontent.com/67947808/151112386-0d305db3-0515-477d-a554-776a5db3dca7.png" alt="image" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="regression" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [4주차 - Linear Regression (2)]</title><link href="http://localhost:4000/goormnlp/Linear_Regression-(2)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Linear Regression (2)]" /><published>2022-01-25T00:00:00+09:00</published><updated>2022-01-25T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Regression%20(2)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Regression-(2)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+<p><img src="https://user-images.githubusercontent.com/67947808/151112386-0d305db3-0515-477d-a554-776a5db3dca7.png" alt="image" /></p>
+
+<hr />
+
+<p><a href="https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW12%5D_Logistic_Regression.ipynb">HW12 링크</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="machine learning" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [4주차 - Machine Learning (2)]</title><link href="http://localhost:4000/goormnlp/Machine-Learning-(2)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Machine Learning (2)]" /><published>2022-01-25T00:00:00+09:00</published><updated>2022-01-25T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Machine%20Learning%20(2)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Machine-Learning-(2)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
 
 <h2 id="lecture-linear-regression-with-multiple-variables">Lecture: Linear regression with multiple variables</h2>
 
@@ -99,7 +311,7 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.</p>
 
 <p><img src="https://user-images.githubusercontent.com/67947808/150906938-6179f1fc-5d5e-43e5-a27b-c8e9cda2c6d2.png" alt="스크린샷 2022-01-25 오후 12 42 20" style="zoom:50%;" /></p>
 
-<h2 id="example">Example</h2>
+<h2 id="practice">Practice</h2>
 
 <p>실제로 <u>예측을 하고자 할 때 보통 하나 이상의 변수</u>들을 고려해야 한다.<br />
 예를 들면 집 값을 예측을 하고자 한다면 <u>집의 크기, 주변의 편의 시설, 위치, 화장실의 개수, 건축 년도 등등 고려해야할 변수들</u>이 많다.</p>
@@ -143,7 +355,11 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.</p>
   <li>Root mean squared error(RMSE)</li>
 </ol>
 
-<p>${RMSE}(\mathbf{y}, \hat{\mathbf{y}}) =\sqrt{ \frac{1}{N} \sum_{i=1}^N (y^{(i)} - \hat{y}^{(i)})^2}$</p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="regression" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [4주차 - Linear Regression (1)]</title><link href="http://localhost:4000/goormnlp/Linear_Regression-(1)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Linear Regression (1)]" /><published>2022-01-24T00:00:00+09:00</published><updated>2022-01-24T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Regression%20(1)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Regression-(1)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+<p>${RMSE}(\mathbf{y}, \hat{\mathbf{y}}) =\sqrt{ \frac{1}{N} \sum_{i=1}^N (y^{(i)} - \hat{y}^{(i)})^2}$</p>
+
+<hr />
+
+<p><a href="https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW11%5D_Multiple_Linear_Regression.ipynb">HW11 링크</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="machine learning" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [4주차 - Machine Learning (1)]</title><link href="http://localhost:4000/goormnlp/Machine-Learning-(1)/" rel="alternate" type="text/html" title="goormNLP [4주차 - Machine Learning (1)]" /><published>2022-01-24T00:00:00+09:00</published><updated>2022-01-24T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Machine%20Learning%20(1)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Machine-Learning-(1)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
 
 <h2 id="lecture-linear-regression-with-one-variable">Lecture: Linear regression with one variable</h2>
 
@@ -195,25 +411,22 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.</p>
 </span>
 <span class="k">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="mf">1.4999999806458753</span>
-</code></pre></div></div>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="regression" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">Pytorch 논문 구현 [UNet (1)]</title><link href="http://localhost:4000/pytorch/UNet-(1)/" rel="alternate" type="text/html" title="Pytorch 논문 구현 [UNet (1)]" /><published>2022-01-24T00:00:00+09:00</published><updated>2022-01-24T00:00:00+09:00</updated><id>http://localhost:4000/pytorch/UNet%20(1)</id><content type="html" xml:base="http://localhost:4000/pytorch/UNet-(1)/"><![CDATA[<p>Pytorch Zero to All</p>
+</code></pre></div></div>
 
-<h2 id="unet-1">UNet (1)</h2>
+<hr />
+
+<p><a href="https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW10%5D_Simple_Linear_Regression.ipynb">HW10 링크</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="machine learning" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">Pytorch 논문 구현 [UNet]</title><link href="http://localhost:4000/pytorch/UNet-(1)/" rel="alternate" type="text/html" title="Pytorch 논문 구현 [UNet]" /><published>2022-01-24T00:00:00+09:00</published><updated>2022-01-24T00:00:00+09:00</updated><id>http://localhost:4000/pytorch/UNet%20(1)</id><content type="html" xml:base="http://localhost:4000/pytorch/UNet-(1)/"><![CDATA[<p>Pytorch Zero to All</p>
+
+<h2 id="unet">UNet</h2>
 
 <p>2022-01-24</p>
 
 <p>UNet 모델은 학부생때 딥러닝 주제를 정하고 케라스로 처음으로 구현해본 모델이다. 구현을 한 경험이 있고 논문 또한 정독을 많이 했기에 파이토치로 구현했을때 어려운 점은 없었다. <del>(class 모듈화 공부를 더 해야할 듯..)</del></p>
 
-<p>사용한 데이터: <strong>ISBI 2012 EM segmentation Challenge</strong></p>
+<p>edit..
+edit..</p>
 
-<hr />
-
-<script src="https://gist.github.com/wjh1065/03257ee47f96f35175cbb0856747c467.js"></script>
-
-<script src="https://gist.github.com/wjh1065/4141606ea35e1d3d6a64017712d54c65.js"></script>
-
-<script src="https://gist.github.com/wjh1065/eb2b26bfdf28ac0faacca9356a3e1431.js"></script>]]></content><author><name>Lee ChangSeok</name></author><category term="Pytorch" /><category term="study" /><category term="python" /><summary type="html"><![CDATA[Pytorch Zero to All]]></summary></entry><entry><title type="html">Pytorch 논문 구현 [MNIST]</title><link href="http://localhost:4000/pytorch/MNIST/" rel="alternate" type="text/html" title="Pytorch 논문 구현 [MNIST]" /><published>2022-01-23T00:00:00+09:00</published><updated>2022-01-23T00:00:00+09:00</updated><id>http://localhost:4000/pytorch/MNIST</id><content type="html" xml:base="http://localhost:4000/pytorch/MNIST/"><![CDATA[<p>Pytorch Zero to All</p>
-
-<h2 id="mnist">MNIST</h2>
+<hr />]]></content><author><name>Lee ChangSeok</name></author><category term="Pytorch" /><category term="study" /><category term="python" /><summary type="html"><![CDATA[Pytorch Zero to All]]></summary></entry><entry><title type="html">Pytorch START</title><link href="http://localhost:4000/pytorch/START/" rel="alternate" type="text/html" title="Pytorch START" /><published>2022-01-23T00:00:00+09:00</published><updated>2022-01-23T00:00:00+09:00</updated><id>http://localhost:4000/pytorch/START</id><content type="html" xml:base="http://localhost:4000/pytorch/START/"><![CDATA[<p>Pytorch Zero to All</p>
 
 <p>2022-01-23</p>
 
@@ -223,13 +436,7 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.</p>
 
 <p>Pytorch는  상대적으로 Low Level이여서 CUDA 가속화를 할 수 있고 내가 원하는 (정적) 코드로 수정 할 수 있다.</p>
 
-<hr />
-
-<script src="https://gist.github.com/wjh1065/d9e0539abb3a4138a94f487819e6ba82.js"></script>
-
-<script src="https://gist.github.com/wjh1065/57aee1d72476b6e984033027647a9f19.js"></script>
-
-<script src="https://gist.github.com/wjh1065/c60e567eb0d23ed51fe7483cf8340bee.js"></script>]]></content><author><name>Lee ChangSeok</name></author><category term="Pytorch" /><category term="study" /><category term="python" /><summary type="html"><![CDATA[Pytorch Zero to All]]></summary></entry><entry><title type="html">goormNLP [3주차 - Linear Algebra Review (2)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-Review/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra Review (2)]" /><published>2022-01-21T00:00:00+09:00</published><updated>2022-01-21T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20Review</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-Review/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+<hr />]]></content><author><name>Lee ChangSeok</name></author><category term="Pytorch" /><category term="study" /><category term="python" /><summary type="html"><![CDATA[Pytorch Zero to All]]></summary></entry><entry><title type="html">goormNLP [3주차 - Linear Algebra Review (2)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-Review-(2)/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra Review (2)]" /><published>2022-01-21T00:00:00+09:00</published><updated>2022-01-21T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20Review%20(2)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-Review-(2)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
 
 <h1 id="linear-algebra-review-2">Linear Algebra Review (2)</h1>
 
@@ -406,124 +613,4 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.</p>
 
 <p><img src="https://user-images.githubusercontent.com/67947808/150087635-792eb8c9-d6b4-479b-99ed-4e2a2f51102f.png" alt="스크린샷 2022-01-19 오후 4 54 24" style="zoom:67%;" /></p>
 
-<p><img src="https://user-images.githubusercontent.com/67947808/150087662-fddc9e8a-823b-40f6-9a85-9472d84ff61e.png" alt="스크린샷 2022-01-19 오후 4 54 37" style="zoom:67%;" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [3주차 - Linear Algebra (5)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(5)/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra (5)]" /><published>2022-01-18T00:00:00+09:00</published><updated>2022-01-18T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(5)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(5)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
-
-<h2 id="lecture-8-advanced-eigendecomposition">Lecture 8: Advanced Eigendecomposition</h2>
-
-<p>2022-01-18</p>
-
-<p>저번 포스팅에 고유값(eigenvalue), 고유벡터(eigenvector), 대각행렬(diagonal matrix) ,대각화(diagonalization)를 활용하여 n차 정방행렬의 p제곱을 구하였고, 이번에는 EVD(Eigenvalue-eigenvector Decomposition)에 대한 수업을 진행하였다. EVD는 <u>n by n 정방행렬</u>에 대해서만 적용이 가능하고 <strong>Markov process 과정</strong>을 적용하여 계산하였다.</p>
-
-<ul>
-  <li>
-    <p>Symmetric Matrix
-  If Matrix A is <em>symmetric</em>, then any two eigenvectors from different eigenspaces are <strong>orthogonal</strong>.</p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149876597-4bdf201b-d425-4bbe-9d8c-2ad4608f13d7.png" alt="스크린샷 2022-01-18 오후 2 31 03" /></p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149876648-6847f861-6f2c-4006-8fef-291207988bfe.png" alt="스크린샷 2022-01-18 오후 2 31 28" /></p>
-
-    <blockquote>
-      <p>An n x n matrix A is said to be <strong>orthogonally diagonalizable.</strong></p>
-    </blockquote>
-  </li>
-</ul>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149876771-ad63c63f-a543-403f-b8c0-8522c4f2e7fb.png" alt="스크린샷 2022-01-18 오후 2 32 38" style="zoom:80%;" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149876926-3a90e85d-9768-4f2a-bc69-3d0ac1c2e906.png" alt="스크린샷 2022-01-18 오후 2 34 16" style="zoom:80%;" /></p>
-
-<ul>
-  <li>
-    <p>ex) <strong>Markov Process</strong></p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149877164-554aa58c-041c-4370-914d-d118f2978a3c.png" alt="스크린샷 2022-01-18 오후 2 36 26" /></p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149877215-a28c5864-2c8f-4fcb-8605-1c053115dab0.png" alt="스크린샷 2022-01-18 오후 2 37 12" /></p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149877234-feab56b3-3929-409f-9d5b-0dd7d056bf39.png" alt="스크린샷 2022-01-18 오후 2 37 24" /></p>
-
-    <p><strong>step 1) eigenvalue 구하기</strong></p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149877300-967da64f-0a5a-47d8-91f3-36b823ff80fd.png" alt="스크린샷 2022-01-18 오후 2 38 17" style="zoom:80%;" /></p>
-
-    <p><strong>step 2) eigenvector 구하기</strong></p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149877565-13cadd2b-7232-4993-86e1-c7b2f54eda45.png" alt="image" style="zoom:90%;" /></p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149877584-db5a5d3c-edc0-451a-9d89-7d4a1f8b7cc7.png" alt="image" style="zoom:80%;" /></p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149877611-6abc623a-cd5e-4137-aa59-e12161f5f2b9.png" alt="스크린샷 2022-01-18 오후 2 41 30" style="zoom:85%;" /></p>
-
-    <p><strong>step 3) RESULT</strong></p>
-
-    <p><img src="https://user-images.githubusercontent.com/67947808/149877701-11c881f4-fe47-4dd0-90e3-0cb2cdf3cd35.png" alt="스크린샷 2022-01-18 오후 2 42 34" style="zoom:80%;" /></p>
-  </li>
-</ul>
-
-<p><strong>본 그림의 출처는 아래와 같음.</strong></p>
-
-<p><a href="https://rfriend.tistory.com/">R 분석과 프로그래밍</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry><entry><title type="html">goormNLP [3주차 - Linear Algebra (4)]</title><link href="http://localhost:4000/goormnlp/Linear_Algebra-(4)/" rel="alternate" type="text/html" title="goormNLP [3주차 - Linear Algebra (4)]" /><published>2022-01-17T00:00:00+09:00</published><updated>2022-01-17T00:00:00+09:00</updated><id>http://localhost:4000/goormnlp/Linear_Algebra%20(4)</id><content type="html" xml:base="http://localhost:4000/goormnlp/Linear_Algebra-(4)/"><![CDATA[<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
-
-<h2 id="lecture-7-eigendecomposition">Lecture 7: Eigendecomposition</h2>
-
-<p>2022-01-17</p>
-
-<p>고유값(eigenvalue), 고유벡터(eigenvector)에 대한 <u>정의</u>를 이해하고 <u>값</u>들을 구하였다.</p>
-
-<p>그 후 대각행렬(diagonal matrix) ,대각화(diagonalization)를 활용하여 n차 정방행렬의 <u>p제곱</u>을 구하였다.</p>
-
-<blockquote>
-  <p>정방행렬 A에 대하여 Ax = λx (상수 λ) 가 성립하는 0이 아닌 벡터 x가 존재할 때 
-상수 λ 를 행렬 A의 고유값 (eigenvalue), x 를 이에 대응하는 고유벡터 (eigenvector) 라고 함.</p>
-</blockquote>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149726517-25f8e133-f092-4c4a-88b4-566223f62550.png" alt="스크린샷 2022-01-17 오후 4 32 48" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149726646-9536a72f-7083-48a1-a14e-b672435f6aa2.png" alt="스크린샷 2022-01-17 오후 4 33 56" style="zoom:85%;" /></p>
-
-<blockquote>
-  <p>행렬의 곱의 결과가 원래 벡터와 <strong>“방향”</strong>은 <u>같고</u>, <strong>“배율”</strong>만 상수 λ 만큼만 비례해서 <u>변한다</u>.</p>
-</blockquote>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149727000-43b20905-7c1e-457e-aba0-1ad5aece8ac6.png" alt="스크린샷 2022-01-17 오후 4 36 45" style="zoom:80%;" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149727034-26906718-5976-475a-88c4-45c51ffb15a6.png" alt="스크린샷 2022-01-17 오후 4 37 01" style="zoom:80%;" /></p>
-
-<blockquote>
-  <p>eigenvector의 방향은 똑같고(same direction), 크기만 eigenvalue만큼씩 배수가 됨.</p>
-</blockquote>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149727266-f8a7b2a8-2258-4f5b-af09-cb22033c7c1b.png" alt="스크린샷 2022-01-17 오후 4 38 58" style="zoom:80%;" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149727382-7c88c62e-3b87-4ad8-ab12-a85539bfc89a.png" alt="스크린샷 2022-01-17 오후 4 39 55" style="zoom:80%;" /></p>
-
-<blockquote>
-  <p>고유값과 고유벡터를 구하는 순서는, <strong>먼저 고유값을 구하고나서</strong>, 나중에 Gauss 소거법 사용하여 고유값에 대응하는 고유벡터를 구함.</p>
-</blockquote>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149727691-e03462e3-3025-4faf-b416-c16ac7e30e91.png" alt="스크린샷 2022-01-17 오후 4 42 15" style="zoom:80%;" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149727710-fa7fbac0-94dc-43f3-b90b-50467afe0359.png" alt="스크린샷 2022-01-17 오후 4 42 22" style="zoom:80%;" /></p>
-
-<hr />
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149728001-04c1ded9-7189-4e12-9dfc-3fbf15177fd6.png" alt="스크린샷 2022-01-17 오후 4 44 31" style="zoom:80%;" /></p>
-
-<blockquote>
-  <p>대각성분을 제외한 모든 성분이 0인 행렬을 대각행렬(diagonal matrix), 적절한 기저변환을 통하여 주어진 행렬을 대각행렬로 변환하는 것을 대각화(diagonolization)이라 함.</p>
-</blockquote>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149728224-6ea7600c-b6f5-4378-b748-63fe41491d6d.png" alt="스크린샷 2022-01-17 오후 4 46 17" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149728290-9c6d48f0-cb73-4fea-af30-80ce9e8d5b95.png" alt="스크린샷 2022-01-17 오후 4 46 47" style="zoom:80%;" /></p>
-
-<p><img src="https://user-images.githubusercontent.com/67947808/149728322-120eac70-9b9d-42b4-9322-dbd78b6968b5.png" alt="스크린샷 2022-01-17 오후 4 46 59" style="zoom:80%;" /></p>
-
-<blockquote>
-  <p><strong>고유값과 고유벡터를 이용한 n차 정방행렬의 p제곱의 정리를 이용하면 p가 매우 크더라도 연산량을 줄여서 쉽게 p제곱을 구할 수 있음</strong>.</p>
-</blockquote>
-
-<p><strong>본 그림의 출처는 아래와 같음.</strong></p>
-
-<p><a href="https://rfriend.tistory.com/">출처 주소</a></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry></feed>
+<p><img src="https://user-images.githubusercontent.com/67947808/150087662-fddc9e8a-823b-40f6-9a85-9472d84ff61e.png" alt="스크린샷 2022-01-19 오후 4 54 37" style="zoom:67%;" /></p>]]></content><author><name>Lee ChangSeok</name></author><category term="goormNLP" /><category term="study" /><category term="math" /><summary type="html"><![CDATA[Auspice by Goorm, Manage by DAVIAN @ KAIST]]></summary></entry></feed>

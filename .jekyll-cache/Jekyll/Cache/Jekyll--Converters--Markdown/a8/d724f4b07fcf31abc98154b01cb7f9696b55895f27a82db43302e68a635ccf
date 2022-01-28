@@ -1,0 +1,108 @@
+I"�<p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+
+<h2 id="lecture-cross-validation--dimension-reduction">Lecture: Cross Validation &amp; Dimension Reduction</h2>
+
+<p>2022-01-28</p>
+
+<p>지금까지 간단한 데이터를 이용하여 Regression에 대한 실습을 진행하였다.<br />
+본 파트는 훈련한 모델의 성능을 높이기 위한 <strong>Cross Validation</strong> 기법과,<br />
+<strong>Dimension Reduction</strong>을 통해 특정 Feature를 선택하거나 추출하는 기법에 대한 수업을 진행하였다.</p>
+
+<p>지난 학기 수업때 PCA 기법을 단지 그림과 암기로만 이해를 했었는데,<br />
+지난 주에 배운 Linear Algebra 지식을 활용하니 새로운 시점으로 이해를 하게 되었다.</p>
+
+<h2 id="cross-validation">Cross-Validation</h2>
+
+<ul>
+  <li>Leave-one-out CV</li>
+</ul>
+
+<p>LOOCV는 ex) 총 100개의 데이터가 있으면, 99개의 Train 데이터와 1개의 Test 데이터로 나눈다.<br />
+그리고 이러한 행위를 총 100번에 대해서 각 데이터들을 무조건 한 번씩 Test 데이터로 설정한다.<br />
+이는 총 100개의 acc 및 loss의 평균을 구하는 방식이다.</p>
+
+<ul>
+  <li>K-fold CV
+K-fold는 K번씩 데이터를 나누는 것이다.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151482137-40d3786b-feb7-4b26-ba65-73b2c202f541.png" alt="스크린샷 2022-01-28 오후 12 25 03" style="zoom:67%;" /></p>
+
+<h2 id="dimension-reduction">Dimension Reduction</h2>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151482498-716d83e4-01d2-4420-b7e6-2a2557101dd7.png" alt="스크린샷 2022-01-28 오후 12 29 43" style="zoom:67%;" /></p>
+
+<p><strong>Benefits of Dimension Reduction</strong></p>
+<ul>
+  <li>Less storage: 데이터의 차원을 줄이니 당연히 용량을 적게 먹음.</li>
+  <li>
+    <p>Faster computation: 100,000 dim vs. 10 dim vectors 결과 당연히 10개 차원의 계산 속도가 빠름.</p>
+  </li>
+  <li>
+    <p>Noise removal: 더 좋은 performance를 위해 pre-processing를 진행함.</p>
+  </li>
+  <li><strong>2D / 3D representation</strong>: Interactive visual exploration.</li>
+</ul>
+
+<p><strong>Two Main Techniques</strong></p>
+
+<p>==&gt; <em>Feature = Variable = Dimension</em></p>
+
+<ol>
+  <li>Feature <strong>selection</strong></li>
+</ol>
+
+<p>Selects a subset of the <strong>original variables</strong> as <u>reduced dimensions.</u></p>
+
+<ul>
+  <li>Widely-used criteria.</li>
+  <li>Typically combinatorial optimization problems.</li>
+  <li><strong>greedy methods</strong> are popular.
+    <ul>
+      <li><u>Forward</u> selection: <strong>Empty</strong> set -&gt; <strong>Add</strong> one variable at a time.</li>
+      <li><u>Backward</u> elimination: <strong>Entire</strong> set -&gt; <strong>Remove</strong> one variable at a time.</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>Feature <strong>extraction</strong> (<u>MAIN TOPIC</u>)</li>
+</ol>
+
+<p>Each reduced dimension <strong>combines</strong> <u>multiple original dimensions.</u></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151483384-daf50fd9-ef0f-42e7-9b9f-e2ea140ffbab.png" alt="스크린샷 2022-01-28 오후 12 41 06" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151483508-dc94ba59-0c30-461c-ba1f-53a5dfe7ac12.png" alt="스크린샷 2022-01-28 오후 12 42 31" style="zoom:67%;" /></p>
+
+<ul>
+  <li>
+    <p>Represents each <u>reduced dimension</u> as a <strong>linear combination</strong> of original dimensions.</p>
+  </li>
+  <li>
+    <p>Naturally capable of mapping new data to the same space.</p>
+  </li>
+</ul>
+
+<h2 id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h2>
+
+<ul>
+  <li>
+    <p>Finds the axis showing the <u>**largest variation**</u>, and <u>**project**</u> all points into this axis.</p>
+  </li>
+  <li>
+    <p>Reduced dimensions are <strong>orthogonal</strong>.</p>
+  </li>
+  <li>
+    <p>Algorithm: Eigen-decomposition.</p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151483999-efe705e8-0bfb-4c69-942d-8621bf12b814.png" alt="스크린샷 2022-01-28 오후 12 48 12" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151484091-7d2aa2bb-d6d9-4a05-a566-3a25279a564a.png" alt="스크린샷 2022-01-28 오후 12 49 21" style="zoom:67%;" /></p>
+
+<hr />
+
+<p><a href="https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW14%5D_Multiple_Logistic_Regression.ipynb">HW14 링크</a></p>
+:ET

@@ -1,0 +1,753 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>goormNLP [4주차 - Machine Learning (5)] - while True()</title>
+<meta name="description" content="Auspice by Goorm, Manage by DAVIAN @ KAIST">
+
+
+  <meta name="author" content="Lee ChangSeok">
+  
+  <meta property="article:author" content="Lee ChangSeok">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="while True()">
+<meta property="og:title" content="goormNLP [4주차 - Machine Learning (5)]">
+<meta property="og:url" content="http://localhost:4000/goormnlp/Machine-Learning-(5)/">
+
+
+  <meta property="og:description" content="Auspice by Goorm, Manage by DAVIAN @ KAIST">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-01-28T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/goormnlp/Machine-Learning-(5)/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "이창석(Lee ChangSeok)",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="while True() Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+
+  <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+	  alert("Math Processing Error: "+message[1]);
+	});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.ico/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo.ico/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo.ico/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          while True:
+          <span class="site-subtitle">learn()</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://wjh1065.github.io/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">Introduce</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/image/profile/2021-12-20.png" alt="Lee ChangSeok" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Lee ChangSeok</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>이미지/자연어 처리<br />AI engineer<br /></p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Republic of Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="goormNLP [4주차 - Machine Learning (5)]">
+    <meta itemprop="description" content="Auspice by Goorm, Manage by DAVIAN @ KAIST">
+    <meta itemprop="datePublished" content="2022-01-28T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/goormnlp/Machine-Learning-(5)/" class="u-url" itemprop="url">goormNLP [4주차 - Machine Learning (5)]
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-28T00:00:00+09:00">2022.01.28</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p>Auspice by Goorm, Manage by DAVIAN @ KAIST</p>
+
+<h2 id="lecture-cross-validation--dimension-reduction">Lecture: Cross Validation &amp; Dimension Reduction</h2>
+
+<p>2022-01-28</p>
+
+<p>지금까지 간단한 데이터를 이용하여 Regression에 대한 실습을 진행하였다.<br />
+본 파트는 훈련한 모델의 성능을 높이기 위한 <strong>Cross Validation</strong> 기법과,<br />
+<strong>Dimension Reduction</strong>을 통해 특정 Feature를 선택하거나 추출하는 기법에 대한 수업을 진행하였다.</p>
+
+<p>지난 학기 수업때 PCA 기법을 단지 그림과 암기로만 이해를 했었는데,<br />
+지난 주에 배운 Linear Algebra 지식을 활용하니 새로운 시점으로 이해를 하게 되었다.</p>
+
+<h2 id="cross-validation">Cross-Validation</h2>
+
+<ul>
+  <li>Leave-one-out CV</li>
+</ul>
+
+<p>LOOCV는 ex) 총 100개의 데이터가 있으면, 99개의 Train 데이터와 1개의 Test 데이터로 나눈다.<br />
+그리고 이러한 행위를 총 100번에 대해서 각 데이터들을 무조건 한 번씩 Test 데이터로 설정한다.<br />
+이는 총 100개의 acc 및 loss의 평균을 구하는 방식이다.</p>
+
+<ul>
+  <li>K-fold CV
+K-fold는 K번씩 데이터를 나누는 것이다.</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151482137-40d3786b-feb7-4b26-ba65-73b2c202f541.png" alt="스크린샷 2022-01-28 오후 12 25 03" style="zoom:67%;" /></p>
+
+<h2 id="dimension-reduction">Dimension Reduction</h2>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151482498-716d83e4-01d2-4420-b7e6-2a2557101dd7.png" alt="스크린샷 2022-01-28 오후 12 29 43" style="zoom:67%;" /></p>
+
+<p><strong>Benefits of Dimension Reduction</strong></p>
+<ul>
+  <li>Less storage: 데이터의 차원을 줄이니 당연히 용량을 적게 먹음.</li>
+  <li>
+    <p>Faster computation: 100,000 dim vs. 10 dim vectors 결과 당연히 10개 차원의 계산 속도가 빠름.</p>
+  </li>
+  <li>
+    <p>Noise removal: 더 좋은 performance를 위해 pre-processing를 진행함.</p>
+  </li>
+  <li><strong>2D / 3D representation</strong>: Interactive visual exploration.</li>
+</ul>
+
+<p><strong>Two Main Techniques</strong></p>
+
+<p>==&gt; <em>Feature = Variable = Dimension</em></p>
+
+<ol>
+  <li>Feature <strong>selection</strong></li>
+</ol>
+
+<p>Selects a subset of the <strong>original variables</strong> as <u>reduced dimensions.</u></p>
+
+<ul>
+  <li>Widely-used criteria.</li>
+  <li>Typically combinatorial optimization problems.</li>
+  <li><strong>greedy methods</strong> are popular.
+    <ul>
+      <li><u>Forward</u> selection: <strong>Empty</strong> set -&gt; <strong>Add</strong> one variable at a time.</li>
+      <li><u>Backward</u> elimination: <strong>Entire</strong> set -&gt; <strong>Remove</strong> one variable at a time.</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>Feature <strong>extraction</strong> (<u>MAIN TOPIC</u>)</li>
+</ol>
+
+<p>Each reduced dimension <strong>combines</strong> <u>multiple original dimensions.</u></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151483384-daf50fd9-ef0f-42e7-9b9f-e2ea140ffbab.png" alt="스크린샷 2022-01-28 오후 12 41 06" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151483508-dc94ba59-0c30-461c-ba1f-53a5dfe7ac12.png" alt="스크린샷 2022-01-28 오후 12 42 31" style="zoom:67%;" /></p>
+
+<ul>
+  <li>
+    <p>Represents each <u>reduced dimension</u> as a <strong>linear combination</strong> of original dimensions.</p>
+  </li>
+  <li>
+    <p>Naturally capable of mapping new data to the same space.</p>
+  </li>
+</ul>
+
+<h2 id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h2>
+
+<ul>
+  <li>
+    <p>Finds the axis showing the <u>**largest variation**</u>, and <u>**project**</u> all points into this axis.</p>
+  </li>
+  <li>
+    <p>Reduced dimensions are <strong>orthogonal</strong>.</p>
+  </li>
+  <li>
+    <p>Algorithm: Eigen-decomposition.</p>
+  </li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151483999-efe705e8-0bfb-4c69-942d-8621bf12b814.png" alt="스크린샷 2022-01-28 오후 12 48 12" style="zoom:67%;" /></p>
+
+<p><img src="https://user-images.githubusercontent.com/67947808/151484091-7d2aa2bb-d6d9-4a05-a566-3a25279a564a.png" alt="스크린샷 2022-01-28 오후 12 49 21" style="zoom:67%;" /></p>
+
+<hr />
+
+<p><a href="https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW14%5D_Multiple_Logistic_Regression.ipynb">HW14 링크</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#machine-learning" class="page__taxonomy-item p-category" rel="tag">machine learning</a><span class="sep">, </span>
+    
+      <a href="/tags/#study" class="page__taxonomy-item p-category" rel="tag">study</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#goormnlp" class="page__taxonomy-item p-category" rel="tag">goormNLP</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-01-28T00:00:00+09:00">2022.01.28</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=goormNLP+%5B4%EC%A3%BC%EC%B0%A8+-+Machine+Learning+%285%29%5D%20http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FMachine-Learning-%285%29%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FMachine-Learning-%285%29%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgoormnlp%2FMachine-Learning-%285%29%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/goormnlp/Machine-Learning-(4)/" class="pagination--pager" title="goormNLP [4주차 - Machine Learning (4)]
+">이전</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">참고</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Machine-Learning-(4)/" rel="permalink">goormNLP [4주차 - Machine Learning (4)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-27T00:00:00+09:00">2022.01.27</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Auspice by Goorm, Manage by DAVIAN @ KAIST
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Machine-Learning-(3)/" rel="permalink">goormNLP [4주차 - Machine Learning (3)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-26T00:00:00+09:00">2022.01.26</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Auspice by Goorm, Manage by DAVIAN @ KAIST
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Machine-Learning-(2)/" rel="permalink">goormNLP [4주차 - Machine Learning (2)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-25T00:00:00+09:00">2022.01.25</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Auspice by Goorm, Manage by DAVIAN @ KAIST
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/goormnlp/Machine-Learning-(1)/" rel="permalink">goormNLP [4주차 - Machine Learning (1)]
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-01-24T00:00:00+09:00">2022.01.24</time>
+      </span>
+    
+
+    
+
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Auspice by Goorm, Manage by DAVIAN @ KAIST
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:wjh1065@naver.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/wjh1065" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/c._____.s/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 이창석(Lee ChangSeok). Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+    <script>
+  'use strict';
+
+  (function() {
+    var commentContainer = document.querySelector('#utterances-comments');
+
+    if (!commentContainer) {
+      return;
+    }
+
+    var script = document.createElement('script');
+    script.setAttribute('src', 'https://utteranc.es/client.js');
+    script.setAttribute('repo', 'wjh1065/wjh1065.github.io');
+    script.setAttribute('issue-term', 'pathname');
+    
+    script.setAttribute('theme', 'github-light');
+    script.setAttribute('crossorigin', 'anonymous');
+
+    commentContainer.appendChild(script);
+  })();
+</script>
+
+  
+
+
+
+
+
+  </body>
+</html>
