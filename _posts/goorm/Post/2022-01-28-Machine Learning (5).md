@@ -88,7 +88,7 @@ Each reduced dimension **combines** <u>multiple original dimensions.</u>
 
 ## Principal Component Analysis (PCA)
 
-- Finds the axis showing the <u>**largest variation**</u>, and <u>**project**</u> all points into this axis.
+- Finds the axis showing the **<u>largest variation</u>**, and **<u>project</u>** all points into this axis.
 
 - Reduced dimensions are **orthogonal**.
 
