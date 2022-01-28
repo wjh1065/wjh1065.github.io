@@ -1,10 +1,10 @@
 ---
-title: "goormNLP [4주차 - Regularization]"  
+title: "goormNLP [4주차 - Machine Learning (4)]"  
 categories:
  - goormNLP
 tags:
  - study
- - regression
+ - machine learning
 
 use_math: true
 ---
@@ -121,4 +121,4 @@ Regularization의 결과, 15차 항에서 예측 모델이 진동하는 것이 �
 
 ---
 
-[HW13 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Regression/sol/%5BHW13%5D_Polynomial_Regression_%26_Regularization.ipynb)
+[HW13 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW13%5D_Polynomial_Regression_%26_Regularization.ipynb)

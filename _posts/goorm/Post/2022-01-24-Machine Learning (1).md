@@ -1,10 +1,10 @@
 ---
-title: "goormNLP [4주차 - Regression (1)]"  
+title: "goormNLP [4주차 - Machine Learning (1)]"  
 categories:
  - goormNLP
 tags:
  - study
- - regression
+ - machine learning
 
 use_math: true
 ---
@@ -74,4 +74,4 @@ print(w)
 
 ---
 
-[HW10 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Regression/sol/%5BHW10%5D_Simple_Linear_Regression.ipynb)
+[HW10 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW10%5D_Simple_Linear_Regression.ipynb)

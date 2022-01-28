@@ -1,10 +1,10 @@
 ---
-title: "goormNLP [4주차 - Regression (2)]"  
+title: "goormNLP [4주차 - Machine Learning (2)]"  
 categories:
  - goormNLP
 tags:
  - study
- - regression
+ - machine learning
 
 use_math: true
 ---
@@ -120,5 +120,5 @@ ${RMSE}(\mathbf{y}, \hat{\mathbf{y}}) =\sqrt{ \frac{1}{N} \sum_{i=1}^N (y^{(i)} 
 
 ---
 
-[HW11 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Regression/sol/%5BHW11%5D_Multiple_Linear_Regression.ipynb)
+[HW11 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW11%5D_Multiple_Linear_Regression.ipynb)
 

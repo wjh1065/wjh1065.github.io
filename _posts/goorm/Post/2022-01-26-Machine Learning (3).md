@@ -1,10 +1,10 @@
 ---
-title: "goormNLP [4주차 - Regression (3)]"  
+title: "goormNLP [4주차 - Machine Learning (3)]"  
 categories:
  - goormNLP
 tags:
  - study
- - regression
+ - machine learning
 
 use_math: true
 ---
@@ -91,4 +91,4 @@ $L = -y \log(a) + (y-1)\log(1-a)$이 된다.
 
 ---
 
-[HW12 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Regression/sol/%5BHW12%5D_Logistic_Regression.ipynb)
+[HW12 링크](https://github.com/wjh1065/goormNLP/blob/main/03_Machine_Learning/sol/%5BHW12%5D_Logistic_Regression.ipynb)
