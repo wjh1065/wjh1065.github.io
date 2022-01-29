@@ -119,14 +119,14 @@ var store = [{
         "url": "/goormnlp/Linear_Algebra-Review-(2)/",
         "teaser": null
       },{
-        "title": "Pytorch START",
-        "excerpt":"Pytorch Zero to All 2022-01-23 케라스는 파이토치, 텐서플로우에 비해 High Level로써 입문자에게 처음 딥러닝 실습에 적합한 언어라 생각한다. 연구실 생활때, 빠른 결과물을 내야했고.. 파이토치, 텐서플로우를 처음부터 배울 시간이 없었기에 케라스를 이용하여 연구에 대한 결과를 만들어 학회에 발표를 한 경험이 있다. 하지만 인공지능 계열로 취업을 준비했을때 많은 회사들이 Tensorflow보다는 Pytorch 스킬을...","categories": ["Pytorch"],
+        "title": "Pytorch Practice START!",
+        "excerpt":"Pytorch Practice 2022-01-23 [1] 2019. 12 : 첫 파이썬을 접함. 학과에서 겨울방학 2주 캠프로 파이썬 수업을 진행함.. 웹 크롤링을 이용하여 네이버 쇼핑 자동 구매 매크로를 구현함! [2] 2020. 03 : Tensorflow(Keras)를 접함. 케라스는 파이토치, 텐서플로우에 비해 High Level로써 입문자에게 처음 딥러닝 실습에 적합한 언어라 생각한다. 연구실 생활때, 빠른 결과물을 내야했고.....","categories": ["Pytorch"],
         "tags": ["study","python"],
         "url": "/pytorch/START/",
         "teaser": null
       },{
         "title": "Pytorch 논문 구현 [UNet]",
-        "excerpt":"Pytorch Zero to All   UNet   2022-01-24   UNet 모델은 학부생때 딥러닝 주제를 정하고 케라스로 처음으로 구현해본 모델이다. 구현을 한 경험이 있고 논문 또한 정독을 많이 했기에 파이토치로 구현했을때 어려운 점은 없었다. (class 모듈화 공부를 더 해야할 듯..)   edit.. edit..    ","categories": ["Pytorch"],
+        "excerpt":"Pytorch Practice   UNet   2022-01-24   본 포스팅은 한요섭님의 YOUTUBE 실습 영상을 기반으로 한 스터디임을 알린다!     ","categories": ["Pytorch"],
         "tags": ["study","python"],
         "url": "/pytorch/UNet-(1)/",
         "teaser": null
