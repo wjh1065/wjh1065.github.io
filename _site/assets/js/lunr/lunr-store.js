@@ -160,4 +160,10 @@ var store = [{
         "tags": ["study","machine learning"],
         "url": "/goormnlp/Machine-Learning-(5)/",
         "teaser": null
+      },{
+        "title": "goormNLP [5주차 - Machine Learning (6)]",
+        "excerpt":"Auspice by Goorm, Manage by DAVIAN @ KAIST Lecture: Demensionality Reduction 2022-02-07 황금같은 설 연휴가 지나고 수업도 다시 재개되었다.. 지난시간에는 Dimension Reduction을 통해 특정 Feature를 선택하거나 추출하는 기법 중 하나인 PCA에 대한 수업을 진행하였다. 이번엔 Multidimensional Scaling (MDS)에 대한 내용을 리뷰하겠다. 리뷰에 들어가기에 앞서 왜 ? 고차원 데이터를 저차원 데이터로...","categories": ["goormNLP"],
+        "tags": ["study","machine learning"],
+        "url": "/goormnlp/Machine-Learning-(6)/",
+        "teaser": null
       }]
