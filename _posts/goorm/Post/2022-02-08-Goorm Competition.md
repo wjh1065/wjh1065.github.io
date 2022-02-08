@@ -27,10 +27,10 @@ Dataset은 red wine quality로 0~5는 bad, 6~10은 good으로 regression하는 �
 
 데이터 EDA를 진행한 결과:
 
-1) quality에서 3, 4, 5, 6, 7, 8 라벨 중 **3, 4, 8 라벨**이 데이터가 턱없이 부족하여 간단한 <u>data aug</u>를 진행함.
-2) 데이터 분포가 정규분포가 아니라 한 곳에 치우친 경향이 있어 <u>logarithm_scaler</u>를 진행하여 정규분포를 최대한 맞추어줌.
-3) outlier 2.5 이상 데이터는 제거함.
-4) scikit-learn의 StandardScaler를 이용하여 데이터 스케일링 진행함.
+1) quality에서 3, 4, 5, 6, 7, 8 라벨 중 **3, 4, 8 라벨**이 데이터가 턱없이 부족하여 간단한 <u>data aug</u>를 진행함.  
+2) 데이터 분포가 정규분포가 아니라 한 곳에 치우친 경향이 있어 <u>logarithm_scaler</u>를 진행하여 정규분포를 최대한 맞추어줌.  
+3) outlier 2.5 이상 데이터는 제거함.  
+4) scikit-learn의 StandardScaler를 이용하여 데이터 스케일링 진행함.  
 
 
 
