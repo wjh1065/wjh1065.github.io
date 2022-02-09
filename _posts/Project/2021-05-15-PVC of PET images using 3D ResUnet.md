@@ -160,12 +160,19 @@ tags:
 
 - 최근 전세계적으로 치매에 대한 관심이 매우 높음. 치매의 조기진단모델 개발을 위해서는 이러한 PET영상의 대량처리가 필수적임. 해당 모델을 통해 많은 양의 PET영상의 처리시간을 줄여 PET연구를 가속화하고, 치매극복에 기여할 수 있으리라 기대됨.
 
-PET 영상 신호 부분 용적 효과 보정 알고리즘 <u>특허 출원 완료</u>
+
 
 ### 자세한 내용은 아래 파일 확인.
-
-
 
 [2021년 대한전자공학회 하계학술대회](https://drive.google.com/file/d/1DUi_a2rvAgi21ji3pNr5H6ZQ9cSARquX/view?usp=sharing)
 
 [2021년 OHBM poster 발표](https://drive.google.com/file/d/1WxfQTBUNqNVi1C0ccTvI-YtAq4s6_uJc/view?usp=sharing)
+
+
+
+### 특허 출원 중.
+
+[발명의 명칭] : PET 영상 신호 부분 용적 효과 보정 알고리즘
+[출원번호] : 10-2021-0157840
+[출원인] : 고려대학교 세종산학협련단
+[발명자] : 한철, 정병창, 이창석
