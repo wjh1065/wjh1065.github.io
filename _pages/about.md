@@ -12,8 +12,8 @@ toc_label: "MYSELF"
 <center>이창석</center>
 
 <center>MAJOR : Image & NLP AI Engineering </center> 
-<center>Korea University</center>
-<center>2511, Sejong-ro, Jochiwon-eup, Sejong-si, Republic of Korea</center>
+<center>Korea University, Sejong, Republic of Korea</center>
+<center>Bachelor of Science in Electronics and Information Engineering</center>
 
 ## Personal Data
 > 1996.08.30 대한민국, 서울특별시, 관악구 출생
@@ -26,20 +26,20 @@ toc_label: "MYSELF"
 
 ## Education
 
-> 2015.03 ~ 2021.02 **고려대학교 학사**  
-> 전자 및 정보공학과
+> 2021.12 ~ 2022.05 **AI기술 자연어 처리 전문가 양성 과정 3기**  
+> goormNLP: 카이스트 AI 대학원 - DAVIAN 연구실
 
-> 2020.03 ~ 2021.03 **학부 연구생**  
-> 고려대학교 ni3 연구실
+> 2021.07 ~ 2021. 08 **정보통신산업진흥원 인공지능 교육**  
+> elice: NIPA AI 온라인 실무 응용 교육과정
 
 > 2021.03 ~ 2021.07 **고려대학교 일반대학원 석사**  
 > 전자정보공학과 (전공), 인공지능 스마트융합기술 (부전공)
 
-> 2021.07 ~ 2021. 08 **정보통신산업진흥원 교육**  
-> AI 온라인 실무 응용 교육과정 이수
+> 2020.03 ~ 2021.03 **학부생 연구 인턴**  
+> 고려대학교 ni3 연구실
 
-> 2021.12 ~ 2022.05 **AI기술 자연어 처리 전문가 양성 과정 3기**  
-> goormNLP: 카이스트 AI 대학원 - DAVIAN 연구실
+> 2015.03 ~ 2021.02 **고려대학교 학사**  
+> 전자 및 정보공학과
 
 
 
@@ -119,6 +119,7 @@ toc_label: "MYSELF"
 
 
 ## Patent is pending
+
 [발명의 명칭] : PET 영상 신호 부분 용적 효과 보정 알고리즘
 
 [출원번호] : 10-2021-0157840
