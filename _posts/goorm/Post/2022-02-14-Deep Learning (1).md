@@ -43,9 +43,9 @@ activation function들의 zero-centered의 여부가 neural network의 parameter
   
     
   
-    - zero-centered 하지 않다: parameter들의 gradient들이 서로 다른 부호를 가질 수 없음.
+    - zero-centered 하지 않다: parameter들의 gradient들이 서로 다른 부호를 가질 수 없음.  
         => 특정 벡터 공간에 한 번에 접근할 수 없기에 <u>update가 느림</u>.
-    - zero-centered 하다: parameter들의 gradient들이 서로 같은 부호, 다른 부호 모두를 가질 수 있음.
+    - zero-centered 하다: parameter들의 gradient들이 서로 같은 부호, 다른 부호 모두를 가질 수 있음.  
         => 특정 벡터 공간에 한 번에 접글할 수 있기에 <u>update가 빠름</u>. 
 
 
@@ -127,7 +127,7 @@ Neural network의 weight을 조절하는 과정에는 보통 Gradient Descent라
 vanilla GD는 learning rate만을 가지고 진행을 하였고, 이는 GD를 진행하는데 한계가 있다.  
 이 한계를 극복하고자 Momentum 방식을 도입하였다.  
 
-- Momentum 방식은 말 그대로 Gradient Descent를 통해 이동하는 과정에 일종의 **‘관성’**을 주는 것이다. 
+- Momentum 방식은 말 그대로 Gradient Descent를 통해 이동하는 과정에 일종의 **‘관성’**을 주는 것이다.  
     현재 Gradient를 통해 이동하는 방향과는 별개로, 과거에 이동했던 방식을 기억하면서 그 방향으로 일정 정도를 추가적으로 이동하는 방식이다.
 
 #### Adagrad
