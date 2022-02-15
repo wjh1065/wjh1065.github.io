@@ -91,6 +91,28 @@ Shrinking the image stack.
 
 
 
+#### Calculate output :
+
+![image](https://user-images.githubusercontent.com/67947808/154001424-f69016f5-fe55-41c1-a358-625c5317ef16.png)
+
+- W = Input size
+
+- F = Kernel size
+- P = amount of zero padding
+- S = Stride value
+
+
+
+example) 
+
+W = [64, 1, 28, 28]  <== [batch_size, channel_size, input_dim, input_dim]  
+parameter ==>  `W = 28, F = 7, P = 0, S = 1`
+
+fixed_W = [64, 1, **22, 22**]
+
+
+
+
 #### 참고자료
 
 - [https://rubber-tree.tistory.com](https://rubber-tree.tistory.com/entry/딥러닝-모델-CNN-Convolutional-Neural-Network-설명)
