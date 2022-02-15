@@ -215,5 +215,5 @@ Train multiple independent models => At test time average their results.
 
 
 
-[HW1.1 링크](https://github.com/wjh1065/goormNLP/blob/main/05_Deep_Learning/sol/%5BHW1_1%5DPytorchTutorial.ipynb)
+[HW1.1 링크](https://github.com/wjh1065/goormNLP/blob/main/05_Deep_Learning/sol/%5BHW1%5DPytorchTutorial.ipynb)
 
