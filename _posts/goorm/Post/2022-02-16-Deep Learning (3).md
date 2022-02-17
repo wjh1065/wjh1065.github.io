@@ -23,7 +23,6 @@ Auspice by Goorm, Manage by DAVIAN @ KAIST
 **Case Studies**
 
 - LeNet-5
-
 - AlexNet
 - VGGNet
 - GoogLeNet
@@ -85,9 +84,7 @@ AlexNet 덕분에 딥러닝, 특히 CNN이 세간의 주목을 받게 되었으�
 
 1. ReLU Nonlinearity
 2. Training on Multiple GPUs
-
 3. Local Response Normalization (LRN)
-
 4. Overlapping Pooling
 
 **Reducing overfitting**
