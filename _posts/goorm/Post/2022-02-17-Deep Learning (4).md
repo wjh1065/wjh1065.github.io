@@ -1,5 +1,5 @@
 ---
-ㅌtitle: "goormNLP [6주차 - Deep Learning (4)]"  
+title: "goormNLP [6주차 - Deep Learning (4)]"  
 categories:
  - goormNLP
 tags:
