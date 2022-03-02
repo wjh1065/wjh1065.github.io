@@ -2,8 +2,8 @@
 main:
   - title: "Home"
     url: https://wjh1065.github.io/
-  - title: "Introduce"
-    url: /about/
+  - title: "Portfolio"
+    url: https://smooth-syrup-d12.notion.site/266c541844b149a6aaac3cfad8c0bd3d
   - title: "Categories"
     url: /categories/
 #  - title: "Tags"
