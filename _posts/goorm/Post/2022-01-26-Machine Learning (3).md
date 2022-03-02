@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [4주차 - Machine Learning (3)]"  
+title: "goormNLP [Logistic Regression]"  
 categories:
  - goormNLP
 tags:

@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [6주차 - Deep Learning (Mid)]"  
+title: "goormNLP [Deep Learning Quiz (1)]"  
 categories:
  - goormNLP
 tags:

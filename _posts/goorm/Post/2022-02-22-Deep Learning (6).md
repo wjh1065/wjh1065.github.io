@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [6주차 - Deep Learning (6)]"  
+title: "goormNLP [Generative Adversarial Networks]"  
 categories:
  - goormNLP
 tags:

@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [5주차 - Goorm Competition]"  
+title: "goormNLP [Competition]"  
 categories:
  - goormNLP
 tags:

@@ -1,5 +1,5 @@
 ---
-title: "Project 2. DeepSORT with Bird Eye View"  
+title: "Project [DeepSORT Algorithm using Bird Eye View]"  
 categories:
  - project
 tags:
@@ -8,9 +8,10 @@ tags:
  - object tracking
 ---
 
-# DeepSORT with Bird Eye View (BEV)
+# DeepSORT Algorithm using Bird Eye View
 
 ## 1. 추진배경 및 필요성
+
 - 추진배경
 
     기업체와 회의 결과 해당 업체가 최근 **물체 추적(Object Tracking)**과 관련된 기술이 필요하다는 것을 알게 되었음. 유사한 기술로서, CCTV 영상에서 전시장의 관람객이 어떤 관람물에 관심을 가지는지를 분석하는 기술을 개발하는 것을 목표로 함.

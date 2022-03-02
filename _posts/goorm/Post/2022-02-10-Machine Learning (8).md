@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [5주차 - Machine Learning (3)]"  
+title: "goormNLP [Neural Network]"  
 categories:
  - goormNLP
 tags:

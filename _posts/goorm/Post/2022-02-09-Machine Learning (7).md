@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [5주차 - Machine Learning (2)]"  
+title: "goormNLP [Clustering]"  
 categories:
  - goormNLP
 tags:

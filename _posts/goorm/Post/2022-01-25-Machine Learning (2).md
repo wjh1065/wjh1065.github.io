@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [4주차 - Machine Learning (2)]"  
+title: "goormNLP [Multiple Variable Linear Regression]"  
 categories:
  - goormNLP
 tags:

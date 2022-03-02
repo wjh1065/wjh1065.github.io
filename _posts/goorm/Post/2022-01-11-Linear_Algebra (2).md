@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [2주차 - Linear Algebra (2)]"  
+title: "goormNLP [Linear Independence]"  
 categories:
  - goormNLP
 tags:

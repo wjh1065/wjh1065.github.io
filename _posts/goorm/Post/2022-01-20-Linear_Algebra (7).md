@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [3주차 - Linear Algebra (7)]"  
+title: "goormNLP [Singular Value Decomposition]"  
 categories:
  - goormNLP
 tags:

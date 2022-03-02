@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [6주차 - Deep Learning (7)]"  
+title: "goormNLP [Self-Supervised Learning]"  
 categories:
  - goormNLP
 tags:

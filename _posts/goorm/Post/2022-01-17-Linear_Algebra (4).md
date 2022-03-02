@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [3주차 - Linear Algebra (4)]"  
+title: "goormNLP [Eigendecomposition]"  
 categories:
  - goormNLP
 tags:

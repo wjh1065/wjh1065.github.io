@@ -1,5 +1,5 @@
 ---
-title: "Project 3. PVC of PET images using 3D ResUnet"  
+title: "Project [Partial Volume Effect Correction Algorithm from PET scan]"  
 categories:
  - project
 tags:
@@ -8,7 +8,7 @@ tags:
  - medical image
 ---
 
-# 3D-ResUnet을 이용한 PET 영상의 Partial volume Effect correction
+# Partial Volume Effect Correction Algorithm from PET scan
 
 ## 1. 추진배경 및 필요성
 

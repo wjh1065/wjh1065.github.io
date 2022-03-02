@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [4주차 - Machine Learning (5)]"  
+title: "goormNLP [Cross Validation & Dimension Reduction]"  
 categories:
  - goormNLP
 tags:

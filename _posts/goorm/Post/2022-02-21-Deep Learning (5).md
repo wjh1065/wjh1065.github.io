@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [6주차 - Deep Learning (5)]"  
+title: "goormNLP [Attention Network]"  
 categories:
  - goormNLP
 tags:

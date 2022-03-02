@@ -1,5 +1,5 @@
 ---
-title: "Project 4. GM segmentation of MR images using 3D ResUnet"  
+title: "Project [Grey Matter Segmentation Algorithm from Brain MR images]"  
 categories:
  - project
 tags:
@@ -8,7 +8,7 @@ tags:
  - medical image
 ---
 
-# 3D-ResUnet을 이용한 자기공명 영상의 뇌 회백질 영상 분할
+# Grey Matter Segmentation Algorithm from Brain MR images
 
 ## 1. 추진배경 및 필요성
 

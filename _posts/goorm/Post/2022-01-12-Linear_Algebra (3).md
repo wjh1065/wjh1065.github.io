@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [2주차 - Linear Algebra (3)]"  
+title: "goormNLP [Least Squares]"  
 categories:
  - goormNLP
 tags:

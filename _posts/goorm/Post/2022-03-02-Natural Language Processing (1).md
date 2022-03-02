@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [7주차 - Natural Language Processing (1)]"  
+title: "goormNLP [NLP intro]"  
 categories:
  - goormNLP
 tags:
@@ -66,5 +66,4 @@ Auspice by Goorm, Manage by DAVIAN @ KAIST
     각 차원의 의미를 해석하기는 어려워졌지만, 다양한 Task에서 강력한 성능을 보이면서 현재까지 각광받고 있는 접근법이다.
     
     [HW26 링크](https://github.com/wjh1065/goormNLP/blob/main/06_Natural_Language_Processing/sol/%5BHW26_Problem%5DWord2Vec.ipynb) <= PCA font error issue.
-
 

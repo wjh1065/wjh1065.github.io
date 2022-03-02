@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [4주차 - Machine Learning (4)]"  
+title: "goormNLP [Regularization]"  
 categories:
  - goormNLP
 tags:

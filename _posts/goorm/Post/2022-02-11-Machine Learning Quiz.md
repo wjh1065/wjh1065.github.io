@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [5주차 - Machine Learning Quiz]"  
+title: "goormNLP [Machine Learning Quiz]"  
 categories:
  - goormNLP
 tags:

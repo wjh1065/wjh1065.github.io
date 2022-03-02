@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [2주차 - Linear Algebra (1)]"  
+title: "goormNLP [Linear Algebra & System]"  
 categories:
  - goormNLP
 tags:

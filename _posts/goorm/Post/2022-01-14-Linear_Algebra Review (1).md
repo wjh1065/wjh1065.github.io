@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [2주차 - Linear Algebra Review (1)]"  
+title: "goormNLP [Linear Algebra Quiz (1)]"  
 categories:
  - goormNLP
 tags:

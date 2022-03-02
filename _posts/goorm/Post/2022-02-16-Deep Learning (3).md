@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [6주차 - Deep Learning (3)]"  
+title: "goormNLP [CNN Case-Study]"  
 categories:
  - goormNLP
 tags:

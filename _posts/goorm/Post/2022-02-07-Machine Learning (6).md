@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [5주차 - Machine Learning (1)]"  
+title: "goormNLP [Demensionality Reduction]"  
 categories:
  - goormNLP
 tags:

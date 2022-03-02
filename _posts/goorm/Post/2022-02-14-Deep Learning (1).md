@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [6주차 - Deep Learning (1)]"  
+title: "goormNLP [Training Neural Networks]"  
 categories:
  - goormNLP
 tags:

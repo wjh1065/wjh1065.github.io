@@ -1,5 +1,5 @@
 ---
-title: "goormNLP [6주차 - Deep Learning (4)]"  
+title: "goormNLP [Recurrent Neural Networks]"  
 categories:
  - goormNLP
 tags:
